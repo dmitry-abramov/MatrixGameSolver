@@ -116,29 +116,42 @@ namespace MatrixGameSolver
             }
 
             firstPlayerSolveTable.RowCount = game.solve.table.Count;
-            firstPlayerSolveTable.ColumnCount = 3;
+            firstPlayerSolveTable.ColumnCount = game.GetFirstPlayerStrategyCount() + 1;
             secondPlayerSolveTable.RowCount = game.solve.table.Count;
-            secondPlayerSolveTable.ColumnCount = 3;
+            secondPlayerSolveTable.ColumnCount = game.GetSecondPlayerStrategyCount() + 1;
 
             List<int> tmp = new List<int>();
-            for (int i = 0; i < firstPlayerSolveTable.ColumnCount + secondPlayerSolveTable.ColumnCount; i++)
+            for (int i = 0; i < firstPlayerSolveTable.ColumnCount + secondPlayerSolveTable.ColumnCount - 2; i++)
                 tmp.Add(0);
             for (int i = 0; i < firstPlayerSolveTable.RowCount && i < secondPlayerSolveTable.RowCount; i++)
             {
                 tmp[game.solve.table[i].firstPlayerChoiceField]++;
-                tmp[3 + game.solve.table[i].secondPlayerChoiceField]++;
+                tmp[game.GetFirstPlayerStrategyCount() + game.solve.table[i].secondPlayerChoiceField]++;
+
+                double firstPlayerPrize = 0;
+                double secondPlayerPrize = 0;
+                for (int k = 0; k < game.GetFirstPlayerStrategyCount(); k++)
+                {
+                    for (int j = 0; j < game.GetSecondPlayerStrategyCount(); j++)
+                    {
+                        firstPlayerPrize += game.firstPlayerMatrix.GetValue(k, j) * tmp[k] * tmp[game.GetFirstPlayerStrategyCount() + j] / ((i+1) * (i+1));
+                        secondPlayerPrize += game.secondPlayerMatrix.GetValue(k, j) * tmp[k] * tmp[game.GetFirstPlayerStrategyCount() + j] / ((i + 1) * (i + 1));
+                    }                    
+                }
 
                 firstPlayerSolveTable.Rows[i].HeaderCell.Value = i.ToString();
-                for (int j = 0; j < firstPlayerSolveTable.ColumnCount; j++)
+                for (int j = 0; j < firstPlayerSolveTable.ColumnCount - 1; j++)
                 {                    
                     firstPlayerSolveTable.Rows[i].Cells[j].Value = tmp[j].ToString();
                 }
+                firstPlayerSolveTable.Rows[i].Cells[game.GetFirstPlayerStrategyCount()].Value = firstPlayerPrize.ToString();
 
                 secondPlayerSolveTable.Rows[i].HeaderCell.Value = i.ToString();
-                for (int j = 0; j < secondPlayerSolveTable.ColumnCount; j++)
+                for (int j = 0; j < secondPlayerSolveTable.ColumnCount - 1; j++)
                 {                    
                     secondPlayerSolveTable.Rows[i].Cells[j].Value = tmp[j + 3].ToString();
                 }
+                secondPlayerSolveTable.Rows[i].Cells[game.GetSecondPlayerStrategyCount()].Value = secondPlayerPrize.ToString();
             }
         }
 
@@ -286,15 +299,25 @@ namespace MatrixGameSolver
 
                 game = new BiMatrixGame(A, B);
                 BrownMethod method = new BrownMethod(progress);
-                /*List<double> f = new List<double>();
-                List<double> s = new List<double>();
-                for(int i = 0; i < 3; i++)
+                
+                //задание начального приближения
+                List<double> f = new List<double>();
+                for (int j = 0; j < game.GetFirstPlayerStrategyCount(); j++)
                 {
-                    f.Add(0.333);
-                    s.Add(0.333);
+                    f.Add(Convert.ToDouble(FirstPlayerStartPosition.Rows[0].Cells[j].Value));
                 }
-                StartPosition start = new StartPosition(new MixedStrategy(f), new MixedStrategy(s), 100);*/
-                game.solve = method.solve(game, Convert.ToInt32(IterationCount.Value));
+
+                List<double> s = new List<double>();
+                for (int j = 0; j < game.GetSecondPlayerStrategyCount(); j++)
+                {
+                    s.Add(Convert.ToDouble(SecondPlayerStartPosition.Rows[0].Cells[j].Value));
+                }
+
+                StartPosition start =
+                    new MatrixGameSolver.StartPosition(new MixedStrategy(f), new MixedStrategy(s),
+                                                        (int)StartPositionWeight.Value);
+
+                game.solve = method.solve(game, start, Convert.ToInt32(IterationCount.Value));
 
                 ShowSolve();
                 ShowTriangle(FirstPlayerGraphics, SecondPlayerGraphics);
