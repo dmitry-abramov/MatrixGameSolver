@@ -208,13 +208,14 @@ namespace MatrixGameSolver
                 secondPlayerSolve[i] = secondPlayerSolve[i] / (iterationCount + startStep);
             }
             
-            MixedStrategyCreator sc = new MixedStrategyCreator();
-            sc.NewMixedStrategy(firstPlayerSolve);
-            MixedStrategy f = sc.GetMixedStrategy();
-            sc.NewMixedStrategy(secondPlayerSolve);
-            MixedStrategy s = sc.GetMixedStrategy();
+            MixedStrategyCreator sc1 = new MixedStrategyCreator();
+            MixedStrategyCreator sc2 = new MixedStrategyCreator();
+            sc1.NewMixedStrategy(firstPlayerSolve);
+            MixedStrategy f = sc1.GetMixedStrategy();
+            sc2.NewMixedStrategy(secondPlayerSolve);
+            MixedStrategy s = sc2.GetMixedStrategy();
 
-            BiMatrixGameSolve result = new BiMatrixGameSolve(s, f, 0, startPosition, Table); ;
+            BiMatrixGameSolve result = new BiMatrixGameSolve(f, s, 0, startPosition, Table); ;
             return result;
         }
 
