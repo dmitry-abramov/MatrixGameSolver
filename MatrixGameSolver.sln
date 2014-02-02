@@ -3,16 +3,60 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixGameSolver", "MatrixGameSolver\MatrixGameSolver.csproj", "{90235510-9C1B-4A88-A3C6-23C744E295A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTheory", "GameTheory\GameTheory.csproj", "{9E26FFCF-D9C6-4963-881D-AD6DE6571299}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{C1058077-97FA-4DA4-B0F2-C9485B1303F4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B7615DEB-70F5-409D-A5B3-AC273BCE9F3A}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		MatrixGameSolver.vsmdi = MatrixGameSolver.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = MatrixGameSolver.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90235510-9C1B-4A88-A3C6-23C744E295A1}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{90235510-9C1B-4A88-A3C6-23C744E295A1}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{90235510-9C1B-4A88-A3C6-23C744E295A1}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{90235510-9C1B-4A88-A3C6-23C744E295A1}.Debug|x86.ActiveCfg = Debug|x86
 		{90235510-9C1B-4A88-A3C6-23C744E295A1}.Debug|x86.Build.0 = Debug|x86
+		{90235510-9C1B-4A88-A3C6-23C744E295A1}.Release|Any CPU.ActiveCfg = Release|x86
+		{90235510-9C1B-4A88-A3C6-23C744E295A1}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{90235510-9C1B-4A88-A3C6-23C744E295A1}.Release|Mixed Platforms.Build.0 = Release|x86
 		{90235510-9C1B-4A88-A3C6-23C744E295A1}.Release|x86.ActiveCfg = Release|x86
 		{90235510-9C1B-4A88-A3C6-23C744E295A1}.Release|x86.Build.0 = Release|x86
+		{9E26FFCF-D9C6-4963-881D-AD6DE6571299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E26FFCF-D9C6-4963-881D-AD6DE6571299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E26FFCF-D9C6-4963-881D-AD6DE6571299}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9E26FFCF-D9C6-4963-881D-AD6DE6571299}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9E26FFCF-D9C6-4963-881D-AD6DE6571299}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9E26FFCF-D9C6-4963-881D-AD6DE6571299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E26FFCF-D9C6-4963-881D-AD6DE6571299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E26FFCF-D9C6-4963-881D-AD6DE6571299}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9E26FFCF-D9C6-4963-881D-AD6DE6571299}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9E26FFCF-D9C6-4963-881D-AD6DE6571299}.Release|x86.ActiveCfg = Release|Any CPU
+		{C1058077-97FA-4DA4-B0F2-C9485B1303F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1058077-97FA-4DA4-B0F2-C9485B1303F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1058077-97FA-4DA4-B0F2-C9485B1303F4}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C1058077-97FA-4DA4-B0F2-C9485B1303F4}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C1058077-97FA-4DA4-B0F2-C9485B1303F4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C1058077-97FA-4DA4-B0F2-C9485B1303F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1058077-97FA-4DA4-B0F2-C9485B1303F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1058077-97FA-4DA4-B0F2-C9485B1303F4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C1058077-97FA-4DA4-B0F2-C9485B1303F4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C1058077-97FA-4DA4-B0F2-C9485B1303F4}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
