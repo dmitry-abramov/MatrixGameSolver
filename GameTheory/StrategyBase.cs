@@ -5,12 +5,12 @@ using System.Text;
 
 namespace GameTheory
 {
-    public class StrategyBase<T> where T : new()
+    public class StrategyBase<TStrategy> where TStrategy : new()
     {
         public StrategyBase()
         {
-            this.Description = string.Format("This is default strategy for type '{0}'", typeof(T).Name);
-            this.Strategy = new T();
+            this.Description = string.Format("This is default strategy for type '{0}'", typeof(TStrategy).Name);
+            this.Strategy = new TStrategy();
         }
 
         public StrategyBase(string description)
@@ -18,19 +18,19 @@ namespace GameTheory
             Util.ThrowExceptionIfArgumentIsNull(description, "description");
 
             this.Description = string.Format("{0}{1}This is default strategy for type '{2}'", 
-                description, Environment.NewLine, typeof(T).Name);
-            this.Strategy = new T();
+                description, Environment.NewLine, typeof(TStrategy).Name);
+            this.Strategy = new TStrategy();
         }
 
-        public StrategyBase(T strategy)
+        public StrategyBase(TStrategy strategy)
         {
             Util.ThrowExceptionIfArgumentIsNull(strategy, "strategy");
 
-            this.Description = string.Format("This is strategy with type '{0}'", typeof(T).Name);
+            this.Description = string.Format("This is strategy with type '{0}'", typeof(TStrategy).Name);
             this.Strategy = strategy;
         }
 
-        public StrategyBase(string description, T strategy)
+        public StrategyBase(string description, TStrategy strategy)
         {
             Util.ThrowExceptionIfArgumentIsNull(strategy, "strategy");
             Util.ThrowExceptionIfArgumentIsNull(description, "description");
@@ -41,7 +41,7 @@ namespace GameTheory
 
         public string Description { get; private set; }
 
-        public T Strategy { get; private set; }
+        public TStrategy Strategy { get; private set; }
 
         public override string ToString()
         {
