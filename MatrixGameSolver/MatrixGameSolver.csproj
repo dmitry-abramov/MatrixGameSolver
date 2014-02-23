@@ -50,6 +50,7 @@
     <Compile Include="BiMatrixGame.cs" />
     <Compile Include="BiMatrixGameSolve.cs" />
     <Compile Include="BrownMethod.cs" />
+    <Compile Include="BrownMethodExp.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

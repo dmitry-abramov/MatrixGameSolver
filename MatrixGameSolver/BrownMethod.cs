@@ -54,12 +54,12 @@ namespace MatrixGameSolver
 
     class BrownMethod
     {
-        System.Windows.Forms.ProgressBar progress;
+        protected System.Windows.Forms.ProgressBar progress;
         public BrownMethod(System.Windows.Forms.ProgressBar _progress)
         {
             progress = _progress;
         }
-        public BiMatrixGameSolve solve(BiMatrixGame game, int iterationCount)
+        public virtual BiMatrixGameSolve solve(BiMatrixGame game, int iterationCount)
         {
             progress.Minimum = 0;
             progress.Value = 0;
@@ -91,7 +91,7 @@ namespace MatrixGameSolver
             return solve(game, start, iterationCount);            
         }
 
-        public BiMatrixGameSolve solveCenter(BiMatrixGame game, int iterationCount)
+        public virtual BiMatrixGameSolve solveCenter(BiMatrixGame game, int iterationCount)
         {
             progress.Minimum = 0;
             progress.Value = 0;
@@ -132,7 +132,7 @@ namespace MatrixGameSolver
             return solve(game, start, iterationCount);            
         }
 
-        public BiMatrixGameSolve solve(BiMatrixGame game, StartPosition startPosition, int iterationCount)
+        public virtual BiMatrixGameSolve solve(BiMatrixGame game, StartPosition startPosition, int iterationCount)
         {
             progress.Minimum = 0;
             progress.Value = 0;
@@ -219,7 +219,7 @@ namespace MatrixGameSolver
             return result;
         }
 
-        private int Choice1(doubleMatrix A, List<double> p, int last)
+        protected int Choice1(doubleMatrix A, List<double> p, int last)
         {
             int result = 0;
             List<double> tmp = new List<double>();//список выйгрышей при разном выборе стратегии
@@ -237,7 +237,7 @@ namespace MatrixGameSolver
             return result;
         }
 
-        private int Choice2(doubleMatrix A, List<double> p, int last)
+        protected int Choice2(doubleMatrix A, List<double> p, int last)
         {
             int result = 0;
             List<double> tmp = new List<double>();//список выйгрышей при разном выборе стратегии

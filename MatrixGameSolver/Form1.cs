@@ -79,7 +79,7 @@ namespace MatrixGameSolver
                                                         (int)StartPositionWeight.Value);
 
                 game = new BiMatrixGame(A, B);
-                BrownMethod method = new BrownMethod(progress);
+                BrownMethod method = new BrownMethodExp(progress);
                 game.solve = method.solve(game, start,Convert.ToInt32(IterationCount.Value));
 
                 ShowSolve();
@@ -298,7 +298,7 @@ namespace MatrixGameSolver
                 }
 
                 game = new BiMatrixGame(A, B);
-                BrownMethod method = new BrownMethod(progress);
+                BrownMethod method = new BrownMethodExp(progress);
                 
                 //задание начального приближения
                 List<double> f = new List<double>();
