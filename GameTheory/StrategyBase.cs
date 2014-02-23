@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GameTheory
 {
-    public class StrategyBase<TStrategy> where TStrategy : new()
+    public class StrategyBase<TStrategy> : IStrategy<TStrategy> where TStrategy : new()
     {
         public StrategyBase()
         {
@@ -17,7 +17,7 @@ namespace GameTheory
         {
             Util.ThrowExceptionIfArgumentIsNull(description, "description");
 
-            this.Description = string.Format("{0}{1}This is default strategy for type '{2}'", 
+            this.Description = string.Format("{0}{1}This is default strategy for type '{2}'",
                 description, Environment.NewLine, typeof(TStrategy).Name);
             this.Strategy = new TStrategy();
         }
@@ -45,8 +45,28 @@ namespace GameTheory
 
         public override string ToString()
         {
-            return string.Format("Description: {0}{1}Strategy: {2}", 
+            return string.Format("Description: {0}{1}Strategy: {2}",
                 Description, Environment.NewLine, Strategy);
+        }
+
+        object IStrategy.Strategy
+        {
+            get
+            {
+                return Strategy;
+            }
+        }
+
+        public IStrategy<TCastStrategy> Cast<TCastStrategy>()
+        {
+            if (typeof(TCastStrategy) == typeof(TStrategy) || typeof(TCastStrategy).IsSubclassOf(typeof(TStrategy)))
+            {
+                return (IStrategy<TCastStrategy>)this;
+            };
+
+            var message = string.Format("Can not convert type {0} to type {1}",
+                    typeof(TStrategy), typeof(TCastStrategy));
+            throw new ArgumentException(message, "TCastStrategy");
         }
     }
 }

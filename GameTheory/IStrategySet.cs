@@ -2,9 +2,14 @@
 
 namespace GameTheory
 {
-    public interface IStrategySet<TStrategy> : ICollection<StrategyBase<TStrategy>>
+    public interface IStrategySet<TStrategy> : ICollection<IStrategy<TStrategy>>, IStrategySet
         where TStrategy : new()
     {
-        StrategyBase<TStrategy> GetRandomStrategy();
-    }    
+        IStrategy<TStrategy> GetRandomStrategy();
+    }
+
+    public interface IStrategySet : ICollection<IStrategy>
+    {
+        IStrategy GetRandomStrategy();
+    }
 }

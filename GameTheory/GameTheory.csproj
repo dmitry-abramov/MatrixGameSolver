@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FiniteStrategySetBase.cs" />
+    <Compile Include="IGame.cs" />
+    <Compile Include="IStrategy.cs" />
     <Compile Include="IStrategySet.cs" />
     <Compile Include="StrategyBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

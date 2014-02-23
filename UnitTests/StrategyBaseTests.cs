@@ -58,5 +58,27 @@ namespace UnitTests
         {
             var strategy = new StrategyBase<object>(null, null);
         }
+
+        [TestMethod]
+        public void CastIStrategyToIStrategyListInt()
+        {
+            IStrategy strategy = new StrategyBase<List<int>>(new List<int> { 10, 20 });
+
+            var strategyListInt = strategy.Cast<List<int>>();
+            var expected = new List<int> { 10, 20 };
+
+            Assert.IsInstanceOfType(strategyListInt, typeof(IStrategy<List<int>>));
+            Assert.IsInstanceOfType(strategyListInt.Strategy, typeof(List<int>));
+            Assert.IsTrue(expected.SequenceEqual(strategyListInt.Strategy));                      
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void CastIStrategyToIStrategyInt()
+        {
+            IStrategy strategy = new StrategyBase<List<int>>(new List<int> { 10, 20 });
+
+            var strategyInt = strategy.Cast<int>();
+        }
     }
 }
