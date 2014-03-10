@@ -80,5 +80,25 @@ namespace UnitTests
 
             var strategyInt = strategy.Cast<int>();
         }
+
+        [TestMethod]
+        public void EqualStrategiesWithValluedType()
+        {
+            StrategyBase<int> strategy1 = new StrategyBase<int>(1);
+            StrategyBase<int> strategy2 = new StrategyBase<int>(1);
+
+            Assert.AreEqual(strategy1, strategy2);
+            Assert.AreEqual(strategy1.GetHashCode(), strategy2.GetHashCode());
+        }
+
+        [TestMethod]
+        public void EqualStrategiesWithReferencedType()
+        {
+            StrategyBase<List<int>> strategy1 = new StrategyBase<List<int>>(new List<int> { 1, 2 });
+            StrategyBase<List<int>> strategy2 = new StrategyBase<List<int>>(new List<int> { 1, 2 });
+
+            Assert.AreNotEqual(strategy1, strategy2);
+            Assert.AreEqual(strategy1, strategy1);
+        }
     }
 }

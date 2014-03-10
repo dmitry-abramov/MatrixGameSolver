@@ -30,7 +30,7 @@ namespace UnitTests
         {
             var strategySet = new FiniteStrategySetBase<double>();
 
-            foreach(var strategy in new double[]{1, 2, 3, 4, 5})
+            foreach (var strategy in new double[] { 1, 2, 3, 4, 5 })
             {
                 strategySet.Add(new StrategyBase<double>(strategy));
             }
@@ -38,6 +38,40 @@ namespace UnitTests
             var randomStrategy = strategySet.GetRandomStrategy();
 
             Assert.IsTrue(strategySet.Contains(randomStrategy));
+        }
+
+        [TestMethod]
+        public void AddExitingElement()
+        {
+            var strategySet = new FiniteStrategySetBase<double>();
+
+            foreach (var strategy in new double[] { 1, 2, 3, 4, 5 })
+            {
+                strategySet.Add(new StrategyBase<double>(strategy));
+            }
+
+            var result = strategySet.Add(new StrategyBase<double>(3));
+
+            Assert.AreEqual(false, result);
+            Assert.AreEqual(5, strategySet.Count);
+        }
+
+        [TestMethod]
+        public void CreateFromList()
+        {
+            var list = new List<IStrategy<int>> 
+                { 
+                    new StrategyBase<int>(1),
+                    new StrategyBase<int>(2),
+                    new StrategyBase<int>(3),
+                    new StrategyBase<int>(3),
+                    new StrategyBase<int>(4),
+                    new StrategyBase<int>(5)
+                };
+
+            var strategySet = new FiniteStrategySetBase<int>(list);
+
+            Assert.AreEqual(5, strategySet.Count);
         }
     }
 }

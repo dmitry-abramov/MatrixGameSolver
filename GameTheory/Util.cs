@@ -28,5 +28,11 @@ namespace GameTheory
 
             if (argument == null) throw new ArgumentNullException(message, argumentName);
         }
+
+        public static bool IsArgumentInRange(int argument, int rangeStart, int rangeEnd)
+        {
+            if (argument >= rangeStart && argument <= rangeEnd) return true;
+            return false;
+        }
     }
 }

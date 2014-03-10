@@ -39,9 +39,9 @@ namespace GameTheory
             this.Strategy = strategy;
         }
 
-        public string Description { get; private set; }
+        public string Description { get; protected set; }
 
-        public TStrategy Strategy { get; private set; }
+        public TStrategy Strategy { get; protected set; }
 
         public override string ToString()
         {
@@ -67,6 +67,34 @@ namespace GameTheory
             var message = string.Format("Can not convert type {0} to type {1}",
                     typeof(TStrategy), typeof(TCastStrategy));
             throw new ArgumentException(message, "TCastStrategy");
+        }
+
+        public override bool Equals(object obj)
+        {
+            //Последовательность проверки должна быть именно такой.
+            //Если не проверить на null объект other, то other.GetType() может выбросить //NullReferenceException.            
+            if (obj == null)
+                return false;
+
+            //Если ссылки указывают на один и тот же адрес, то их идентичность гарантирована.
+            if (object.ReferenceEquals(this, obj))
+                return true;
+
+            //Если класс находится на вершине иерархии или просто не имеет наследников, то можно просто
+            //сделать Vehicle tmp = other as Vehicle; if(tmp==null) return false; 
+            //Затем вызвать экземплярный метод, сразу передав ему объект tmp.
+            if (this.GetType() != obj.GetType())
+                return false;
+
+            if (this.Strategy.GetType() != ((StrategyBase<TStrategy>)obj).Strategy.GetType())
+                return false;
+
+            return this.Strategy.Equals(((StrategyBase<TStrategy>)obj).Strategy);
+        }
+
+        public override int GetHashCode()
+        {
+            return Strategy.GetHashCode();
         }
     }
 }
