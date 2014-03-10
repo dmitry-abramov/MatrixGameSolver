@@ -8,7 +8,7 @@ namespace GameTheory
     public class UnnormalizedMixedStrategy : StrategyBase<List<int>>
     {
         public UnnormalizedMixedStrategy(List<int> strategy) :
-            base(strategy)            
+            base(strategy)    
         { 
         }
 
@@ -20,13 +20,8 @@ namespace GameTheory
 
     public class MixedStrategy : StrategyBase<List<double>>
     {
-        public MixedStrategy(List<double> strategy) :
-            base(strategy)            
-        { 
-        }
-
         public MixedStrategy() :
-            base()
+            base(new List<double> { 1 })
         {
         }
 

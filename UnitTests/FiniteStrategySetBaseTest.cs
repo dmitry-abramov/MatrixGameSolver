@@ -41,7 +41,7 @@ namespace UnitTests
         }
 
         [TestMethod]
-        public void AddExitingElement()
+        public void AddExitingValuedElement()
         {
             var strategySet = new FiniteStrategySetBase<double>();
 
@@ -51,6 +51,23 @@ namespace UnitTests
             }
 
             var result = strategySet.Add(new StrategyBase<double>(3));
+
+            Assert.AreEqual(false, result);
+            Assert.AreEqual(5, strategySet.Count);
+        }
+
+        [TestMethod]
+        public void AddExitingReferencedElement()
+        {
+            var strategySet = new FiniteStrategySetBase<List<double>>();
+
+            foreach (var strategy in new double[] { 1, 2, 3, 4, 5 })
+            {
+                strategySet.Add(new StrategyBase<List<double>>(new List<double>{strategy}));
+            }
+
+            var result = strategySet.Add(new StrategyBase<List<double>>(new List<double>{3}));
+
 
             Assert.AreEqual(false, result);
             Assert.AreEqual(5, strategySet.Count);
