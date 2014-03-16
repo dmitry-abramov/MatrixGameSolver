@@ -109,6 +109,45 @@ namespace SimpleGameSolver
                         secondPlayerSolveTable.Rows[i].Cells[j].Value = result[i][1][j];
                     }
                 }
+
+                // draw frequerency
+                chart1.Series.Clear();
+                chart2.Series.Clear();
+
+                chart1.ChartAreas[0].AxisY.Maximum = 1;
+                chart2.ChartAreas[0].AxisY.Maximum = 1;
+                chart1.ChartAreas[0].AxisY.Minimum = 0;
+                chart2.ChartAreas[0].AxisY.Minimum = 0;
+
+                chart1.ChartAreas[0].AxisX.Minimum = 1;
+                chart2.ChartAreas[0].AxisX.Minimum = 1;
+                chart1.ChartAreas[0].AxisX.Maximum = result.Count;
+                chart2.ChartAreas[0].AxisX.Maximum = result.Count;
+
+                for (int j = 0; j < result.Last()[0].Count; j++)
+                {
+                    chart1.Series.Add("Стратегия " + j.ToString());
+                    chart1.Series[j].ChartType =
+                        System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                    chart1.Series[j].BorderWidth = 2;
+                }
+
+                for (int j = 0; j < result.Last()[1].Count; j++)
+                {
+                    chart2.Series.Add("Стратегия " + j.ToString());
+                    chart2.Series[j].ChartType =
+                        System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                    chart2.Series[j].BorderWidth = 2;
+                }
+
+                for (int i = 0; i < result.Count; i++)
+                {
+                    for (int j = 0; j < result[i][0].Count; j++)
+                        chart1.Series[j].Points.AddXY(i + 1, (double)result[i][0][j] / (double)result[i][0].Sum());
+
+                    for (int j = 0; j < result[i][1].Count; j++)
+                        chart2.Series[j].Points.AddXY(i + 1, (double)result[i][1][j] / (double)result[i][1].Sum());
+                }
             }
             catch (FormatException err)
             {
