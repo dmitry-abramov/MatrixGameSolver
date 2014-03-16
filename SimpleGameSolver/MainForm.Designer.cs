@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label7 = new System.Windows.Forms.Label();
             this.SecondPlayerStartPosition = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
@@ -49,17 +49,17 @@
             this.SecondPlayerMatrix = new System.Windows.Forms.DataGridView();
             this.FirstPlayerMatrix = new System.Windows.Forms.DataGridView();
             this.Graphics = new System.Windows.Forms.TabPage();
-            this.Solve = new System.Windows.Forms.TabPage();
-            this.FirstPlayerSolve = new System.Windows.Forms.DataGridView();
-            this.label9 = new System.Windows.Forms.Label();
-            this.SecondPlayerSolve = new System.Windows.Forms.DataGridView();
-            this.label8 = new System.Windows.Forms.Label();
-            this.TableSplit = new System.Windows.Forms.SplitContainer();
-            this.secondPlayerSolveTable = new System.Windows.Forms.DataGridView();
-            this.firstPlayerSolveTable = new System.Windows.Forms.DataGridView();
-            this.SolveInformation = new System.Windows.Forms.TabControl();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.Solve = new System.Windows.Forms.TabPage();
+            this.TableSplit = new System.Windows.Forms.SplitContainer();
+            this.firstPlayerSolveTable = new System.Windows.Forms.DataGridView();
+            this.secondPlayerSolveTable = new System.Windows.Forms.DataGridView();
+            this.label8 = new System.Windows.Forms.Label();
+            this.SecondPlayerSolve = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
+            this.FirstPlayerSolve = new System.Windows.Forms.DataGridView();
+            this.SolveInformation = new System.Windows.Forms.TabControl();
             this.SolveButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SecondPlayerStartPosition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstPlayerStartPosition)).BeginInit();
@@ -69,18 +69,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.SecondPlayerMatrix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstPlayerMatrix)).BeginInit();
             this.Graphics.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.Solve.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FirstPlayerSolve)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SecondPlayerSolve)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TableSplit)).BeginInit();
             this.TableSplit.Panel1.SuspendLayout();
             this.TableSplit.Panel2.SuspendLayout();
             this.TableSplit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.secondPlayerSolveTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.firstPlayerSolveTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secondPlayerSolveTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SecondPlayerSolve)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FirstPlayerSolve)).BeginInit();
             this.SolveInformation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -270,6 +270,42 @@
             this.Graphics.TabIndex = 1;
             this.Graphics.Text = "Графики";
             // 
+            // chart2
+            // 
+            this.chart2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea3.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart2.Legends.Add(legend3);
+            this.chart2.Location = new System.Drawing.Point(3, 337);
+            this.chart2.Name = "chart2";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart2.Series.Add(series3);
+            this.chart2.Size = new System.Drawing.Size(622, 320);
+            this.chart2.TabIndex = 1;
+            this.chart2.Text = "chart2";
+            // 
+            // chart1
+            // 
+            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea4.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chart1.Legends.Add(legend4);
+            this.chart1.Location = new System.Drawing.Point(3, 3);
+            this.chart1.Name = "chart1";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chart1.Series.Add(series4);
+            this.chart1.Size = new System.Drawing.Size(622, 320);
+            this.chart1.TabIndex = 0;
+            this.chart1.Text = "chart1";
+            // 
             // Solve
             // 
             this.Solve.BackColor = System.Drawing.Color.LightGray;
@@ -283,46 +319,6 @@
             this.Solve.Size = new System.Drawing.Size(628, 657);
             this.Solve.TabIndex = 0;
             this.Solve.Text = "Решение";
-            // 
-            // FirstPlayerSolve
-            // 
-            this.FirstPlayerSolve.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.FirstPlayerSolve.ColumnHeadersVisible = false;
-            this.FirstPlayerSolve.Location = new System.Drawing.Point(12, 31);
-            this.FirstPlayerSolve.Name = "FirstPlayerSolve";
-            this.FirstPlayerSolve.ReadOnly = true;
-            this.FirstPlayerSolve.RowHeadersVisible = false;
-            this.FirstPlayerSolve.Size = new System.Drawing.Size(342, 43);
-            this.FirstPlayerSolve.TabIndex = 14;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 9);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(212, 13);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "Оптимальная стратегия первого игрока";
-            // 
-            // SecondPlayerSolve
-            // 
-            this.SecondPlayerSolve.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.SecondPlayerSolve.ColumnHeadersVisible = false;
-            this.SecondPlayerSolve.Location = new System.Drawing.Point(12, 104);
-            this.SecondPlayerSolve.Name = "SecondPlayerSolve";
-            this.SecondPlayerSolve.ReadOnly = true;
-            this.SecondPlayerSolve.RowHeadersVisible = false;
-            this.SecondPlayerSolve.Size = new System.Drawing.Size(342, 43);
-            this.SecondPlayerSolve.TabIndex = 16;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 82);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(211, 13);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Оптимальная стратегия второго игрока";
             // 
             // TableSplit
             // 
@@ -343,17 +339,6 @@
             this.TableSplit.SplitterDistance = 302;
             this.TableSplit.TabIndex = 20;
             // 
-            // secondPlayerSolveTable
-            // 
-            this.secondPlayerSolveTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.secondPlayerSolveTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.secondPlayerSolveTable.Location = new System.Drawing.Point(3, 3);
-            this.secondPlayerSolveTable.Name = "secondPlayerSolveTable";
-            this.secondPlayerSolveTable.Size = new System.Drawing.Size(310, 432);
-            this.secondPlayerSolveTable.TabIndex = 19;
-            // 
             // firstPlayerSolveTable
             // 
             this.firstPlayerSolveTable.AllowUserToAddRows = false;
@@ -368,8 +353,62 @@
             this.firstPlayerSolveTable.Size = new System.Drawing.Size(296, 432);
             this.firstPlayerSolveTable.TabIndex = 18;
             // 
+            // secondPlayerSolveTable
+            // 
+            this.secondPlayerSolveTable.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.secondPlayerSolveTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.secondPlayerSolveTable.Location = new System.Drawing.Point(3, 3);
+            this.secondPlayerSolveTable.Name = "secondPlayerSolveTable";
+            this.secondPlayerSolveTable.Size = new System.Drawing.Size(310, 432);
+            this.secondPlayerSolveTable.TabIndex = 19;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 82);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(211, 13);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Оптимальная стратегия второго игрока";
+            // 
+            // SecondPlayerSolve
+            // 
+            this.SecondPlayerSolve.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.SecondPlayerSolve.ColumnHeadersVisible = false;
+            this.SecondPlayerSolve.Location = new System.Drawing.Point(12, 104);
+            this.SecondPlayerSolve.Name = "SecondPlayerSolve";
+            this.SecondPlayerSolve.ReadOnly = true;
+            this.SecondPlayerSolve.RowHeadersVisible = false;
+            this.SecondPlayerSolve.Size = new System.Drawing.Size(342, 43);
+            this.SecondPlayerSolve.TabIndex = 16;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 9);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(212, 13);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Оптимальная стратегия первого игрока";
+            // 
+            // FirstPlayerSolve
+            // 
+            this.FirstPlayerSolve.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.FirstPlayerSolve.ColumnHeadersVisible = false;
+            this.FirstPlayerSolve.Location = new System.Drawing.Point(12, 31);
+            this.FirstPlayerSolve.Name = "FirstPlayerSolve";
+            this.FirstPlayerSolve.ReadOnly = true;
+            this.FirstPlayerSolve.RowHeadersVisible = false;
+            this.FirstPlayerSolve.Size = new System.Drawing.Size(342, 43);
+            this.FirstPlayerSolve.TabIndex = 14;
+            // 
             // SolveInformation
             // 
+            this.SolveInformation.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SolveInformation.Controls.Add(this.Solve);
             this.SolveInformation.Controls.Add(this.Graphics);
             this.SolveInformation.Location = new System.Drawing.Point(378, 7);
@@ -377,42 +416,6 @@
             this.SolveInformation.SelectedIndex = 0;
             this.SolveInformation.Size = new System.Drawing.Size(636, 683);
             this.SolveInformation.TabIndex = 28;
-            // 
-            // chart1
-            // 
-            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
-            this.chart1.Location = new System.Drawing.Point(3, 3);
-            this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(622, 320);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
-            // 
-            // chart2
-            // 
-            this.chart2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart2.Legends.Add(legend1);
-            this.chart2.Location = new System.Drawing.Point(3, 337);
-            this.chart2.Name = "chart2";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart2.Series.Add(series1);
-            this.chart2.Size = new System.Drawing.Size(622, 320);
-            this.chart2.TabIndex = 1;
-            this.chart2.Text = "chart2";
             // 
             // SolveButton
             // 
@@ -422,6 +425,7 @@
             this.SolveButton.TabIndex = 29;
             this.SolveButton.Text = "Решить";
             this.SolveButton.UseVisualStyleBackColor = true;
+            this.SolveButton.Click += new System.EventHandler(this.SolveButton_Click);
             // 
             // MainForm
             // 
@@ -454,19 +458,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.SecondPlayerMatrix)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstPlayerMatrix)).EndInit();
             this.Graphics.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.Solve.ResumeLayout(false);
             this.Solve.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.FirstPlayerSolve)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SecondPlayerSolve)).EndInit();
             this.TableSplit.Panel1.ResumeLayout(false);
             this.TableSplit.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.TableSplit)).EndInit();
             this.TableSplit.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.secondPlayerSolveTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.firstPlayerSolveTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.secondPlayerSolveTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SecondPlayerSolve)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FirstPlayerSolve)).EndInit();
             this.SolveInformation.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

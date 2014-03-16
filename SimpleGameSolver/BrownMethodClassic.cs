@@ -29,7 +29,7 @@ namespace SimpleGameSolver
             List<int> spNewStrategy = new List<int>(result.Last()[1]);
             spNewStrategy[spc]++;
 
-            result.Add(new List<List<int>>());
+            result.Add(new List<List<int>> { fpNewStrategy, spNewStrategy });
 
             // iterations from second
             for (int i = 1; i < IterationsCount; i++)
@@ -43,7 +43,7 @@ namespace SimpleGameSolver
                 spNewStrategy = new List<int>(result.Last()[1]);
                 spNewStrategy[spc]++;
 
-                result.Add(new List<List<int>>());
+                result.Add(new List<List<int>> { fpNewStrategy, spNewStrategy });
             }
 
             return result;
