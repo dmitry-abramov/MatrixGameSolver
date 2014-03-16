@@ -16,10 +16,10 @@ namespace UnitTests
         {
             double[,] payoffFunction = new double[3, 3];
 
-            var game = new BiMatrixGame(payoffFunction, 3, 3);
+            var game = new BiMatrixGame(payoffFunction, payoffFunction, 3, 3);
 
-            Assert.IsTrue(game.FirstPlayerStrategySet.Contains(new StrategyBase<int>(2)));
-            Assert.IsTrue(game.SecondPlayerStrategySet.Contains(new StrategyBase<int>(2)));
+            Assert.IsTrue(game.FirstPlayerStrategies.Contains(new StrategyBase<int>(2)));
+            Assert.IsTrue(game.SecondPlayerStrategies.Contains(new StrategyBase<int>(2)));
         }
 
         [TestMethod]
@@ -35,9 +35,9 @@ namespace UnitTests
                 }
             }
 
-            var game = new BiMatrixGame(payoffFunction, 3, 3);
+            var game = new BiMatrixGame(payoffFunction, payoffFunction, 3, 3);
 
-            Assert.AreEqual(8, game.GetPayoff(1, new StrategyBase<int>(2), new StrategyBase<int>(2)));
+            Assert.AreEqual(8, game.FirstPalyerPayoff(new TwoPlayerGamePosition<int>( new StrategyBase<int>(2), new StrategyBase<int>(2))));
         }
     }
 }
