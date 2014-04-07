@@ -20,8 +20,8 @@ namespace SimpleGameSolver
             result.Add(new List<List<int>> { fpsp, spsp });
                 
             // first iteration
-            int fpc = Choice1(fpp, result.Last()[0], 0);
-            int spc = Choice2(spp, result.Last()[1], 0);
+            int fpc = Choice1(fpp, result.Last()[1], 0);
+            int spc = Choice2(spp, result.Last()[0], 0);
 
             List<int> fpNewStrategy = new List<int>(result.Last()[0]);
             fpNewStrategy[fpc]++;
@@ -34,8 +34,8 @@ namespace SimpleGameSolver
             // iterations from second
             for (int i = 1; i < IterationsCount; i++)
             {
-                fpc = Choice1(fpp, result.Last()[0], fpc);
-                spc = Choice2(spp, result.Last()[1], spc);
+                fpc = Choice1(fpp, result.Last()[1], fpc);
+                spc = Choice2(spp, result.Last()[0], spc);
 
                 fpNewStrategy = new List<int>(result.Last()[0]);
                 fpNewStrategy[fpc]++;

@@ -70,7 +70,13 @@ namespace SimpleGameSolver
                     spStartPosition.Add(Convert.ToInt32(SecondPlayerStartPosition.Rows[0].Cells[j].Value));
                 }
 
-                BrownMethodBase method = new BrownMethodClassic(Convert.ToInt32(IterationCount.Value));
+                BrownMethodBase method = new BrownMethodExp(Convert.ToInt32(IterationCount.Value));
+
+                if(comboBox1.SelectedIndex == 0) method = new BrownMethodClassic(Convert.ToInt32(IterationCount.Value));
+                else if(comboBox1.SelectedIndex == 1) method = new BrownMethodExp(Convert.ToInt32(IterationCount.Value));
+                else if (comboBox1.SelectedIndex == 2) method = new BrownMethodExp2(Convert.ToInt32(IterationCount.Value));
+                else if (comboBox1.SelectedIndex == 3) method = new BrownMethodSupExp(Convert.ToInt32(IterationCount.Value));
+
                 var result = method.Solve(A, B, fpStartPosition, spStartPosition);
 
                 // show results
