@@ -72,8 +72,8 @@ namespace SimpleGameSolver
 
                 BrownMethodBase method = new BrownMethodExp(Convert.ToInt32(IterationCount.Value));
 
-                if(comboBox1.SelectedIndex == 0) method = new BrownMethodClassic(Convert.ToInt32(IterationCount.Value));
-                else if(comboBox1.SelectedIndex == 1) method = new BrownMethodExp(Convert.ToInt32(IterationCount.Value));
+                if (comboBox1.SelectedIndex == 0) method = new BrownMethodClassic(Convert.ToInt32(IterationCount.Value));
+                else if (comboBox1.SelectedIndex == 1) method = new BrownMethodExp(Convert.ToInt32(IterationCount.Value));
                 else if (comboBox1.SelectedIndex == 2) method = new BrownMethodExp2(Convert.ToInt32(IterationCount.Value));
                 else if (comboBox1.SelectedIndex == 3) method = new BrownMethodSupExp(Convert.ToInt32(IterationCount.Value));
 
@@ -103,16 +103,28 @@ namespace SimpleGameSolver
                 secondPlayerSolveTable.RowCount = result.Count;
                 secondPlayerSolveTable.ColumnCount = n;
 
+                for (int j = 0; j < result[0][0].Count; j++)
+                {
+                    firstPlayerSolveTable.Columns[j].HeaderCell.Value = string.Format("Стратегия {0}", j + 1);
+                }
+
+                for (int j = 0; j < result[0][1].Count; j++)
+                {
+                    secondPlayerSolveTable.Columns[j].HeaderCell.Value = string.Format("Стратегия {0}", j + 1);
+                }
+
                 for (int i = 0; i < result.Count; i++)
                 {
                     for (int j = 0; j < result[i][0].Count; j++)
                     {
                         firstPlayerSolveTable.Rows[i].Cells[j].Value = result[i][0][j];
+                        firstPlayerSolveTable.Rows[i].HeaderCell.Value = i.ToString();
                     }
 
                     for (int j = 0; j < result[i][1].Count; j++)
                     {
                         secondPlayerSolveTable.Rows[i].Cells[j].Value = result[i][1][j];
+                        secondPlayerSolveTable.Rows[i].HeaderCell.Value = i.ToString();
                     }
                 }
 
@@ -132,7 +144,7 @@ namespace SimpleGameSolver
 
                 for (int j = 0; j < result.Last()[0].Count; j++)
                 {
-                    chart1.Series.Add("Стратегия " + j.ToString());
+                    chart1.Series.Add("Стратегия " + (j + 1).ToString());
                     chart1.Series[j].ChartType =
                         System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
                     chart1.Series[j].BorderWidth = 2;
@@ -140,7 +152,7 @@ namespace SimpleGameSolver
 
                 for (int j = 0; j < result.Last()[1].Count; j++)
                 {
-                    chart2.Series.Add("Стратегия " + j.ToString());
+                    chart2.Series.Add("Стратегия " + (j + 1).ToString());
                     chart2.Series[j].ChartType =
                         System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
                     chart2.Series[j].BorderWidth = 2;

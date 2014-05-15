@@ -50,6 +50,8 @@
     <Compile Include="BrownMethodBase.cs" />
     <Compile Include="BrownMethodClassic.cs" />
     <Compile Include="BrownMethodExp.cs" />
+    <Compile Include="BrownMethodExp2.cs" />
+    <Compile Include="BrownMethodSupExp.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
