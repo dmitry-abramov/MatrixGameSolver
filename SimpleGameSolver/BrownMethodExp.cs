@@ -8,12 +8,7 @@ namespace SimpleGameSolver
     // укорачиваем шаг если соперник меняет стратегию
     public class BrownMethodExp : BrownMethodBase
     {
-        public BrownMethodExp(int iterationCount)
-            : base(iterationCount)
-        { 
-        }
-
-        public override List<List<List<int>>> Solve(double[,] fpp, double[,] spp, List<int> fpsp, List<int> spsp)
+        public override List<List<List<int>>> Solve(double[,] fpp, double[,] spp, List<int> fpsp, List<int> spsp, int iterationsCount)
         {
             int fpStep = 1;
             int spStep = 1;
@@ -36,7 +31,7 @@ namespace SimpleGameSolver
             result.Add(new List<List<int>> { fpNewStrategy, spNewStrategy});
 
             // iterations from second
-            for (int i = 1; i < IterationsCount; i++)
+            for (int i = 1; i < iterationsCount; i++)
             {
                 int fpcNew = Choice1(fpp, result.Last()[1], fpc);
                 int spcNew = Choice2(spp, result.Last()[0], spc);
@@ -59,42 +54,6 @@ namespace SimpleGameSolver
                 result.Add(new List<List<int>> { fpNewStrategy, spNewStrategy } );
             }
 
-            return result;
-        }
-
-        protected int Choice1(double[,] A, List<int> otherPlayerStartegy, int last)
-        {
-            int result = 0;
-            List<double> tmp = new List<double>();//список выйгрышей при разном выборе стратегии
-            for (int i = 0; i < A.GetLength(0); i++)
-            {
-                tmp.Add(0);
-                for (int j = 0; j < otherPlayerStartegy.Count; j++)
-                {
-                    tmp[i] += A[i, j] * otherPlayerStartegy[j];
-                }
-            }
-            double max = tmp.Max();
-            if (tmp[last] == max) result = last;
-            else result = tmp.IndexOf(max);
-            return result;
-        }
-
-        protected int Choice2(double[,] A, List<int> otherPlayerStartegy, int last)
-        {
-            int result = 0;
-            List<double> tmp = new List<double>();//список выйгрышей при разном выборе стратегии
-            for (int i = 0; i < A.GetLength(1); i++)
-            {
-                tmp.Add(0);
-                for (int j = 0; j < otherPlayerStartegy.Count; j++)
-                {
-                    tmp[i] += A[j, i] * otherPlayerStartegy[j];
-                }
-            }
-            double max = tmp.Max();
-            if (tmp[last] == max) result = last;
-            else result = tmp.IndexOf(max);
             return result;
         }
     }
