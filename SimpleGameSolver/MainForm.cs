@@ -59,16 +59,16 @@ namespace SimpleGameSolver
                     }
                 }
 
-                List<int> fpStartPosition = new List<int>();
+                List<ulong> fpStartPosition = new List<ulong>();
                 for (int j = 0; j < m; j++)
                 {
-                    fpStartPosition.Add(Convert.ToInt32(FirstPlayerStartPosition.Rows[0].Cells[j].Value));
+                    fpStartPosition.Add(Convert.ToUInt64(FirstPlayerStartPosition.Rows[0].Cells[j].Value));
                 }
 
-                List<int> spStartPosition = new List<int>();
+                List<ulong> spStartPosition = new List<ulong>();
                 for (int j = 0; j < n; j++)
                 {
-                    spStartPosition.Add(Convert.ToInt32(SecondPlayerStartPosition.Rows[0].Cells[j].Value));
+                    spStartPosition.Add(Convert.ToUInt64(SecondPlayerStartPosition.Rows[0].Cells[j].Value));
                 }
 
                 BrownMethodBase method = new BrownMethodClassic();
@@ -87,12 +87,14 @@ namespace SimpleGameSolver
                 SecondPlayerSolve.RowCount = 1;
                 SecondPlayerSolve.ColumnCount = n;
 
-                double normalize = result.Last()[0].Sum();
+                var tmp = result.Last().ElementAt(0);
+                double normalize = tmp.Select(u => Convert.ToDouble(u)).Sum();
                 for (int i = 0; i < FirstPlayerSolve.ColumnCount; i++)
                 {
                     FirstPlayerSolve.Rows[0].Cells[i].Value = (double)result.Last()[0][i] / normalize;
                 }
-                normalize = result.Last()[1].Sum();
+                tmp = result.Last().ElementAt(1);
+                normalize = tmp.Select(u => Convert.ToDouble(u)).Sum();
                 for (int i = 0; i < SecondPlayerSolve.ColumnCount; i++)
                 {
                     SecondPlayerSolve.Rows[0].Cells[i].Value = (double)result.Last()[1][i] / normalize;
@@ -162,10 +164,17 @@ namespace SimpleGameSolver
                 for (int i = 0; i < result.Count; i++)
                 {
                     for (int j = 0; j < result[i][0].Count; j++)
-                        chart1.Series[j].Points.AddXY(i + 1, (double)result[i][0][j] / (double)result[i][0].Sum());
-
+                    {
+                        tmp = result[i].ElementAt(0);
+                        normalize = tmp.Select(u => Convert.ToDouble(u)).Sum();
+                        chart1.Series[j].Points.AddXY(i + 1, (double)result[i][0][j] / normalize);
+                    }
                     for (int j = 0; j < result[i][1].Count; j++)
-                        chart2.Series[j].Points.AddXY(i + 1, (double)result[i][1][j] / (double)result[i][1].Sum());
+                    {
+                        tmp = result[i].ElementAt(1);
+                        normalize = tmp.Select(u => Convert.ToDouble(u)).Sum();
+                        chart2.Series[j].Points.AddXY(i + 1, (double)result[i][1][j] / normalize);
+                    }
                 }
             }
             catch (FormatException err)
