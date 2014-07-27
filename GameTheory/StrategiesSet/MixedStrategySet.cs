@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GameTheory.Strategies;
 
-namespace GameTheory
+namespace GameTheory.StrategiesSet
 {
     public class MixedStrategySet : IStrategySet<List<double>>
     {

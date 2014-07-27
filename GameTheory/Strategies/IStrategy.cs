@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace GameTheory
+namespace GameTheory.Strategies
 {
     public interface IStrategy<TStrategy> : IStrategy
     {

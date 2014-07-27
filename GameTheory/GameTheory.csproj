@@ -8,7 +8,7 @@
     <ProjectGuid>{9E26FFCF-D9C6-4963-881D-AD6DE6571299}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GameTheory</RootNamespace>
+    <RootNamespace>GameTheory.StrategiesSet.Strategies</RootNamespace>
     <AssemblyName>GameTheory</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -41,15 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrownMethod.cs" />
-    <Compile Include="FiniteStrategySetBase.cs" />
+    <Compile Include="StrategiesSet\FiniteStrategySetBase.cs" />
     <Compile Include="IGame.cs" />
     <Compile Include="IBrownMethod.cs" />
-    <Compile Include="IStrategy.cs" />
-    <Compile Include="IStrategySet.cs" />
+    <Compile Include="Strategies\IStrategy.cs" />
+    <Compile Include="StrategiesSet\IStrategySet.cs" />
     <Compile Include="MixedExtension.cs" />
-    <Compile Include="MixedStrategy.cs" />
-    <Compile Include="MixedStrategySet.cs" />
-    <Compile Include="StrategyBase.cs" />
+    <Compile Include="Strategies\MixedStrategy.cs" />
+    <Compile Include="StrategiesSet\MixedStrategySet.cs" />
+    <Compile Include="Strategies\StrategyBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BiMatrixGame.cs" />
     <Compile Include="TwoPlayerGameBase.cs" />

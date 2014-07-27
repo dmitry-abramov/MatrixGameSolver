@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using GameTheory;
+using GameTheory.Strategies;
 
 namespace UnitTests
 {

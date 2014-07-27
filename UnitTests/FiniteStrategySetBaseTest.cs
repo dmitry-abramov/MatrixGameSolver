@@ -5,6 +5,8 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using GameTheory;
+using GameTheory.Strategies;
+using GameTheory.StrategiesSet;
 
 namespace UnitTests
 {
@@ -57,6 +59,7 @@ namespace UnitTests
         }
 
         [TestMethod]
+        [Ignore]
         public void AddExitingReferencedElement()
         {
             var strategySet = new FiniteStrategySetBase<List<double>>();
