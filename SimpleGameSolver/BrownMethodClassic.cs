@@ -7,12 +7,12 @@ namespace SimpleGameSolver
 {
     public class BrownMethodClassic : BrownMethodBase
     {
-        public override List<List<List<ulong>>> Solve(BimatrixGame game, List<ulong> fpsp, List<ulong> spsp, int iterationsCount)
+        public override List<List<List<ulong>>> Solve(BimatrixGame game, Situation startSituation, int iterationsCount)
         {
             // set start position
             var result = new List<List<List<ulong>>>();
 
-            result.Add(new List<List<ulong>> { fpsp, spsp });
+            result.Add(new List<List<ulong>> { startSituation.FirstPlayerStrategy.ToList(), startSituation.SecondPlayerStrategy.ToList() });
                 
             // first iteration
             int fpc = Choice1(game.FirstPlayerMatrix, result.Last()[1], 0);

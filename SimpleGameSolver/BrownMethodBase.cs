@@ -7,7 +7,7 @@ namespace SimpleGameSolver
 {
     public abstract class BrownMethodBase
     {
-        public abstract List<List<List<ulong>>> Solve(BimatrixGame game, List<ulong> fpsp, List<ulong> spsp, int iterationsCount);
+        public abstract List<List<List<ulong>>> Solve(BimatrixGame game, Situation startSituation, int iterationsCount);
 
         protected int Choice1(double[,] A, List<ulong> otherPlayerStartegy, int last)
         {
