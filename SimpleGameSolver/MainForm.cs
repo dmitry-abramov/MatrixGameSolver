@@ -78,7 +78,7 @@ namespace SimpleGameSolver
                 else if (comboBox1.SelectedIndex == 2) method = new BrownMethodExp2();
                 else if (comboBox1.SelectedIndex == 3) method = new BrownMethodSupExp();
 
-                var result = method.Solve(A, B, fpStartPosition, spStartPosition, iterationCount);
+                var result = method.Solve(new BimatrixGame(A, B), fpStartPosition, spStartPosition, iterationCount);
 
                 // show results
                 FirstPlayerSolve.RowCount = 1;

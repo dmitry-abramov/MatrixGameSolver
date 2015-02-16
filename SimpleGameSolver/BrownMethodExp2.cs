@@ -8,7 +8,7 @@ namespace SimpleGameSolver
     // укорачиваем шаг до единицы если кто-то меняет стратегию
     public class BrownMethodExp2 : BrownMethodBase
     {
-        public override List<List<List<ulong>>> Solve(double[,] fpp, double[,] spp, List<ulong> fpsp, List<ulong> spsp, int iterationsCount)
+        public override List<List<List<ulong>>> Solve(BimatrixGame game, List<ulong> fpsp, List<ulong> spsp, int iterationsCount)
         {
             ulong fpStep = 1;
             ulong spStep = 1;
@@ -19,8 +19,8 @@ namespace SimpleGameSolver
             result.Add(new List<List<ulong>> { fpsp, spsp });
 
             // first iteration
-            int fpc = Choice1(fpp, result.Last()[1], 0);
-            int spc = Choice2(spp, result.Last()[0], 0);
+            int fpc = Choice1(game.FirstPlayerMatrix, result.Last()[1], 0);
+            int spc = Choice2(game.SecondPlayerMatrix, result.Last()[0], 0);
 
             List<ulong> fpNewStrategy = new List<ulong>(result.Last()[0]);
             fpNewStrategy[fpc]++;
@@ -33,8 +33,8 @@ namespace SimpleGameSolver
             // iterations from second
             for (int i = 1; i < iterationsCount; i++)
             {
-                int fpcNew = Choice1(fpp, result.Last()[1], fpc);
-                int spcNew = Choice2(spp, result.Last()[0], spc);
+                int fpcNew = Choice1(game.FirstPlayerMatrix, result.Last()[1], fpc);
+                int spcNew = Choice2(game.SecondPlayerMatrix, result.Last()[0], spc);
 
                 fpStep *= 2;
                 if (spc != spcNew || fpc != fpcNew) fpStep = 1;
