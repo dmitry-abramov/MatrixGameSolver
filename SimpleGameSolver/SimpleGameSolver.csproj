@@ -55,7 +55,7 @@
     <Compile Include="BrownMethodSupExp.cs" />
     <Compile Include="Experiment.cs" />
     <Compile Include="IEnumerableExtensions.cs" />
-    <Compile Include="IExperimentSource.cs" />
+    <Compile Include="ExperimentSourceBase.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
