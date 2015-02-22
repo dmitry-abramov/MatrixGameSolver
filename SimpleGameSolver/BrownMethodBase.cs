@@ -7,7 +7,7 @@ namespace SimpleGameSolver
 {
     public abstract class BrownMethodBase
     {
-        public abstract MethodResult Solve(BimatrixGame game, Situation startSituation, int iterationsCount);
+        public abstract MethodResult Solve(BimatrixGame game, Situation startSituation, IDictionary<string, string> parameters);
 
         protected int Choice1(double[,] A, ulong[] otherPlayerStartegy, int last)
         {

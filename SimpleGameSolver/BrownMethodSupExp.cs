@@ -8,8 +8,11 @@ namespace SimpleGameSolver
     // укорачиваем шаг до единицы если кто-то меняет стратегию. Шаг растет очень быстро
     public class BrownMethodSupExp : BrownMethodBase
     {
-        public override MethodResult Solve(BimatrixGame game, Situation startSituation, int iterationsCount)
+        public override MethodResult Solve(BimatrixGame game, Situation startSituation, IDictionary<string, string> parameters)
         {
+            var iterationsCount = 1;
+            Int32.TryParse(parameters["iterationsCount"], out iterationsCount);
+
             ulong fpStep = 1;
             ulong spStep = 1;
 

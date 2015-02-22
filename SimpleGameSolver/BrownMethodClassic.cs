@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
@@ -7,8 +8,11 @@ namespace SimpleGameSolver
 {
     public class BrownMethodClassic : BrownMethodBase
     {
-        public override MethodResult Solve(BimatrixGame game, Situation startSituation, int iterationsCount)
+        public override MethodResult Solve(BimatrixGame game, Situation startSituation, IDictionary<string, string> parameters)
         {
+            var iterationsCount = 1;
+            Int32.TryParse(parameters["iterationsCount"], out iterationsCount);
+
             // set start position
             var result = new MethodResult();
 
