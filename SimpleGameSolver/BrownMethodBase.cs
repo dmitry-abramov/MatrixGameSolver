@@ -7,16 +7,16 @@ namespace SimpleGameSolver
 {
     public abstract class BrownMethodBase
     {
-        public abstract List<List<List<ulong>>> Solve(BimatrixGame game, Situation startSituation, int iterationsCount);
+        public abstract MethodResult Solve(BimatrixGame game, Situation startSituation, int iterationsCount);
 
-        protected int Choice1(double[,] A, List<ulong> otherPlayerStartegy, int last)
+        protected int Choice1(double[,] A, ulong[] otherPlayerStartegy, int last)
         {
             int result = 0;
             List<double> tmp = new List<double>();//список выйгрышей при разном выборе стратегии
             for (int i = 0; i < A.GetLength(0); i++)
             {
                 tmp.Add(0);
-                for (int j = 0; j < otherPlayerStartegy.Count; j++)
+                for (int j = 0; j < otherPlayerStartegy.Count(); j++)
                 {
                     tmp[i] += A[i, j] * otherPlayerStartegy[j];
                 }
@@ -27,14 +27,14 @@ namespace SimpleGameSolver
             return result;
         }
 
-        protected int Choice2(double[,] A, List<ulong> otherPlayerStartegy, int last)
+        protected int Choice2(double[,] A, ulong[] otherPlayerStartegy, int last)
         {
             int result = 0;
             List<double> tmp = new List<double>();//список выйгрышей при разном выборе стратегии
             for (int i = 0; i < A.GetLength(1); i++)
             {
                 tmp.Add(0);
-                for (int j = 0; j < otherPlayerStartegy.Count; j++)
+                for (int j = 0; j < otherPlayerStartegy.Count(); j++)
                 {
                     tmp[i] += A[j, i] * otherPlayerStartegy[j];
                 }

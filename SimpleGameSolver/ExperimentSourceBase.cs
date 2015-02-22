@@ -12,5 +12,10 @@ namespace SimpleGameSolver
         public abstract string Description { get; }
 
         public abstract IList<Experiment> GetExperiments();
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

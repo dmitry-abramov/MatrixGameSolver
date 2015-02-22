@@ -8,33 +8,33 @@ namespace SimpleGameSolver
     // укорачиваем шаг до единицы если кто-то меняет стратегию
     public class BrownMethodExp2 : BrownMethodBase
     {
-        public override List<List<List<ulong>>> Solve(BimatrixGame game, Situation startSituation, int iterationsCount)
+        public override MethodResult Solve(BimatrixGame game, Situation startSituation, int iterationsCount)
         {
             ulong fpStep = 1;
             ulong spStep = 1;
 
             // set start position
-            var result = new List<List<List<ulong>>>();
+            var result = new MethodResult();
 
-            result.Add(new List<List<ulong>> { startSituation.FirstPlayerStrategy.ToList(), startSituation.SecondPlayerStrategy.ToList() });
+            result.MethodTrace.Add(startSituation);
 
             // first iteration
-            int fpc = Choice1(game.FirstPlayerMatrix, result.Last()[1], 0);
-            int spc = Choice2(game.SecondPlayerMatrix, result.Last()[0], 0);
+            int fpc = Choice1(game.FirstPlayerMatrix, result.Result.SecondPlayerStrategy, 0);
+            int spc = Choice2(game.SecondPlayerMatrix, result.Result.FirstPlayerStrategy, 0);
 
-            List<ulong> fpNewStrategy = new List<ulong>(result.Last()[0]);
+            List<ulong> fpNewStrategy = new List<ulong>(result.Result.FirstPlayerStrategy);
             fpNewStrategy[fpc]++;
 
-            List<ulong> spNewStrategy = new List<ulong>(result.Last()[1]);
+            List<ulong> spNewStrategy = new List<ulong>(result.Result.SecondPlayerStrategy);
             spNewStrategy[spc]++;
 
-            result.Add(new List<List<ulong>> { fpNewStrategy, spNewStrategy });
+            result.MethodTrace.Add(new Situation(fpNewStrategy, spNewStrategy));
 
             // iterations from second
             for (int i = 1; i < iterationsCount; i++)
             {
-                int fpcNew = Choice1(game.FirstPlayerMatrix, result.Last()[1], fpc);
-                int spcNew = Choice2(game.SecondPlayerMatrix, result.Last()[0], spc);
+                int fpcNew = Choice1(game.FirstPlayerMatrix, result.Result.SecondPlayerStrategy, fpc);
+                int spcNew = Choice2(game.SecondPlayerMatrix, result.Result.FirstPlayerStrategy, spc);
 
                 fpStep *= 2;
                 if (spc != spcNew || fpc != fpcNew) fpStep = 1;
@@ -42,16 +42,16 @@ namespace SimpleGameSolver
                 spStep *= 2;
                 if (fpc != fpcNew || spc != spcNew) spStep = 1;
 
-                fpNewStrategy = new List<ulong>(result.Last()[0]);
+                fpNewStrategy = new List<ulong>(result.Result.FirstPlayerStrategy);
                 fpNewStrategy[fpcNew] += fpStep;
 
-                spNewStrategy = new List<ulong>(result.Last()[1]);
+                fpNewStrategy = new List<ulong>(result.Result.SecondPlayerStrategy);
                 spNewStrategy[spcNew] += spStep;
 
                 fpc = fpcNew;
                 spc = spcNew;
 
-                result.Add(new List<List<ulong>> { fpNewStrategy, spNewStrategy });
+                result.MethodTrace.Add(new Situation(fpNewStrategy, spNewStrategy));
             }
 
             return result;

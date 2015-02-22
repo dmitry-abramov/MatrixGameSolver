@@ -87,46 +87,45 @@ namespace SimpleGameSolver
                 SecondPlayerSolve.RowCount = 1;
                 SecondPlayerSolve.ColumnCount = n;
 
-                var tmp = result.Last().ElementAt(0);
-                double normalize = tmp.Select(u => Convert.ToDouble(u)).Sum();
+                var normalize = result.Result.FirstPlayerStrategy.Normalize().ToList();
                 for (int i = 0; i < FirstPlayerSolve.ColumnCount; i++)
                 {
-                    FirstPlayerSolve.Rows[0].Cells[i].Value = (double)result.Last()[0][i] / normalize;
+                    FirstPlayerSolve.Rows[0].Cells[i].Value = normalize[i];
                 }
-                tmp = result.Last().ElementAt(1);
-                normalize = tmp.Select(u => Convert.ToDouble(u)).Sum();
+
+                normalize = result.Result.SecondPlayerStrategy.Normalize().ToList();
                 for (int i = 0; i < SecondPlayerSolve.ColumnCount; i++)
                 {
-                    SecondPlayerSolve.Rows[0].Cells[i].Value = (double)result.Last()[1][i] / normalize;
+                    SecondPlayerSolve.Rows[0].Cells[i].Value = normalize[i];
                 }
 
                 // fill tables
-                firstPlayerSolveTable.RowCount = result.Count;
+                firstPlayerSolveTable.RowCount = result.MethodTrace.Count();
                 firstPlayerSolveTable.ColumnCount = m;
-                secondPlayerSolveTable.RowCount = result.Count;
+                secondPlayerSolveTable.RowCount = result.MethodTrace.Count();
                 secondPlayerSolveTable.ColumnCount = n;
 
-                for (int j = 0; j < result[0][0].Count; j++)
+                for (int j = 0; j < m; j++)
                 {
                     firstPlayerSolveTable.Columns[j].HeaderCell.Value = string.Format("Стратегия {0}", j + 1);
                 }
 
-                for (int j = 0; j < result[0][1].Count; j++)
+                for (int j = 0; j < n; j++)
                 {
                     secondPlayerSolveTable.Columns[j].HeaderCell.Value = string.Format("Стратегия {0}", j + 1);
                 }
 
-                for (int i = 0; i < result.Count; i++)
+                for (int i = 0; i < result.MethodTrace.Count(); i++)
                 {
-                    for (int j = 0; j < result[i][0].Count; j++)
+                    for (int j = 0; j < m; j++)
                     {
-                        firstPlayerSolveTable.Rows[i].Cells[j].Value = result[i][0][j];
+                        firstPlayerSolveTable.Rows[i].Cells[j].Value = result.MethodTrace[i].FirstPlayerStrategy[j];
                         firstPlayerSolveTable.Rows[i].HeaderCell.Value = i.ToString();
                     }
 
-                    for (int j = 0; j < result[i][1].Count; j++)
+                    for (int j = 0; j < n; j++)
                     {
-                        secondPlayerSolveTable.Rows[i].Cells[j].Value = result[i][1][j];
+                        secondPlayerSolveTable.Rows[i].Cells[j].Value = result.MethodTrace[i].SecondPlayerStrategy[j];
                         secondPlayerSolveTable.Rows[i].HeaderCell.Value = i.ToString();
                     }
                 }
@@ -142,10 +141,10 @@ namespace SimpleGameSolver
 
                 chart1.ChartAreas[0].AxisX.Minimum = 1;
                 chart2.ChartAreas[0].AxisX.Minimum = 1;
-                chart1.ChartAreas[0].AxisX.Maximum = result.Count;
-                chart2.ChartAreas[0].AxisX.Maximum = result.Count;
+                chart1.ChartAreas[0].AxisX.Maximum = result.MethodTrace.Count();
+                chart2.ChartAreas[0].AxisX.Maximum = result.MethodTrace.Count();
 
-                for (int j = 0; j < result.Last()[0].Count; j++)
+                for (int j = 0; j < m; j++)
                 {
                     chart1.Series.Add("Стратегия " + (j + 1).ToString());
                     chart1.Series[j].ChartType =
@@ -153,7 +152,7 @@ namespace SimpleGameSolver
                     chart1.Series[j].BorderWidth = 2;
                 }
 
-                for (int j = 0; j < result.Last()[1].Count; j++)
+                for (int j = 0; j < n; j++)
                 {
                     chart2.Series.Add("Стратегия " + (j + 1).ToString());
                     chart2.Series[j].ChartType =
@@ -161,19 +160,17 @@ namespace SimpleGameSolver
                     chart2.Series[j].BorderWidth = 2;
                 }
 
-                for (int i = 0; i < result.Count; i++)
+                for (int i = 0; i < result.MethodTrace.Count(); i++)
                 {
-                    for (int j = 0; j < result[i][0].Count; j++)
+                    normalize = result.MethodTrace[i].FirstPlayerStrategy.Normalize().ToList();
+                    for (int j = 0; j < m; j++)
                     {
-                        tmp = result[i].ElementAt(0);
-                        normalize = tmp.Select(u => Convert.ToDouble(u)).Sum();
-                        chart1.Series[j].Points.AddXY(i + 1, (double)result[i][0][j] / normalize);
+                        chart1.Series[j].Points.AddXY(i + 1, normalize[j]);
                     }
-                    for (int j = 0; j < result[i][1].Count; j++)
+                    normalize = result.MethodTrace[i].SecondPlayerStrategy.Normalize().ToList();
+                    for (int j = 0; j < n; j++)
                     {
-                        tmp = result[i].ElementAt(1);
-                        normalize = tmp.Select(u => Convert.ToDouble(u)).Sum();
-                        chart2.Series[j].Points.AddXY(i + 1, (double)result[i][1][j] / normalize);
+                        chart2.Series[j].Points.AddXY(i + 1, normalize[j]);
                     }
                 }
             }

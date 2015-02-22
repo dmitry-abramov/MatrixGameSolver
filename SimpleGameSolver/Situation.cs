@@ -28,7 +28,7 @@ namespace SimpleGameSolver
             SecondPlayerStrategy[0] = 1;
         }
 
-        public Situation(List<ulong> firstPlayerStrategy, List<ulong> secondPlayerStrategy)
+        public Situation(IEnumerable<ulong> firstPlayerStrategy, IEnumerable<ulong> secondPlayerStrategy)
             : this(firstPlayerStrategy.ToArray(), secondPlayerStrategy.ToArray())
         { 
         }
