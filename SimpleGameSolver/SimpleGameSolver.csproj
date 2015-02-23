@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EPPlus">
+      <HintPath>..\packages\EPPlus.4.0.3\lib\net20\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -53,6 +56,7 @@
     <Compile Include="BrownMethodExp.cs" />
     <Compile Include="BrownMethodExp2.cs" />
     <Compile Include="BrownMethodSupExp.cs" />
+    <Compile Include="ExcelHelper.cs" />
     <Compile Include="Experiment.cs" />
     <Compile Include="Experimentator.cs" />
     <Compile Include="ExperimentSummary.cs" />
@@ -80,6 +84,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

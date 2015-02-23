@@ -33,6 +33,8 @@ namespace SimpleGameSolver
                 var experimentResult = SolveMethod.Solve(experiment.Game, experiment.StartSituation, experiment.Parameters);
 
                 summarys.Add(new ExperimentSummary(experiment, experimentResult.Result));
+
+                ExcelHelper.SaveToFile(experiment, experimentResult);
             }
         }
     }
