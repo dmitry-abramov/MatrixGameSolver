@@ -22,7 +22,7 @@ namespace SimpleGameSolver
 
         public void MakeExperiment()
         {
-            var summarys = new List<ExperimentSummary>();
+            var summaries = new List<ExperimentSummary>();
             var experiments = ExperimentSource.GetExperiments();
 
             for (int i = 0; i < experiments.Count(); i++)
@@ -32,10 +32,12 @@ namespace SimpleGameSolver
                 var experiment = experiments[i];
                 var experimentResult = SolveMethod.Solve(experiment.Game, experiment.StartSituation, experiment.Parameters);
 
-                summarys.Add(new ExperimentSummary(experiment, experimentResult.Result));
+                summaries.Add(new ExperimentSummary(experiment, experimentResult.Result));
 
                 ExcelHelper.SaveToFile(experiment, experimentResult);
             }
+
+            ExcelHelper.SaveToFile(ExperimentSource, summaries);
         }
     }
 }
