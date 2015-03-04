@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BimatrixGame.cs" />
+    <Compile Include="BorderRotationExperimentSource.cs" />
     <Compile Include="BrownMethodBase.cs" />
     <Compile Include="BrownMethodClassic.cs" />
     <Compile Include="BrownMethodExp.cs" />

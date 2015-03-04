@@ -65,6 +65,9 @@
             this.SolveButton = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.experimentList = new System.Windows.Forms.ComboBox();
+            this.ExecuteExperiment = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.SecondPlayerStartPosition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FirstPlayerStartPosition)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IterationCount)).BeginInit();
@@ -429,9 +432,9 @@
             // 
             // SolveButton
             // 
-            this.SolveButton.Location = new System.Drawing.Point(234, 637);
+            this.SolveButton.Location = new System.Drawing.Point(234, 605);
             this.SolveButton.Name = "SolveButton";
-            this.SolveButton.Size = new System.Drawing.Size(122, 46);
+            this.SolveButton.Size = new System.Drawing.Size(122, 24);
             this.SolveButton.TabIndex = 29;
             this.SolveButton.Text = "Решить";
             this.SolveButton.UseVisualStyleBackColor = true;
@@ -460,11 +463,42 @@
             this.label10.TabIndex = 31;
             this.label10.Text = "Реализация метода:";
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(13, 650);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(78, 13);
+            this.label11.TabIndex = 34;
+            this.label11.Text = "Эксперимент:";
+            // 
+            // experimentList
+            // 
+            this.experimentList.DisplayMember = "0";
+            this.experimentList.FormattingEnabled = true;
+            this.experimentList.Location = new System.Drawing.Point(97, 647);
+            this.experimentList.Name = "experimentList";
+            this.experimentList.Size = new System.Drawing.Size(169, 21);
+            this.experimentList.TabIndex = 33;
+            // 
+            // ExecuteExperiment
+            // 
+            this.ExecuteExperiment.Location = new System.Drawing.Point(272, 647);
+            this.ExecuteExperiment.Name = "ExecuteExperiment";
+            this.ExecuteExperiment.Size = new System.Drawing.Size(84, 21);
+            this.ExecuteExperiment.TabIndex = 32;
+            this.ExecuteExperiment.Text = "Провести";
+            this.ExecuteExperiment.UseVisualStyleBackColor = true;
+            this.ExecuteExperiment.Click += new System.EventHandler(this.ExecuteExperiment_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1026, 688);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.experimentList);
+            this.Controls.Add(this.ExecuteExperiment);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.SolveButton);
@@ -542,6 +576,9 @@
         private System.Windows.Forms.Button SolveButton;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox experimentList;
+        private System.Windows.Forms.Button ExecuteExperiment;
     }
 }
 

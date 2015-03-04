@@ -87,16 +87,20 @@ namespace SimpleGameSolver
                 for (int i = 0; i < result.MethodTrace.Count; i++)
                 {
                     var situation = result.MethodTrace[i];
+                    var firstPlayerNormalizedStrategy = situation.FirstPlayerStrategy.Normalize().ToList();
+                    var secondPlayerNormalizedStrategy = situation.FirstPlayerStrategy.Normalize().ToList();
 
                     for (int j = 0; j < situation.FirstPlayerStrategy.Count(); j++)
                     {
-                        ws.Cells[traceStartCellNumber + i, normalizeStartCell + j + 2].Value = situation.FirstPlayerStrategy[j];
+                        ws.Cells[traceStartCellNumber + i, normalizeStartCell + j + 2].Value = firstPlayerNormalizedStrategy[j];
                     }
                     for (int j = 0; j < situation.SecondPlayerStrategy.Count(); j++)
                     {
-                        ws.Cells[traceStartCellNumber + i, normalizeStartCell + situation.FirstPlayerStrategy.Count() + j + 3].Value = situation.SecondPlayerStrategy[j];
+                        ws.Cells[traceStartCellNumber + i, normalizeStartCell + situation.FirstPlayerStrategy.Count() + j + 3].Value = secondPlayerNormalizedStrategy[j];
                     }
                 }
+
+                package.Save();
             }
         }
 
@@ -116,7 +120,7 @@ namespace SimpleGameSolver
                 var cellX = 1;
                 for (cellX = 1; cellX <= parametersName.Count; cellX++)
                 {
-                    ws.Cells[4, cellX].Value = parametersName[cellX];
+                    ws.Cells[4, cellX].Value = parametersName[cellX-1];
                 }
 
                 var firstPlayerStratediesCount = summaries[0].Result.FirstPlayerStrategy.Count();                
@@ -156,32 +160,36 @@ namespace SimpleGameSolver
 
                     for (cellX = 1; cellX <= parametersName.Count; cellX++)
                     {
-                        ws.Cells[4, cellX].Value = experiment.Parameters[parametersName[cellX]];
+                        ws.Cells[cellY, cellX].Value = experiment.Parameters[parametersName[cellX - 1]];
                     }
 
                     for (int i = 0; i < firstPlayerStratediesCount; i++)
                     {
-                        ws.Cells[4, cellX + i].Value = firstPlayerStrategy[i];
+                        ws.Cells[cellY, cellX + i].Value = firstPlayerStrategy[i];
                     }
 
                     cellX += firstPlayerStratediesCount;
                     for (int i = 0; i < secondPlayerStratediesCount; i++)
                     {
-                        ws.Cells[4, cellX + i].Value = secondPlayerStrategy[i];
+                        ws.Cells[cellY, cellX + i].Value = secondPlayerStrategy[i];
                     }
                     cellX += secondPlayerStratediesCount;
 
                     for (int i = 0; i < firstPlayerStratediesCount; i++)
                     {
-                        ws.Cells[4, cellX + i].Value = firstPlayerNormalizedStrategy[i];
+                        ws.Cells[cellY, cellX + i].Value = firstPlayerNormalizedStrategy[i];
                     }
 
                     cellX += firstPlayerStratediesCount;
                     for (int i = 0; i < secondPlayerStratediesCount; i++)
                     {
-                        ws.Cells[4, cellX + i].Value = secondPlayerNormalizedStrategy[i];
+                        ws.Cells[cellY, cellX + i].Value = secondPlayerNormalizedStrategy[i];
                     }
+
+                    cellY++;
                 }
+
+                package.Save();
             }
         }
     }

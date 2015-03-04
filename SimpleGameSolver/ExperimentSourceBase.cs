@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace SimpleGameSolver
 {
+    // todo : it should be interface
     public abstract class ExperimentSourceBase
     {
         public abstract string Name { get; }
@@ -13,6 +11,7 @@ namespace SimpleGameSolver
 
         public abstract IList<Experiment> GetExperiments();
 
+        // todo : remove
         public override string ToString()
         {
             return Name;

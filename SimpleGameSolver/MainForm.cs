@@ -24,6 +24,10 @@ namespace SimpleGameSolver
             SecondPlayerStartPosition.RowCount = 1;
             FirstPlayerStartPosition.ColumnCount = 3;
             SecondPlayerStartPosition.ColumnCount = 3;
+
+            experimentList.Items.Add(new BorderRotationExperimentSource());
+            experimentList.DisplayMember = "Name";
+            experimentList.ValueMember = "Name";
         }
 
         private void FirstPlayerStrategesCount_ValueChanged(object sender, EventArgs e)
@@ -187,6 +191,14 @@ namespace SimpleGameSolver
             }
         }
 
+        private void ExecuteExperiment_Click(object sender, EventArgs e)
+        {
+            var experimentSource = (ExperimentSourceBase)experimentList.SelectedItem;
 
+            // todo : get from list of methods
+            var experimentator = new Experimentator(experimentSource, new BrownMethodClassic());
+
+            experimentator.MakeExperiment();
+        }
     }
 }
