@@ -34,6 +34,7 @@ namespace SimpleGameSolver
             methodList.SelectedIndex = 0;
 
             experimentList.Items.Add(new BorderRotationExperimentSource());
+            experimentList.Items.Add(new DoctrinesGameExperimentSource());
             experimentList.DisplayMember = "Name";
             experimentList.ValueMember = "Name";
             experimentList.SelectedIndex = 0;
