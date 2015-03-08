@@ -18,6 +18,12 @@ namespace SimpleGameSolver
             var iterationsCount = 1;
             Int32.TryParse(parameters["iterationsCount"], out iterationsCount);
 
+            double stepIncreaseCoefficient = 2;
+            if (parameters.ContainsKey("stepIncreaseCoefficient"))
+            {
+                Double.TryParse(parameters["stepIncreaseCoefficient"], out stepIncreaseCoefficient);
+            }
+
             ulong fpStep = 1;
             ulong spStep = 1;
 
@@ -44,10 +50,10 @@ namespace SimpleGameSolver
                 int fpcNew = Choice1(game.FirstPlayerMatrix, result.Result.SecondPlayerStrategy, fpc);
                 int spcNew = Choice2(game.SecondPlayerMatrix, result.Result.FirstPlayerStrategy, spc);
 
-                fpStep *= 2;
+                fpStep = (ulong)(fpStep * stepIncreaseCoefficient);
                 if (spc != spcNew) fpStep = 1;
                 
-                spStep *= 2;
+                spStep = (ulong)(spStep * stepIncreaseCoefficient);
                 if (fpc != fpcNew) spStep = 1;
 
                 fpNewStrategy = new List<ulong>(result.Result.FirstPlayerStrategy);
