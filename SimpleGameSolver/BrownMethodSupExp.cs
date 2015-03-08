@@ -8,6 +8,11 @@ namespace SimpleGameSolver
     // укорачиваем шаг до единицы если кто-то меняет стратегию. Шаг растет очень быстро
     public class BrownMethodSupExp : BrownMethodBase
     {
+        public override string Name
+        {
+            get { return "Сверх экспоненциальный рост шага"; }
+        }
+
         public override MethodResult Solve(BimatrixGame game, Situation startSituation, IDictionary<string, string> parameters)
         {
             var iterationsCount = 1;

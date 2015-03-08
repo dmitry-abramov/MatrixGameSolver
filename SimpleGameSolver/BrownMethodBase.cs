@@ -7,6 +7,8 @@ namespace SimpleGameSolver
 {
     public abstract class BrownMethodBase
     {
+        public abstract string Name { get; }
+
         public abstract MethodResult Solve(BimatrixGame game, Situation startSituation, IDictionary<string, string> parameters);
 
         protected int Choice1(double[,] A, ulong[] otherPlayerStartegy, int last)

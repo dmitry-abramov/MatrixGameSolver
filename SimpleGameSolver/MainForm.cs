@@ -25,9 +25,18 @@ namespace SimpleGameSolver
             FirstPlayerStartPosition.ColumnCount = 3;
             SecondPlayerStartPosition.ColumnCount = 3;
 
+            methodList.Items.Add(new BrownMethodClassic());
+            methodList.Items.Add(new BrownMethodExp());
+            methodList.Items.Add(new BrownMethodExp2());
+            methodList.Items.Add(new BrownMethodSupExp());
+            methodList.DisplayMember = "Name";
+            methodList.ValueMember = "Name";
+            methodList.SelectedIndex = 0;
+
             experimentList.Items.Add(new BorderRotationExperimentSource());
             experimentList.DisplayMember = "Name";
             experimentList.ValueMember = "Name";
+            experimentList.SelectedIndex = 0;
         }
 
         private void FirstPlayerStrategesCount_ValueChanged(object sender, EventArgs e)
@@ -75,12 +84,7 @@ namespace SimpleGameSolver
                     spStartPosition.Add(Convert.ToUInt64(SecondPlayerStartPosition.Rows[0].Cells[j].Value));
                 }
 
-                BrownMethodBase method = new BrownMethodClassic();
-
-                if (comboBox1.SelectedIndex == 0) method = new BrownMethodClassic();
-                else if (comboBox1.SelectedIndex == 1) method = new BrownMethodExp();
-                else if (comboBox1.SelectedIndex == 2) method = new BrownMethodExp2();
-                else if (comboBox1.SelectedIndex == 3) method = new BrownMethodSupExp();
+                BrownMethodBase method = (BrownMethodBase)methodList.SelectedItem;
 
                 var parameters = new Dictionary<string, string>() {{"iterationsCount", iterationCount.ToString()}};
                 var result = method.Solve(new BimatrixGame(A, B), new Situation(fpStartPosition, spStartPosition), parameters);
@@ -194,9 +198,9 @@ namespace SimpleGameSolver
         private void ExecuteExperiment_Click(object sender, EventArgs e)
         {
             var experimentSource = (ExperimentSourceBase)experimentList.SelectedItem;
+            var method = (BrownMethodBase)methodList.SelectedItem;
 
-            // todo : get from list of methods
-            var experimentator = new Experimentator(experimentSource, new BrownMethodClassic());
+            var experimentator = new Experimentator(experimentSource, method);
 
             experimentator.MakeExperiment();
         }

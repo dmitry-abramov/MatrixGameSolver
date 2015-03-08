@@ -8,6 +8,11 @@ namespace SimpleGameSolver
 {
     public class BrownMethodClassic : BrownMethodBase
     {
+        public override string Name
+        {
+            get { return "Классический метод"; }
+        }
+
         public override MethodResult Solve(BimatrixGame game, Situation startSituation, IDictionary<string, string> parameters)
         {
             var iterationsCount = 1;

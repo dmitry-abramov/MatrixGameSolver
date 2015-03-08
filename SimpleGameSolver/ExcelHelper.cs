@@ -10,10 +10,9 @@ namespace SimpleGameSolver
 {
     public static class ExcelHelper
     {
-        public static void SaveToFile(Experiment experiment, MethodResult result)
-        {
-            var fileName = string.Format("{0}_{1}.xlsx", experiment.Name, DateTime.UtcNow.ToString("yyyy_MM_dd_hh_mm_ss_fff"));
-            using (var package = new ExcelPackage(new FileInfo(fileName)))
+        public static void SaveToFile(FileInfo file, Experiment experiment, MethodResult result)
+        {            
+            using (var package = new ExcelPackage(file))
             {
                 var ws = package.Workbook.Worksheets.Add("ExperimentResult");
 
@@ -104,11 +103,9 @@ namespace SimpleGameSolver
             }
         }
 
-        public static void SaveToFile(ExperimentSourceBase experimentSource, IList<ExperimentSummary> summaries)
+        public static void SaveToFile(FileInfo file, ExperimentSourceBase experimentSource, IList<ExperimentSummary> summaries)
         {
-            var fileName = string.Format("summary_{0}_{1}.xlsx", experimentSource.Name, DateTime.UtcNow.ToString("yyyy_MM_dd_hh_mm_ss_fff"));
-
-            using (var package = new ExcelPackage(new FileInfo(fileName)))
+            using (var package = new ExcelPackage(file))
             {
                 var ws = package.Workbook.Worksheets.Add("ExperimentResult");
 

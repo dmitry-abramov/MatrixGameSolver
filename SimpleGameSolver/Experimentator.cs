@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using System.IO;
+
 namespace SimpleGameSolver
 {
     public class Experimentator
@@ -25,6 +27,10 @@ namespace SimpleGameSolver
             var summaries = new List<ExperimentSummary>();
             var experiments = ExperimentSource.GetExperiments();
 
+            var folderName = string.Format("experiment_{0}_{1}", experiments[0].Name, DateTime.UtcNow.ToString("yyyy_MM_dd_hh_mm_ss_fff"));
+            var folder = new DirectoryInfo(folderName);
+            folder.Create();
+
             for (int i = 0; i < experiments.Count(); i++)
             {
                 Progress = i / experiments.Count();
@@ -34,10 +40,14 @@ namespace SimpleGameSolver
 
                 summaries.Add(new ExperimentSummary(experiment, experimentResult.Result));
 
-                ExcelHelper.SaveToFile(experiment, experimentResult);
+                var fileName = string.Format("{0}\\{1}_{2}.xlsx", folderName, experiment.Name, DateTime.UtcNow.ToString("yyyy_MM_dd_hh_mm_ss_fff"));
+                var file = new FileInfo(fileName);
+                ExcelHelper.SaveToFile(file, experiment, experimentResult);
             }
 
-            ExcelHelper.SaveToFile(ExperimentSource, summaries);
+            var summaryFileName = string.Format("{0}\\summary_{1}_{2}.xlsx", folderName, experiments[0].Name, DateTime.UtcNow.ToString("yyyy_MM_dd_hh_mm_ss_fff"));
+            var summaryFile = new FileInfo(summaryFileName);
+            ExcelHelper.SaveToFile(summaryFile, ExperimentSource, summaries);
         }
     }
 }
