@@ -127,27 +127,40 @@ namespace SimpleGameSolver
                     ws.Cells[4, cellX].Value = parametersName[cellX-1];
                 }
 
-                var firstPlayerStratediesCount = summaries[0].Result.FirstPlayerStrategy.Count();                
-                for (int i = 0; i < firstPlayerStratediesCount; i++)
+                var firstPlayerStrategiesCount = summaries[0].Result.FirstPlayerStrategy.Count();   
+                var secondPlayerStrategiesCount = summaries[0].Result.SecondPlayerStrategy.Count();
+
+                for (int i = 0; i < firstPlayerStrategiesCount; i++)
+                {
+                    ws.Cells[4, cellX + i].Value = string.Format("First player start position strategy {0}", i + 1);
+                }
+                cellX += firstPlayerStrategiesCount;
+                
+                for (int i = 0; i < secondPlayerStrategiesCount; i++)
+                {
+                    ws.Cells[4, cellX + i].Value = string.Format("Second player start position strategy {0}", i + 1);
+                }
+                cellX += secondPlayerStrategiesCount;
+             
+                for (int i = 0; i < firstPlayerStrategiesCount; i++)
                 {
                     ws.Cells[4, cellX + i].Value = string.Format("First player strategy {0}", i + 1);
                 }
+                cellX += firstPlayerStrategiesCount;
 
-                cellX += firstPlayerStratediesCount;
-                var secondPlayerStratediesCount = summaries[0].Result.SecondPlayerStrategy.Count();
-                for (int i = 0; i < secondPlayerStratediesCount; i++)
+                for (int i = 0; i < secondPlayerStrategiesCount; i++)
                 {
                     ws.Cells[4, cellX + i].Value = string.Format("Second player strategy {0}", i + 1);
                 }
-                cellX += secondPlayerStratediesCount;
+                cellX += secondPlayerStrategiesCount;
 
-                for (int i = 0; i < firstPlayerStratediesCount; i++)
+                for (int i = 0; i < firstPlayerStrategiesCount; i++)
                 {
                     ws.Cells[4, cellX + i].Value = string.Format("First normalized player strategy {0}", i + 1);
                 }
+                cellX += firstPlayerStrategiesCount;
 
-                cellX += firstPlayerStratediesCount;
-                for (int i = 0; i < secondPlayerStratediesCount; i++)
+                for (int i = 0; i < secondPlayerStrategiesCount; i++)
                 {
                     ws.Cells[4, cellX + i].Value = string.Format("Second player normalized strategy {0}", i + 1);
                 }
@@ -161,31 +174,45 @@ namespace SimpleGameSolver
                     var secondPlayerStrategy = summaries[experimentNumber].Result.SecondPlayerStrategy;
                     var firstPlayerNormalizedStrategy = summaries[experimentNumber].Result.FirstPlayerStrategy.Normalize().ToList();
                     var secondPlayerNormalizedStrategy = summaries[experimentNumber].Result.SecondPlayerStrategy.Normalize().ToList();
+                    var firstPlayerStartStrategy = summaries[experimentNumber].Experiment.StartSituation.FirstPlayerStrategy;
+                    var secondPlayerStartStrategy = summaries[experimentNumber].Experiment.StartSituation.SecondPlayerStrategy;
 
                     for (cellX = 1; cellX <= parametersName.Count; cellX++)
                     {
                         ws.Cells[cellY, cellX].Value = experiment.Parameters[parametersName[cellX - 1]];
                     }
 
-                    for (int i = 0; i < firstPlayerStratediesCount; i++)
+                    for (int i = 0; i < firstPlayerStrategiesCount; i++)
+                    {
+                        ws.Cells[cellY, cellX + i].Value = firstPlayerStartStrategy[i];
+                    }
+                    cellX += firstPlayerStrategiesCount;
+                    
+                    for (int i = 0; i < secondPlayerStrategiesCount; i++)
+                    {
+                        ws.Cells[cellY, cellX + i].Value = secondPlayerStartStrategy[i];
+                    }
+                    cellX += secondPlayerStrategiesCount;
+
+                    for (int i = 0; i < firstPlayerStrategiesCount; i++)
                     {
                         ws.Cells[cellY, cellX + i].Value = firstPlayerStrategy[i];
                     }
+                    cellX += firstPlayerStrategiesCount;
 
-                    cellX += firstPlayerStratediesCount;
-                    for (int i = 0; i < secondPlayerStratediesCount; i++)
+                    for (int i = 0; i < secondPlayerStrategiesCount; i++)
                     {
                         ws.Cells[cellY, cellX + i].Value = secondPlayerStrategy[i];
                     }
-                    cellX += secondPlayerStratediesCount;
+                    cellX += secondPlayerStrategiesCount;
 
-                    for (int i = 0; i < firstPlayerStratediesCount; i++)
+                    for (int i = 0; i < firstPlayerStrategiesCount; i++)
                     {
                         ws.Cells[cellY, cellX + i].Value = firstPlayerNormalizedStrategy[i];
                     }
 
-                    cellX += firstPlayerStratediesCount;
-                    for (int i = 0; i < secondPlayerStratediesCount; i++)
+                    cellX += firstPlayerStrategiesCount;
+                    for (int i = 0; i < secondPlayerStrategiesCount; i++)
                     {
                         ws.Cells[cellY, cellX + i].Value = secondPlayerNormalizedStrategy[i];
                     }
