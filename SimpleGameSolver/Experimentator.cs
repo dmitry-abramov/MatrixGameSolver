@@ -42,12 +42,12 @@ namespace SimpleGameSolver
 
                 var fileName = string.Format("{0}\\{1}_{2}.xlsx", folderName, experiment.Name, DateTime.UtcNow.ToString("yyyy_MM_dd_hh_mm_ss_fff"));
                 var file = new FileInfo(fileName);
-                ExcelHelper.SaveToFile(file, experiment, experimentResult);
+                ExcelHelper.SaveToFile(file, experiment, SolveMethod, experimentResult);
             }
 
             var summaryFileName = string.Format("{0}\\summary_{1}_{2}.xlsx", folderName, experiments[0].Name, DateTime.UtcNow.ToString("yyyy_MM_dd_hh_mm_ss_fff"));
             var summaryFile = new FileInfo(summaryFileName);
-            ExcelHelper.SaveToFile(summaryFile, ExperimentSource, summaries);
+            ExcelHelper.SaveToFile(summaryFile, ExperimentSource, SolveMethod, summaries);
         }
     }
 }

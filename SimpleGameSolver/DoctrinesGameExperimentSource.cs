@@ -42,19 +42,30 @@ namespace SimpleGameSolver
                 { 0,  0,  0,  0,  0,  0, -25,   25}
             };
 
-            var game = new BimatrixGame(fpPayoffs, spPayoffs);
-
-            var fpStrategy = new ulong[]{ 1, 0, 0, 0, 0, 0, 0, 0};
-            var spStrategy = new ulong[]{ 0, 1, 0, 0, 0, 0, 0, 0};
-            var startSituation = new Situation(fpStrategy, spStrategy);
-            
-            var parameters = new Dictionary<string, string>()
-            {
-                { "iterationsCount", "10000" }
-            };
-
             var experiments = new List<Experiment>();
-            experiments.Add(new Experiment(Name, game, startSituation, parameters));
+
+            for (int i = 0; i < 7; i++)
+            {
+                for (int j = 0; j < 7; j++)
+                {
+                    var game = new BimatrixGame(fpPayoffs, spPayoffs);
+
+                    var parameters = new Dictionary<string, string>()
+                    {
+                        { "iterationsCount", "200" }
+                    };
+
+                    var fpStrategy = new ulong[8];
+                    var spStrategy = new ulong[8];
+
+                    fpStrategy[i] = 1;
+                    spStrategy[j] = 1;
+
+                    var startSituation = new Situation(fpStrategy, spStrategy);
+
+                    experiments.Add(new Experiment(Name, game, startSituation, parameters));
+                }
+            }
 
             return experiments;
         }

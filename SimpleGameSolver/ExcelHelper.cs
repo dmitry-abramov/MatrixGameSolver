@@ -10,13 +10,14 @@ namespace SimpleGameSolver
 {
     public static class ExcelHelper
     {
-        public static void SaveToFile(FileInfo file, Experiment experiment, MethodResult result)
+        public static void SaveToFile(FileInfo file, Experiment experiment, BrownMethodBase method, MethodResult result)
         {            
             using (var package = new ExcelPackage(file))
             {
                 var ws = package.Workbook.Worksheets.Add("ExperimentResult");
 
-                ws.Cells[1, 1].Value = experiment.Name;
+                ws.Cells[1, 1].Value = string.Format("Name: {0}", experiment.Name);
+                ws.Cells[2, 1].Value = string.Format("Method: {0}", method.Name);
 
                 ws.Cells[4, 1].Value = "parameters";
                 for (int i = 0; i < experiment.Parameters.Count; i++)
@@ -35,7 +36,7 @@ namespace SimpleGameSolver
                     }                    
                 }
 
-                ws.Cells[experiment.Game.FirstPlayerMatrix.GetLength(1) + 2, 1].Value = "second player";
+                ws.Cells[8, experiment.Game.FirstPlayerMatrix.GetLength(1) + 2].Value = "second player";
                 for (int i = 0; i < experiment.Game.SecondPlayerMatrix.GetLength(0); i++)
                 {
                     for (int j = 0; j < experiment.Game.SecondPlayerMatrix.GetLength(1); j++)
@@ -50,17 +51,19 @@ namespace SimpleGameSolver
                 var game = experiment.Game;
                 for (int i = 0; i < game.FirstPlayerMatrix.GetLength(0); i++)
                 {
-                    ws.Cells[traceStartCellNumber - 1, i + 2].Value = "First player, strategy " + i.ToString();
+                    ws.Cells[traceStartCellNumber - 1, i + 2].Value = "First player, strategy " + (i + 1).ToString();
                 }
                 for (int i = 0; i < game.FirstPlayerMatrix.GetLength(1); i++)
                 {
-                    ws.Cells[traceStartCellNumber - 1, game.FirstPlayerMatrix.GetLength(0) + i + 3].Value = "Second player, strategy " + i.ToString();
+                    ws.Cells[traceStartCellNumber - 1, game.FirstPlayerMatrix.GetLength(0) + i + 3].Value = "Second player, strategy " + (i + 1).ToString();
                 }
 
                 for (int i = 0; i < result.MethodTrace.Count; i++)
                 {
                     var situation = result.MethodTrace[i];
 
+                    ws.Cells[traceStartCellNumber + i, 1].Value = i;
+                    
                     for (int j = 0; j < situation.FirstPlayerStrategy.Count(); j++)
                     {
                         ws.Cells[traceStartCellNumber + i, j + 2].Value = situation.FirstPlayerStrategy[j];                                                
@@ -76,18 +79,20 @@ namespace SimpleGameSolver
                 ws.Cells[traceStartCellNumber - 1, normalizeStartCell + 1].Value = "#";
                 for (int i = 0; i < game.FirstPlayerMatrix.GetLength(0); i++)
                 {
-                    ws.Cells[traceStartCellNumber - 1, normalizeStartCell + i + 2].Value = "First player, strategy " + i.ToString();
+                    ws.Cells[traceStartCellNumber - 1, normalizeStartCell + i + 2].Value = "First player, strategy " + (i + 1).ToString();
                 }
                 for (int i = 0; i < game.FirstPlayerMatrix.GetLength(1); i++)
                 {
-                    ws.Cells[traceStartCellNumber - 1, normalizeStartCell + game.FirstPlayerMatrix.GetLength(0) + i + 3].Value = "Second player, strategy " + i.ToString();
+                    ws.Cells[traceStartCellNumber - 1, normalizeStartCell + game.FirstPlayerMatrix.GetLength(0) + i + 3].Value = "Second player, strategy " + (i + 1).ToString();
                 }
 
                 for (int i = 0; i < result.MethodTrace.Count; i++)
                 {
                     var situation = result.MethodTrace[i];
                     var firstPlayerNormalizedStrategy = situation.FirstPlayerStrategy.Normalize().ToList();
-                    var secondPlayerNormalizedStrategy = situation.FirstPlayerStrategy.Normalize().ToList();
+                    var secondPlayerNormalizedStrategy = situation.SecondPlayerStrategy.Normalize().ToList();
+
+                    ws.Cells[traceStartCellNumber + i, normalizeStartCell + 1].Value = i;
 
                     for (int j = 0; j < situation.FirstPlayerStrategy.Count(); j++)
                     {
@@ -103,15 +108,17 @@ namespace SimpleGameSolver
             }
         }
 
-        public static void SaveToFile(FileInfo file, ExperimentSourceBase experimentSource, IList<ExperimentSummary> summaries)
+        public static void SaveToFile(FileInfo file, ExperimentSourceBase experimentSource, BrownMethodBase method, IList<ExperimentSummary> summaries)
         {
             using (var package = new ExcelPackage(file))
             {
-                var ws = package.Workbook.Worksheets.Add("ExperimentResult");
+                var ws = package.Workbook.Worksheets.Add("ExperimentsResult");
 
-                ws.Cells[1, 1].Value = experimentSource.Name;
+                ws.Cells[1, 1].Value = string.Format("Name: {0}", experimentSource.Name);
 
-                ws.Cells[2, 1].Value = experimentSource.Description;
+                ws.Cells[2, 1].Value = string.Format("Description: {0}", experimentSource.Description);
+
+                ws.Cells[3, 1].Value = string.Format("Method: {0}", method.Name);
                                 
                 var parametersName = summaries[0].Experiment.Parameters.Keys.ToList();
                 var cellX = 1;
