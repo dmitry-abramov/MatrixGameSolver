@@ -2,7 +2,7 @@
 
 namespace SimpleGameSolver
 {
-    public class BorderRotationExperimentSource : ExperimentSourceBase
+    public class BordersRotationExperimentSource : ExperimentSourceBase
     {
         public override string Name
         {
@@ -11,18 +11,18 @@ namespace SimpleGameSolver
 
         public override string Description
         {
-            get { return "In this experiment we rotate border of BR areas of first player"; }
+            get { return "In this experiment we rotate borders of BR areas of both players"; }
         }
 
         public override IList<Experiment> GetExperiments()
         {
             var experiments = new List<Experiment>();
 
-            for (double lambda = 0; lambda <= 1; lambda += 0.1)
+            for (double lambda = 0; lambda <= 1; lambda += 0.01)
             {
                 var parameters = new Dictionary<string, string>
                     {
-                        {"iterationsCount", "5000"},
+                        {"iterationsCount", "500"},
                         {"lambda", lambda.ToString()}
                     };
                 var experiment = new Experiment(Name, GetGame(lambda), parameters);
