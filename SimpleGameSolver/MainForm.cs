@@ -36,6 +36,7 @@ namespace SimpleGameSolver
             experimentList.Items.Add(new BordersRotationExperimentSource());
             experimentList.Items.Add(new DoctrinesGameExperimentSource());
             experimentList.Items.Add(new StepIncreaseCoefficientExperimentSource());
+            experimentList.Items.Add(new FirstPlayerOneBRBorderRotationAndIncreaseStepExperimentSource());
             experimentList.DisplayMember = "Name";
             experimentList.ValueMember = "Name";
             experimentList.SelectedIndex = 0;
@@ -202,7 +203,7 @@ namespace SimpleGameSolver
             var experimentSource = (ExperimentSourceBase)experimentList.SelectedItem;
             var method = (BrownMethodBase)methodList.SelectedItem;
 
-            var experimentator = new Experimentator(experimentSource, method);
+            var experimentator = new Experimentator(experimentSource, method, experimentProgressBar);
 
             experimentator.MakeExperiment();
         }

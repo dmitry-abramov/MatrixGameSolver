@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 
 using System.IO;
+using System.Windows.Forms;
 
 namespace SimpleGameSolver
 {
     public class Experimentator
     {
+        private ProgressBar ProgressBar { get; set; }
+
         public ExperimentSourceBase ExperimentSource { get; private set; }
 
         public BrownMethodBase SolveMethod { get; private set; }
@@ -20,6 +23,15 @@ namespace SimpleGameSolver
             Progress = 0;
             ExperimentSource = experimentSource;
             SolveMethod = solveMethod;
+            ProgressBar = new ProgressBar();
+        }
+
+        public Experimentator(ExperimentSourceBase experimentSource, BrownMethodBase solveMethod, ProgressBar progressBar)
+        {
+            Progress = 0;
+            ExperimentSource = experimentSource;
+            SolveMethod = solveMethod;
+            ProgressBar = progressBar;
         }
 
         public void MakeExperiment()
@@ -31,9 +43,13 @@ namespace SimpleGameSolver
             var folder = new DirectoryInfo(folderName);
             folder.Create();
 
+            ProgressBar.Maximum = experiments.Count();
+            ProgressBar.Minimum = 0;
+
             for (int i = 0; i < experiments.Count(); i++)
             {
                 Progress = i / experiments.Count();
+                ProgressBar.Value = i;
 
                 var experiment = experiments[i];
                 var experimentResult = SolveMethod.Solve(experiment.Game, experiment.StartSituation, experiment.Parameters);
