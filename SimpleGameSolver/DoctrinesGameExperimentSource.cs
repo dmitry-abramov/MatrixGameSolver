@@ -44,9 +44,9 @@ namespace SimpleGameSolver
 
             var experiments = new List<Experiment>();
 
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < 7; j++)
+                for (int j = 0; j < 8; j++)
                 {
                     var game = new BimatrixGame(fpPayoffs, spPayoffs);
 
