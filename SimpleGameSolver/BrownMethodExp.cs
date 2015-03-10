@@ -62,6 +62,12 @@ namespace SimpleGameSolver
                 spNewStrategy = new List<ulong>(result.Result.SecondPlayerStrategy);
                 spNewStrategy[spcNew] += spStep;
 
+                if (fpNewStrategy[fpcNew] == 0 || spNewStrategy[spcNew] == 0)
+                {
+                    //todo try solve overflow
+                    break;
+                }
+
                 fpc = fpcNew;
                 spc = spcNew;
 
