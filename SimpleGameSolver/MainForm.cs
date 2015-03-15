@@ -33,11 +33,14 @@ namespace SimpleGameSolver
             methodList.ValueMember = "Name";
             methodList.SelectedIndex = 0;
 
-            experimentList.Items.Add(new BordersRotationExperimentSource());
-            experimentList.Items.Add(new DoctrinesGameExperimentSource());
-            experimentList.Items.Add(new StepIncreaseCoefficientExperimentSource());
-            experimentList.Items.Add(new FirstPlayerOneBRBorderRotationAndIncreaseStepExperimentSource());
-            experimentList.Items.Add(new DoctrinesGameLongCycleExperimentSource());
+            //experimentList.Items.Add(new BordersRotationExperimentSource());
+            //experimentList.Items.Add(new DoctrinesGameExperimentSource());
+            //experimentList.Items.Add(new StepIncreaseCoefficientExperimentSource());
+            //experimentList.Items.Add(new FirstPlayerOneBRBorderRotationAndIncreaseStepExperimentSource());
+            //experimentList.Items.Add(new DoctrinesGameLongCycleExperimentSource());
+
+            experimentList.Items.AddRange(ExperimentsSourceLoader.GetExperimentSources().ToArray());
+
             experimentList.DisplayMember = "Name";
             experimentList.ValueMember = "Name";
             experimentList.SelectedIndex = 0;
