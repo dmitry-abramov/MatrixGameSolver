@@ -50,10 +50,10 @@ namespace SimpleGameSolver
                 int fpcNew = Choice1(game.FirstPlayerMatrix, result.Result.SecondPlayerStrategy, fpc);
                 int spcNew = Choice2(game.SecondPlayerMatrix, result.Result.FirstPlayerStrategy, spc);
 
-                fpStep = (ulong)(fpStep * stepIncreaseCoefficient);
+                fpStep = (ulong)(Math.Round(fpStep * stepIncreaseCoefficient));
                 if (spc != spcNew) fpStep = 1;
-                
-                spStep = (ulong)(spStep * stepIncreaseCoefficient);
+
+                spStep = (ulong)(Math.Round(spStep * stepIncreaseCoefficient));
                 if (fpc != fpcNew) spStep = 1;
 
                 fpNewStrategy = new List<ulong>(result.Result.FirstPlayerStrategy);

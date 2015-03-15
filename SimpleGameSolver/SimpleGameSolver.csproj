@@ -58,6 +58,7 @@
     <Compile Include="BrownMethodExp2.cs" />
     <Compile Include="BrownMethodSupExp.cs" />
     <Compile Include="DoctrinesGameExperimentSource.cs" />
+    <Compile Include="DoctrinesGameLongCycleExperimentSource.cs" />
     <Compile Include="ExcelHelper.cs" />
     <Compile Include="Experiment.cs" />
     <Compile Include="Experimentator.cs" />
