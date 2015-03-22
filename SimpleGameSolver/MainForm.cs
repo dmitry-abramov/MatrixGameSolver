@@ -25,22 +25,12 @@ namespace SimpleGameSolver
             FirstPlayerStartPosition.ColumnCount = 3;
             SecondPlayerStartPosition.ColumnCount = 3;
 
-            methodList.Items.Add(new BrownMethodClassic());
-            methodList.Items.Add(new BrownMethodExp());
-            methodList.Items.Add(new BrownMethodExp2());
-            methodList.Items.Add(new BrownMethodSupExp());
+            methodList.Items.AddRange(DynamicResourceLoader.GetBrownMethodImplementations().ToArray());
             methodList.DisplayMember = "Name";
             methodList.ValueMember = "Name";
             methodList.SelectedIndex = 0;
-
-            //experimentList.Items.Add(new BordersRotationExperimentSource());
-            //experimentList.Items.Add(new DoctrinesGameExperimentSource());
-            //experimentList.Items.Add(new StepIncreaseCoefficientExperimentSource());
-            //experimentList.Items.Add(new FirstPlayerOneBRBorderRotationAndIncreaseStepExperimentSource());
-            //experimentList.Items.Add(new DoctrinesGameLongCycleExperimentSource());
-
-            experimentList.Items.AddRange(ExperimentsSourceLoader.GetExperimentSources().ToArray());
-
+                        
+            experimentList.Items.AddRange(DynamicResourceLoader.GetExperimentSources().ToArray());
             experimentList.DisplayMember = "Name";
             experimentList.ValueMember = "Name";
             experimentList.SelectedIndex = 0;

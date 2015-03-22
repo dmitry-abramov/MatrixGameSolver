@@ -62,7 +62,7 @@
     <Compile Include="ExcelHelper.cs" />
     <Compile Include="Experiment.cs" />
     <Compile Include="Experimentator.cs" />
-    <Compile Include="ExperimentsSourceLoader.cs" />
+    <Compile Include="DynamicResourceLoader.cs" />
     <Compile Include="ExperimentSummary.cs" />
     <Compile Include="FirstPlayerOneBRBorderRotationAndIncreaseStepExperimentSource.cs" />
     <Compile Include="IEnumerableExtensions.cs" />

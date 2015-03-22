@@ -7,8 +7,28 @@ using System.Text;
 
 namespace SimpleGameSolver
 {
-    public class ExperimentsSourceLoader
+    public class DynamicResourceLoader
     {
+        public static IList<BrownMethodBase> GetBrownMethodImplementations()
+        {
+            var methods = new List<BrownMethodBase>();
+
+            string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+            foreach (string dll in GetFiles(path, "*.exe|*.dll", SearchOption.AllDirectories))
+            {
+                var assembly = Assembly.LoadFile(dll);
+                var methodTypes = assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(BrownMethodBase)) && !t.IsAbstract);
+
+                foreach (var methodType in methodTypes)
+                {
+                    methods.Add((BrownMethodBase)Activator.CreateInstance(methodType));
+                }
+            }
+
+            return methods;
+        }
+
         public static IList<ExperimentSourceBase> GetExperimentSources()
         {
             var sources = new List<ExperimentSourceBase>();
