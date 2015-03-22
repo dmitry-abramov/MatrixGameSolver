@@ -39,7 +39,11 @@ namespace SimpleGameSolver
                         { "stepIncreaseCoefficient", "2" }
                     };
 
-                    experiments.Add(new Experiment(Name, game, parameters));
+                    var firstPlayerStartStrategy = new ulong[3]{ 1, 0, 0 };
+                    var secondPlayerStartStrategy = new ulong[3]{ 0, 1, 0 };
+                    var startSituation = new Situation(firstPlayerStartStrategy, secondPlayerStartStrategy);
+
+                    experiments.Add(new Experiment(Name, game, startSituation, parameters));
                 }
             }
 
@@ -51,12 +55,24 @@ namespace SimpleGameSolver
             var firstPlayerMatrix = new double[3, 3];
             var secondPlayerMatrix = new double[3, 3];
 
+            firstPlayerMatrix[0, 0] = 0;
+            firstPlayerMatrix[1, 1] = 0;
+            firstPlayerMatrix[2, 2] = 0;
+            
+            firstPlayerMatrix[0, 1] = rnd.Next(20);
+            firstPlayerMatrix[1, 0] = -firstPlayerMatrix[0, 1];
+
+            firstPlayerMatrix[0, 2] = rnd.Next(20);
+            firstPlayerMatrix[2, 0] = -firstPlayerMatrix[0, 1];
+
+            firstPlayerMatrix[1, 2] = rnd.Next(20);
+            firstPlayerMatrix[2, 1] = -firstPlayerMatrix[0, 1];
+
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    firstPlayerMatrix[i, j] = rnd.Next(20);
-                    secondPlayerMatrix[j, i] = -firstPlayerMatrix[i, j];
+                    secondPlayerMatrix[i, j] = -firstPlayerMatrix[i, j];
                 }
             }
 

@@ -24,12 +24,12 @@ namespace SimpleGameSolver
             var gamesCount = 10;
 
             var experiments = new List<Experiment>();
-            
+
             for (int gameNumber = 0; gameNumber < gamesCount; gameNumber++)
             {
                 var game = GetRandomGame();
 
-                for (int steps = 50; steps <= 1000; steps+=50)
+                for (int steps = 50; steps <= 1000; steps += 50)
                 {
                     var parameters = new Dictionary<string, string>
                     {
@@ -51,14 +51,15 @@ namespace SimpleGameSolver
             var firstPlayerMatrix = new double[2, 2];
             var secondPlayerMatrix = new double[2, 2];
 
-            for (int i = 0; i < 2; i++)
-            {
-                for (int j = 0; j < 2; j++)
-                {
-                    firstPlayerMatrix[i, j] = rnd.Next(20);
-                    secondPlayerMatrix[j, i] = -firstPlayerMatrix[i, j];
-                }
-            }
+            firstPlayerMatrix[0, 0] = 0;
+            firstPlayerMatrix[1, 1] = 0;
+            firstPlayerMatrix[0, 1] = rnd.Next(20);
+            firstPlayerMatrix[1, 0] = -firstPlayerMatrix[0, 1];
+
+            secondPlayerMatrix[0, 0] = 0;
+            secondPlayerMatrix[1, 1] = 0;
+            secondPlayerMatrix[0, 1] = -firstPlayerMatrix[0, 1];
+            secondPlayerMatrix[1, 0] = -firstPlayerMatrix[1, 0];
 
             return new BimatrixGame(firstPlayerMatrix, secondPlayerMatrix);
         }
@@ -66,7 +67,7 @@ namespace SimpleGameSolver
         private string MatrixToString(double[,] matrix)
         {
             var result = new StringBuilder();
-            
+
             for (int i = 0; i < matrix.GetLength(0); i++)
             {
                 for (int j = 0; j < matrix.GetLength(1); j++)
