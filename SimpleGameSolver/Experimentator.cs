@@ -56,7 +56,7 @@ namespace SimpleGameSolver
 
                 summaries.Add(new ExperimentSummary(experiment, experimentResult.Result));
 
-                var fileName = string.Format("{0}\\{1}_{2}.xlsx", folderName, experiment.Name, DateTime.UtcNow.ToString("yyyy_MM_dd_hh_mm_ss_fff"));
+                var fileName = string.Format("{0}\\{1}_experiment_{2}.xlsx", folderName, experiment.Name, i.ToString());
                 var file = new FileInfo(fileName);
                 ExcelHelper.SaveToFile(file, experiment, SolveMethod, experimentResult);
             }
