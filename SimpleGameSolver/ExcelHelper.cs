@@ -11,7 +11,7 @@ namespace SimpleGameSolver
     public static class ExcelHelper
     {
         public static void SaveToFile(FileInfo file, Experiment experiment, BrownMethodBase method, MethodResult result)
-        {            
+        {
             using (var package = new ExcelPackage(file))
             {
                 var ws = package.Workbook.Worksheets.Add("ExperimentResult");
@@ -33,7 +33,7 @@ namespace SimpleGameSolver
                     for (int j = 0; j < experiment.Game.FirstPlayerMatrix.GetLength(1); j++)
                     {
                         ws.Cells[i + 9, j + 1].Value = experiment.Game.FirstPlayerMatrix[i, j];
-                    }                    
+                    }
                 }
 
                 ws.Cells[8, experiment.Game.FirstPlayerMatrix.GetLength(1) + 2].Value = "second player";
@@ -42,7 +42,7 @@ namespace SimpleGameSolver
                     for (int j = 0; j < experiment.Game.SecondPlayerMatrix.GetLength(1); j++)
                     {
                         ws.Cells[i + 9, j + experiment.Game.FirstPlayerMatrix.GetLength(1) + 2].Value = experiment.Game.SecondPlayerMatrix[i, j];
-                    }                    
+                    }
                 }
 
                 var traceStartCellNumber = 9 + experiment.Game.FirstPlayerMatrix.GetLength(0) + 4;
@@ -63,10 +63,10 @@ namespace SimpleGameSolver
                     var situation = result.MethodTrace[i];
 
                     ws.Cells[traceStartCellNumber + i, 1].Value = i;
-                    
+
                     for (int j = 0; j < situation.FirstPlayerStrategy.Count(); j++)
                     {
-                        ws.Cells[traceStartCellNumber + i, j + 2].Value = situation.FirstPlayerStrategy[j];                                                
+                        ws.Cells[traceStartCellNumber + i, j + 2].Value = situation.FirstPlayerStrategy[j];
                     }
                     for (int j = 0; j < situation.SecondPlayerStrategy.Count(); j++)
                     {
@@ -119,15 +119,15 @@ namespace SimpleGameSolver
                 ws.Cells[2, 1].Value = string.Format("Description: {0}", experimentSource.Description);
 
                 ws.Cells[3, 1].Value = string.Format("Method: {0}", method.Name);
-                                
+
                 var parametersName = summaries[0].Experiment.Parameters.Keys.ToList();
                 var cellX = 1;
                 for (cellX = 1; cellX <= parametersName.Count; cellX++)
                 {
-                    ws.Cells[4, cellX].Value = parametersName[cellX-1];
+                    ws.Cells[4, cellX].Value = parametersName[cellX - 1];
                 }
 
-                var firstPlayerStrategiesCount = summaries[0].Result.FirstPlayerStrategy.Count();   
+                var firstPlayerStrategiesCount = summaries[0].Result.FirstPlayerStrategy.Count();
                 var secondPlayerStrategiesCount = summaries[0].Result.SecondPlayerStrategy.Count();
 
                 for (int i = 0; i < firstPlayerStrategiesCount; i++)
@@ -135,13 +135,13 @@ namespace SimpleGameSolver
                     ws.Cells[4, cellX + i].Value = string.Format("First player start position strategy {0}", i + 1);
                 }
                 cellX += firstPlayerStrategiesCount;
-                
+
                 for (int i = 0; i < secondPlayerStrategiesCount; i++)
                 {
                     ws.Cells[4, cellX + i].Value = string.Format("Second player start position strategy {0}", i + 1);
                 }
                 cellX += secondPlayerStrategiesCount;
-             
+
                 for (int i = 0; i < firstPlayerStrategiesCount; i++)
                 {
                     ws.Cells[4, cellX + i].Value = string.Format("First player strategy {0}", i + 1);
@@ -164,11 +164,18 @@ namespace SimpleGameSolver
                 {
                     ws.Cells[4, cellX + i].Value = string.Format("Second player normalized strategy {0}", i + 1);
                 }
-                                
+                cellX += secondPlayerStrategiesCount;
+
+                ws.Cells[4, cellX + 1].Value = string.Format("payoff of first player");
+                cellX++;
+
+                ws.Cells[4, cellX + 1].Value = string.Format("payoff of second player");
+                cellX++;
+
                 var cellY = 5;
                 for (int experimentNumber = 0; experimentNumber < summaries.Count(); experimentNumber++)
                 {
-                    cellX = 1;       
+                    cellX = 1;
                     var experiment = summaries[experimentNumber].Experiment;
                     var firstPlayerStrategy = summaries[experimentNumber].Result.FirstPlayerStrategy;
                     var secondPlayerStrategy = summaries[experimentNumber].Result.SecondPlayerStrategy;
@@ -187,7 +194,7 @@ namespace SimpleGameSolver
                         ws.Cells[cellY, cellX + i].Value = firstPlayerStartStrategy[i];
                     }
                     cellX += firstPlayerStrategiesCount;
-                    
+
                     for (int i = 0; i < secondPlayerStrategiesCount; i++)
                     {
                         ws.Cells[cellY, cellX + i].Value = secondPlayerStartStrategy[i];
@@ -210,12 +217,19 @@ namespace SimpleGameSolver
                     {
                         ws.Cells[cellY, cellX + i].Value = firstPlayerNormalizedStrategy[i];
                     }
-
                     cellX += firstPlayerStrategiesCount;
+
                     for (int i = 0; i < secondPlayerStrategiesCount; i++)
                     {
                         ws.Cells[cellY, cellX + i].Value = secondPlayerNormalizedStrategy[i];
                     }
+                    cellX += secondPlayerStrategiesCount;
+
+                    ws.Cells[cellY, cellX + 1].Value = summaries[experimentNumber].FirstPlayerPayoff;
+                    cellX++;
+
+                    ws.Cells[cellY, cellX + 1].Value = summaries[experimentNumber].SecondPlayerPayoff;
+                    cellX++;
 
                     cellY++;
                 }
