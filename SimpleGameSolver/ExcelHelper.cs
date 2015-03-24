@@ -166,10 +166,16 @@ namespace SimpleGameSolver
                 }
                 cellX += secondPlayerStrategiesCount;
 
-                ws.Cells[4, cellX + 1].Value = string.Format("payoff of first player");
+                ws.Cells[4, cellX].Value = string.Format("payoff of first player");
                 cellX++;
 
-                ws.Cells[4, cellX + 1].Value = string.Format("payoff of second player");
+                ws.Cells[4, cellX].Value = string.Format("payoff of second player");
+                cellX++;
+
+                ws.Cells[4, cellX].Value = string.Format("v1(k)");
+                cellX++;
+
+                ws.Cells[4, cellX].Value = string.Format("v2(k)");
                 cellX++;
 
                 var cellY = 5;
@@ -225,10 +231,16 @@ namespace SimpleGameSolver
                     }
                     cellX += secondPlayerStrategiesCount;
 
-                    ws.Cells[cellY, cellX + 1].Value = summaries[experimentNumber].FirstPlayerPayoff;
+                    ws.Cells[cellY, cellX].Value = summaries[experimentNumber].FirstPlayerPayoff;
                     cellX++;
 
-                    ws.Cells[cellY, cellX + 1].Value = summaries[experimentNumber].SecondPlayerPayoff;
+                    ws.Cells[cellY, cellX].Value = summaries[experimentNumber].SecondPlayerPayoff;
+                    cellX++;
+
+                    ws.Cells[cellY, cellX].Value = summaries[experimentNumber].V1k;
+                    cellX++;
+
+                    ws.Cells[cellY, cellX].Value = summaries[experimentNumber].V2k;
                     cellX++;
 
                     cellY++;

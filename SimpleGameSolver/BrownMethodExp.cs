@@ -31,7 +31,7 @@ namespace SimpleGameSolver
             var result = new MethodResult();
 
             result.MethodTrace.Add(startSituation);
-                
+
             // first iteration
             int fpc = Choice1(game.FirstPlayerMatrix, result.Result.SecondPlayerStrategy, 0);
             int spc = Choice2(game.SecondPlayerMatrix, result.Result.FirstPlayerStrategy, 0);
@@ -56,15 +56,19 @@ namespace SimpleGameSolver
                 spStep = (ulong)(Math.Round(spStep * stepIncreaseCoefficient));
                 if (fpc != fpcNew) spStep = 1;
 
-                fpNewStrategy = new List<ulong>(result.Result.FirstPlayerStrategy);
-                fpNewStrategy[fpcNew] += fpStep;
-
-                spNewStrategy = new List<ulong>(result.Result.SecondPlayerStrategy);
-                spNewStrategy[spcNew] += spStep;
-
-                if (fpNewStrategy[fpcNew] == 0 || spNewStrategy[spcNew] == 0)
+                try
                 {
-                    //todo try solve overflow
+                    checked
+                    {
+                        fpNewStrategy = new List<ulong>(result.Result.FirstPlayerStrategy);
+                        fpNewStrategy[fpcNew] += fpStep;
+                        
+                        spNewStrategy = new List<ulong>(result.Result.SecondPlayerStrategy);
+                        spNewStrategy[spcNew] += spStep;
+                    }
+                }
+                catch (OverflowException exception)
+                {
                     break;
                 }
 
