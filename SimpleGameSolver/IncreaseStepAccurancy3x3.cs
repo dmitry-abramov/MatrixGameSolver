@@ -59,13 +59,13 @@ namespace SimpleGameSolver
             firstPlayerMatrix[1, 1] = 0;
             firstPlayerMatrix[2, 2] = 0;
             
-            firstPlayerMatrix[0, 1] = rnd.Next(-10, 10);
+            firstPlayerMatrix[0, 1] = rnd.Next(10);
             firstPlayerMatrix[1, 0] = -firstPlayerMatrix[0, 1];
 
-            firstPlayerMatrix[0, 2] = rnd.Next(-10, 10);
+            firstPlayerMatrix[0, 2] = -rnd.Next(10);
             firstPlayerMatrix[2, 0] = -firstPlayerMatrix[0, 2];
 
-            firstPlayerMatrix[1, 2] = rnd.Next(-10, 10);
+            firstPlayerMatrix[1, 2] = rnd.Next(10);
             firstPlayerMatrix[2, 1] = -firstPlayerMatrix[1, 2];
 
             for (int i = 0; i < 3; i++)
