@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MathNet.Numerics.LinearAlgebra;
 
 namespace SimpleGameSolver
 {
@@ -33,8 +34,8 @@ namespace SimpleGameSolver
                 {
                     var parameters = new Dictionary<string, string>
                     {
-                        { "first player matrix", MatrixToString(game.FirstPlayerMatrix) },
-                        { "second player matrix", MatrixToString(game.SecondPlayerMatrix) },
+                        { "first player matrix", game.FirstPlayerMatrix.ToString() },
+                        { "second player matrix", game.SecondPlayerMatrix.ToString() },
                         { "iterationsCount", steps.ToString() },
                         { "stepIncreaseCoefficient", "2" }
                     };
@@ -61,24 +62,9 @@ namespace SimpleGameSolver
             secondPlayerMatrix[0, 1] = -firstPlayerMatrix[0, 1];
             secondPlayerMatrix[1, 0] = -firstPlayerMatrix[1, 0];
 
-            return new BimatrixGame(firstPlayerMatrix, secondPlayerMatrix);
-        }
-
-        private string MatrixToString(double[,] matrix)
-        {
-            var result = new StringBuilder();
-
-            for (int i = 0; i < matrix.GetLength(0); i++)
-            {
-                for (int j = 0; j < matrix.GetLength(1); j++)
-                {
-                    result.AppendFormat("{0,5}", matrix[i, j]);
-                }
-
-                result.Append(Environment.NewLine);
-            }
-
-            return result.ToString();
+            return new BimatrixGame(
+                Matrix<double>.Build.DenseOfArray(firstPlayerMatrix),
+                Matrix<double>.Build.DenseOfArray(secondPlayerMatrix));
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MathNet.Numerics.LinearAlgebra;
 
 namespace SimpleGameSolver
 {
@@ -48,7 +49,9 @@ namespace SimpleGameSolver
             {
                 for (int j = 0; j < 8; j++)
                 {
-                    var game = new BimatrixGame(fpPayoffs, spPayoffs);
+                    var game = new BimatrixGame(
+                        Matrix<double>.Build.DenseOfArray(fpPayoffs), 
+                        Matrix<double>.Build.DenseOfArray(spPayoffs));
 
                     var parameters = new Dictionary<string, string>()
                     {

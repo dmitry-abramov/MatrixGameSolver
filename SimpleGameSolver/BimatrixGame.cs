@@ -1,19 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using MathNet.Numerics.LinearAlgebra;
 
 namespace SimpleGameSolver
 {
     public class BimatrixGame
     {
-        public double[,] FirstPlayerMatrix
+        public Matrix<double> FirstPlayerMatrix
         {
             get;
             private set;
         }
 
-        public double[,] SecondPlayerMatrix
+        public Matrix<double> SecondPlayerMatrix
         {
             get;
             private set;
@@ -21,14 +19,14 @@ namespace SimpleGameSolver
 
         public BimatrixGame(int n, int m)
         {
-            FirstPlayerMatrix = new double[n, m];
-            SecondPlayerMatrix = new double[n, m];
+            FirstPlayerMatrix = Matrix<double>.Build.Dense(n, m);
+            SecondPlayerMatrix = Matrix<double>.Build.Dense(n, m);
         }
 
-        public BimatrixGame(double[,] firstPlayerMatrix, double[,] secondPlayerMatrix)
+        public BimatrixGame(Matrix<double> firstPlayerMatrix, Matrix<double> secondPlayerMatrix)
         {
-            if (firstPlayerMatrix.GetLength(0) != secondPlayerMatrix.GetLength(0)
-                || firstPlayerMatrix.GetLength(1) != secondPlayerMatrix.GetLength(1))
+            if (firstPlayerMatrix.RowCount != secondPlayerMatrix.RowCount
+                || firstPlayerMatrix.ColumnCount != secondPlayerMatrix.ColumnCount)
             {
                 throw new ArgumentException("Matricies have different size");
             }

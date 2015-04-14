@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using MathNet.Numerics.LinearAlgebra;
 
 namespace SimpleGameSolver
 {
@@ -84,7 +85,7 @@ namespace SimpleGameSolver
                 BrownMethodBase method = (BrownMethodBase)methodList.SelectedItem;
 
                 var parameters = new Dictionary<string, string>() {{"iterationsCount", iterationCount.ToString()}};
-                var result = method.Solve(new BimatrixGame(A, B), new Situation(fpStartPosition, spStartPosition), parameters);
+                var result = method.Solve(new BimatrixGame(Matrix<double>.Build.DenseOfArray(A), Matrix<double>.Build.DenseOfArray(B)), new Situation(fpStartPosition, spStartPosition), parameters);
 
                 // show results
                 FirstPlayerSolve.RowCount = 1;

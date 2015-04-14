@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MathNet.Numerics.LinearAlgebra;
 
 namespace SimpleGameSolver
 {
@@ -37,10 +38,10 @@ namespace SimpleGameSolver
                 var firstPlayerMatrix = Experiment.Game.FirstPlayerMatrix;
                 var secondPlayerNormalizedStrategy = Result.SecondPlayerStrategy.Normalize().ToList();
 
-                for (var i = 0; i < firstPlayerMatrix.GetLength(0); i++)
+                for (var i = 0; i < firstPlayerMatrix.RowCount; i++)
                 {
                     var tmp = 0.0;
-                    for (var j = 0; j < firstPlayerMatrix.GetLength(1); j++)
+                    for (var j = 0; j < firstPlayerMatrix.ColumnCount; j++)
                     {
                         tmp += firstPlayerMatrix[i, j] * secondPlayerNormalizedStrategy[j];
                     }
@@ -65,10 +66,10 @@ namespace SimpleGameSolver
                 var secondPlayerMatrix = Experiment.Game.SecondPlayerMatrix;
                 var firstPlayerNormalizedStrategy = Result.FirstPlayerStrategy.Normalize().ToList();
 
-                for (var j = 0; j < secondPlayerMatrix.GetLength(1); j++)
+                for (var j = 0; j < secondPlayerMatrix.ColumnCount; j++)
                 {
                     var tmp = 0.0;
-                    for (var i = 0; i < secondPlayerMatrix.GetLength(0); i++)
+                    for (var i = 0; i < secondPlayerMatrix.RowCount; i++)
                     {
                         tmp += secondPlayerMatrix[i, j] * firstPlayerNormalizedStrategy[i];
                     }
@@ -90,10 +91,10 @@ namespace SimpleGameSolver
         }
 
         // todo: remove to helper
-        private double GetPayoff(double[,] payoffs, Situation situation)
+        private double GetPayoff(Matrix<double> payoffs, Situation situation)
         {
-            int n = payoffs.GetLength(0);
-            int m = payoffs.GetLength(1);
+            int n = payoffs.RowCount;
+            int m = payoffs.ColumnCount;
 
             var firstPlayerNormalizedStrategy = situation.FirstPlayerStrategy.Normalize().ToList();
             var secondPlayerNormalizedStrategy = situation.SecondPlayerStrategy.Normalize().ToList();

@@ -28,34 +28,34 @@ namespace SimpleGameSolver
                 }
 
                 ws.Cells[8, 1].Value = "first player";
-                for (int i = 0; i < experiment.Game.FirstPlayerMatrix.GetLength(0); i++)
+                for (int i = 0; i < experiment.Game.FirstPlayerMatrix.RowCount; i++)
                 {
-                    for (int j = 0; j < experiment.Game.FirstPlayerMatrix.GetLength(1); j++)
+                    for (int j = 0; j < experiment.Game.FirstPlayerMatrix.ColumnCount; j++)
                     {
                         ws.Cells[i + 9, j + 1].Value = experiment.Game.FirstPlayerMatrix[i, j];
                     }
                 }
 
-                ws.Cells[8, experiment.Game.FirstPlayerMatrix.GetLength(1) + 2].Value = "second player";
-                for (int i = 0; i < experiment.Game.SecondPlayerMatrix.GetLength(0); i++)
+                ws.Cells[8, experiment.Game.FirstPlayerMatrix.ColumnCount + 2].Value = "second player";
+                for (int i = 0; i < experiment.Game.SecondPlayerMatrix.RowCount; i++)
                 {
-                    for (int j = 0; j < experiment.Game.SecondPlayerMatrix.GetLength(1); j++)
+                    for (int j = 0; j < experiment.Game.SecondPlayerMatrix.ColumnCount; j++)
                     {
-                        ws.Cells[i + 9, j + experiment.Game.FirstPlayerMatrix.GetLength(1) + 2].Value = experiment.Game.SecondPlayerMatrix[i, j];
+                        ws.Cells[i + 9, j + experiment.Game.FirstPlayerMatrix.ColumnCount + 2].Value = experiment.Game.SecondPlayerMatrix[i, j];
                     }
                 }
 
-                var traceStartCellNumber = 9 + experiment.Game.FirstPlayerMatrix.GetLength(0) + 4;
+                var traceStartCellNumber = 9 + experiment.Game.FirstPlayerMatrix.RowCount + 4;
                 ws.Cells[traceStartCellNumber - 2, 1].Value = "absolute";
                 ws.Cells[traceStartCellNumber - 1, 1].Value = "#";
                 var game = experiment.Game;
-                for (int i = 0; i < game.FirstPlayerMatrix.GetLength(0); i++)
+                for (int i = 0; i < game.FirstPlayerMatrix.RowCount; i++)
                 {
                     ws.Cells[traceStartCellNumber - 1, i + 2].Value = "First player, strategy " + (i + 1).ToString();
                 }
-                for (int i = 0; i < game.FirstPlayerMatrix.GetLength(1); i++)
+                for (int i = 0; i < game.FirstPlayerMatrix.ColumnCount; i++)
                 {
-                    ws.Cells[traceStartCellNumber - 1, game.FirstPlayerMatrix.GetLength(0) + i + 3].Value = "Second player, strategy " + (i + 1).ToString();
+                    ws.Cells[traceStartCellNumber - 1, game.FirstPlayerMatrix.RowCount + i + 3].Value = "Second player, strategy " + (i + 1).ToString();
                 }
 
                 for (int i = 0; i < result.MethodTrace.Count; i++)
@@ -74,16 +74,16 @@ namespace SimpleGameSolver
                     }
                 }
 
-                var normalizeStartCell = game.FirstPlayerMatrix.GetLength(0) + game.FirstPlayerMatrix.GetLength(1) + 4;
+                var normalizeStartCell = game.FirstPlayerMatrix.RowCount + game.FirstPlayerMatrix.ColumnCount + 4;
                 ws.Cells[traceStartCellNumber - 2, normalizeStartCell + 1].Value = "normalize";
                 ws.Cells[traceStartCellNumber - 1, normalizeStartCell + 1].Value = "#";
-                for (int i = 0; i < game.FirstPlayerMatrix.GetLength(0); i++)
+                for (int i = 0; i < game.FirstPlayerMatrix.RowCount; i++)
                 {
                     ws.Cells[traceStartCellNumber - 1, normalizeStartCell + i + 2].Value = "First player, strategy " + (i + 1).ToString();
                 }
-                for (int i = 0; i < game.FirstPlayerMatrix.GetLength(1); i++)
+                for (int i = 0; i < game.FirstPlayerMatrix.ColumnCount; i++)
                 {
-                    ws.Cells[traceStartCellNumber - 1, normalizeStartCell + game.FirstPlayerMatrix.GetLength(0) + i + 3].Value = "Second player, strategy " + (i + 1).ToString();
+                    ws.Cells[traceStartCellNumber - 1, normalizeStartCell + game.FirstPlayerMatrix.RowCount + i + 3].Value = "Second player, strategy " + (i + 1).ToString();
                 }
 
                 for (int i = 0; i < result.MethodTrace.Count; i++)

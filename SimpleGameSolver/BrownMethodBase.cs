@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MathNet.Numerics.LinearAlgebra;
 
 namespace SimpleGameSolver
 {
@@ -11,11 +12,11 @@ namespace SimpleGameSolver
 
         public abstract MethodResult Solve(BimatrixGame game, Situation startSituation, IDictionary<string, string> parameters);
 
-        protected int Choice1(double[,] A, ulong[] otherPlayerStartegy, int last)
+        protected int Choice1(Matrix<double> A, ulong[] otherPlayerStartegy, int last)
         {
-            int result = 0;
+            int result;
             List<double> tmp = new List<double>();//список выйгрышей при разном выборе стратегии
-            for (int i = 0; i < A.GetLength(0); i++)
+            for (int i = 0; i < A.RowCount; i++)
             {
                 tmp.Add(0);
                 for (int j = 0; j < otherPlayerStartegy.Count(); j++)
@@ -29,11 +30,11 @@ namespace SimpleGameSolver
             return result;
         }
 
-        protected int Choice2(double[,] A, ulong[] otherPlayerStartegy, int last)
+        protected int Choice2(Matrix<double> A, ulong[] otherPlayerStartegy, int last)
         {
-            int result = 0;
+            int result;
             List<double> tmp = new List<double>();//список выйгрышей при разном выборе стратегии
-            for (int i = 0; i < A.GetLength(1); i++)
+            for (int i = 0; i < A.ColumnCount; i++)
             {
                 tmp.Add(0);
                 for (int j = 0; j < otherPlayerStartegy.Count(); j++)

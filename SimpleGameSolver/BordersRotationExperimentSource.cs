@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MathNet.Numerics.LinearAlgebra;
 
 namespace SimpleGameSolver
 {
@@ -34,9 +35,9 @@ namespace SimpleGameSolver
 
         private BimatrixGame GetGame(double lambda)
         {
-            var firstPlayerMatrix = new double[3, 3];
-            var secondPlayerMatrix = new double[3, 3];
-
+            var firstPlayerMatrix = Matrix<double>.Build.Dense(3, 3);
+            var secondPlayerMatrix = Matrix<double>.Build.Dense(3, 3);
+            
             firstPlayerMatrix[0, 0] = 0;
             firstPlayerMatrix[0, 1] = lambda + (1 - lambda);
             firstPlayerMatrix[0, 2] = -lambda + (1 - lambda);

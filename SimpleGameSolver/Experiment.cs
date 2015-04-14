@@ -32,7 +32,7 @@ namespace SimpleGameSolver
             : this(
             name,
             game, 
-            new Situation(game.FirstPlayerMatrix.GetLength(0), game.FirstPlayerMatrix.GetLength(1)),
+            new Situation(game.FirstPlayerMatrix.RowCount, game.FirstPlayerMatrix.ColumnCount),
             new Dictionary<string, string>())
         {
         }
@@ -41,7 +41,7 @@ namespace SimpleGameSolver
             : this(
             name,
             game, 
-            new Situation(game.FirstPlayerMatrix.GetLength(0), game.FirstPlayerMatrix.GetLength(1)),
+            new Situation(game.FirstPlayerMatrix.RowCount, game.FirstPlayerMatrix.ColumnCount),
             parameters)
         {
         }

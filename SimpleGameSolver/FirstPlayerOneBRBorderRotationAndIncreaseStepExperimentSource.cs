@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using MathNet.Numerics.LinearAlgebra;
 
 namespace SimpleGameSolver
 {
@@ -65,7 +66,9 @@ namespace SimpleGameSolver
             secondPlayerMatrix[2, 1] = 0;
             secondPlayerMatrix[2, 2] = 0;
 
-            return new BimatrixGame(firstPlayerMatrix, secondPlayerMatrix);
+            return new BimatrixGame(
+                Matrix<double>.Build.DenseOfArray(firstPlayerMatrix),
+                Matrix<double>.Build.DenseOfArray(secondPlayerMatrix));
         }
     }
 }
