@@ -8,9 +8,9 @@ using System.IO;
 
 namespace SimpleGameSolver
 {
-    public static class ExcelHelper
+    public class ExcelSummarySaver : ISummarySaver
     {
-        public static void SaveToFile(FileInfo file, ExperimentPortion experiment, BrownMethodBase method, MethodResult result)
+        public void SaveToFile(FileInfo file, ExperimentPortion experiment, BrownMethodBase method, MethodResult result)
         {
             using (var package = new ExcelPackage(file))
             {
@@ -108,7 +108,7 @@ namespace SimpleGameSolver
             }
         }
 
-        public static void SaveToFile(FileInfo file, Experiment experimentSource, BrownMethodBase method, IList<ExperimentPortionSummary> summaries)
+        public void SaveToFile(FileInfo file, Experiment experimentSource, BrownMethodBase method, IList<ExperimentPortionSummary> summaries)
         {
             using (var package = new ExcelPackage(file))
             {

@@ -63,7 +63,7 @@
     <Compile Include="BrownMethodSupExp.cs" />
     <Compile Include="DoctrinesGameExperimentSource.cs" />
     <Compile Include="DoctrinesGameLongCycleExperimentSource.cs" />
-    <Compile Include="ExcelHelper.cs" />
+    <Compile Include="ExcelSummarySaver.cs" />
     <Compile Include="ExperimentPortion.cs" />
     <Compile Include="Experimentator.cs" />
     <Compile Include="DynamicResourceLoader.cs" />
@@ -73,6 +73,7 @@
     <Compile Include="Experiment.cs" />
     <Compile Include="IncreaseStepAccurancy2x2.cs" />
     <Compile Include="IncreaseStepAccurancy3x3.cs" />
+    <Compile Include="ISummarySaver.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
