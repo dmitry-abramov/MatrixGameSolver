@@ -485,7 +485,7 @@
             this.ExecuteExperiment.TabIndex = 32;
             this.ExecuteExperiment.Text = "Провести";
             this.ExecuteExperiment.UseVisualStyleBackColor = true;
-            this.ExecuteExperiment.Click += new System.EventHandler(this.ExecuteExperiment_Click);
+            this.ExecuteExperiment.Click += new System.EventHandler(this.ExecuteExperimentButtonClick);
             // 
             // experimentProgressBar
             // 

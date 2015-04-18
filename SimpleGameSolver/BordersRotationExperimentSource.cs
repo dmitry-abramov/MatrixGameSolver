@@ -15,7 +15,7 @@ namespace SimpleGameSolver
             get { return "In this experiment we rotate borders of BR areas of both players"; }
         }
 
-        public override IList<ExperimentPortion> GetExperiments()
+        public override IList<ExperimentPortion> GetExperimentPortion()
         {
             var experiments = new List<ExperimentPortion>();
 

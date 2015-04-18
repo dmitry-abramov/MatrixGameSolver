@@ -29,7 +29,7 @@ namespace SimpleGameSolver
             return methods;
         }
 
-        public static IList<Experiment> GetExperimentSources()
+        public static IList<Experiment> GetExperiments()
         {
             var sources = new List<Experiment>();
 

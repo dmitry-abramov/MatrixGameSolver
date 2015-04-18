@@ -18,7 +18,7 @@ namespace SimpleGameSolver
             get { return "Step increase with coefficient"; }
         }
 
-        public override IList<ExperimentPortion> GetExperiments()
+        public override IList<ExperimentPortion> GetExperimentPortion()
         {
             var fpPayoffs = new double[3, 3]
             {

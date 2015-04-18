@@ -18,7 +18,7 @@ namespace SimpleGameSolver
             get { return "One BR border rotation and increase step"; }
         }
 
-        public override IList<ExperimentPortion> GetExperiments()
+        public override IList<ExperimentPortion> GetExperimentPortion()
         {
             var experiments = new List<ExperimentPortion>();
 

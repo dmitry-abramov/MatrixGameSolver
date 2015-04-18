@@ -9,7 +9,7 @@ namespace SimpleGameSolver
 
         public abstract string Description { get; }
 
-        public abstract IList<ExperimentPortion> GetExperiments();
+        public abstract IList<ExperimentPortion> GetExperimentPortion();
 
         // todo : remove
         public override string ToString()

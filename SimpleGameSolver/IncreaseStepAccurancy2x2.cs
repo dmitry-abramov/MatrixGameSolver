@@ -32,7 +32,7 @@ namespace SimpleGameSolver
             get { return "Increase step accurancy 2x2"; }
         }
 
-        public override IList<ExperimentPortion> GetExperiments()
+        public override IList<ExperimentPortion> GetExperimentPortion()
         {
             var gamesCount = 50;
 

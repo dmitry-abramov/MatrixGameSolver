@@ -18,7 +18,7 @@ namespace SimpleGameSolver
             get { return "Doctrines game long cycle"; }
         }
 
-        public override IList<ExperimentPortion> GetExperiments()
+        public override IList<ExperimentPortion> GetExperimentPortion()
         {
             var fpPayoffs = new double[8, 8]
             {

@@ -8,7 +8,7 @@ namespace SimpleGameSolver
 {
     public class ExperimentPortionSummary
     {
-        public ExperimentPortion Experiment { get; private set; }
+        public ExperimentPortion ExperimentPortion { get; private set; }
 
         public Situation Result { get; private set; }
 
@@ -16,7 +16,7 @@ namespace SimpleGameSolver
         {
             get
             {
-                return GetPayoff(Experiment.Game.FirstPlayerMatrix, Result);
+                return GetPayoff(ExperimentPortion.Game.FirstPlayerMatrix, Result);
             }
         }
 
@@ -24,7 +24,7 @@ namespace SimpleGameSolver
         {
             get
             {
-                return GetPayoff(Experiment.Game.SecondPlayerMatrix, Result);
+                return GetPayoff(ExperimentPortion.Game.SecondPlayerMatrix, Result);
             }
         }
 
@@ -35,7 +35,7 @@ namespace SimpleGameSolver
             {
                 var v1k = double.MinValue;
 
-                var firstPlayerMatrix = Experiment.Game.FirstPlayerMatrix;
+                var firstPlayerMatrix = ExperimentPortion.Game.FirstPlayerMatrix;
                 var secondPlayerNormalizedStrategy = Result.SecondPlayerStrategy.Normalize().ToList();
 
                 for (var i = 0; i < firstPlayerMatrix.RowCount; i++)
@@ -63,7 +63,7 @@ namespace SimpleGameSolver
             {
                 var v2k = double.MinValue;
 
-                var secondPlayerMatrix = Experiment.Game.SecondPlayerMatrix;
+                var secondPlayerMatrix = ExperimentPortion.Game.SecondPlayerMatrix;
                 var firstPlayerNormalizedStrategy = Result.FirstPlayerStrategy.Normalize().ToList();
 
                 for (var j = 0; j < secondPlayerMatrix.ColumnCount; j++)
@@ -86,7 +86,7 @@ namespace SimpleGameSolver
 
         public ExperimentPortionSummary(ExperimentPortion experiment, Situation result)
         {
-            Experiment = experiment;
+            ExperimentPortion = experiment;
             Result = result;
         }
 

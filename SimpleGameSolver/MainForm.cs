@@ -31,7 +31,7 @@ namespace SimpleGameSolver
             methodList.ValueMember = "Name";
             methodList.SelectedIndex = 0;
                         
-            experimentList.Items.AddRange(DynamicResourceLoader.GetExperimentSources().ToArray());
+            experimentList.Items.AddRange(DynamicResourceLoader.GetExperiments().ToArray());
             experimentList.DisplayMember = "Name";
             experimentList.ValueMember = "Name";
             experimentList.SelectedIndex = 0;
@@ -193,12 +193,12 @@ namespace SimpleGameSolver
             }
         }
 
-        private void ExecuteExperiment_Click(object sender, EventArgs e)
+        private void ExecuteExperimentButtonClick(object sender, EventArgs e)
         {
-            var experimentSource = (Experiment)experimentList.SelectedItem;
+            var experiment = (Experiment)experimentList.SelectedItem;
             var method = (BrownMethodBase)methodList.SelectedItem;
 
-            var experimentator = new Experimentator(experimentSource, method, experimentProgressBar);
+            var experimentator = new Experimentator(experiment, method, experimentProgressBar);
 
             experimentator.MakeExperiment();
         }
