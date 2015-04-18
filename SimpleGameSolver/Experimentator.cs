@@ -12,13 +12,13 @@ namespace SimpleGameSolver
     {
         private ProgressBar ProgressBar { get; set; }
 
-        public ExperimentSourceBase ExperimentSource { get; private set; }
+        public Experiment ExperimentSource { get; private set; }
 
         public BrownMethodBase SolveMethod { get; private set; }
 
         public double Progress { get; private set; }
 
-        public Experimentator(ExperimentSourceBase experimentSource, BrownMethodBase solveMethod)
+        public Experimentator(Experiment experimentSource, BrownMethodBase solveMethod)
         {
             Progress = 0;
             ExperimentSource = experimentSource;
@@ -26,7 +26,7 @@ namespace SimpleGameSolver
             ProgressBar = new ProgressBar();
         }
 
-        public Experimentator(ExperimentSourceBase experimentSource, BrownMethodBase solveMethod, ProgressBar progressBar)
+        public Experimentator(Experiment experimentSource, BrownMethodBase solveMethod, ProgressBar progressBar)
         {
             Progress = 0;
             ExperimentSource = experimentSource;
@@ -36,7 +36,7 @@ namespace SimpleGameSolver
 
         public void MakeExperiment()
         {
-            var summaries = new List<ExperimentSummary>();
+            var summaries = new List<ExperimentPortionSummary>();
             var experiments = ExperimentSource.GetExperiments();
 
             var folderName = string.Format("experiment_{0}_{1}", experiments[0].Name, DateTime.UtcNow.ToString("yyyy_MM_dd_hh_mm_ss_fff"));
@@ -54,7 +54,7 @@ namespace SimpleGameSolver
                 var experiment = experiments[i];
                 var experimentResult = SolveMethod.Solve(experiment.Game, experiment.StartSituation, experiment.Parameters);
 
-                summaries.Add(new ExperimentSummary(experiment, experimentResult.Result));
+                summaries.Add(new ExperimentPortionSummary(experiment, experimentResult.Result));
 
                 var fileName = string.Format("{0}\\{1}_experiment_{2}.xlsx", folderName, experiment.Name, i.ToString());
                 var file = new FileInfo(fileName);

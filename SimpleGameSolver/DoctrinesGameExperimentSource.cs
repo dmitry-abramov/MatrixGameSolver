@@ -6,7 +6,7 @@ using MathNet.Numerics.LinearAlgebra;
 
 namespace SimpleGameSolver
 {
-    public class DoctrinesGameExperimentSource : ExperimentSourceBase
+    public class DoctrinesGameExperimentSource : Experiment
     {
         public override string Name
         {
@@ -18,7 +18,7 @@ namespace SimpleGameSolver
             get { return "Doctrines game experiment"; }
         }
 
-        public override IList<Experiment> GetExperiments()
+        public override IList<ExperimentPortion> GetExperiments()
         {
             var fpPayoffs = new double[8, 8]
             {
@@ -43,7 +43,7 @@ namespace SimpleGameSolver
                 { 0,  0,  0,  0,  0,  0, -25,   25}
             };
 
-            var experiments = new List<Experiment>();
+            var experiments = new List<ExperimentPortion>();
 
             for (int i = 0; i < 8; i++)
             {
@@ -66,7 +66,7 @@ namespace SimpleGameSolver
 
                     var startSituation = new Situation(fpStrategy, spStrategy);
 
-                    experiments.Add(new Experiment(Name, game, startSituation, parameters));
+                    experiments.Add(new ExperimentPortion(Name, game, startSituation, parameters));
                 }
             }
 

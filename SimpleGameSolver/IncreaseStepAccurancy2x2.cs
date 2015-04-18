@@ -6,11 +6,11 @@ using MathNet.Numerics.LinearAlgebra;
 
 namespace SimpleGameSolver
 {
-    public class IncreaseStepAccurancy2x2 : ExperimentSourceBase
+    public class IncreaseStepAccurancy2x2 : Experiment
     {
         private readonly Random rnd;
 
-        private IList<int> stepsCount = new List<int> { 10, 25, 50, 75, 100, 150, 200, 250, 300, 350, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2500, 3000 };
+        private IList<int> stepsCount = new List<int> { 10, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1125, 1250, 1375, 1500 };
 
         public IncreaseStepAccurancy2x2()
         {
@@ -32,11 +32,11 @@ namespace SimpleGameSolver
             get { return "Increase step accurancy 2x2"; }
         }
 
-        public override IList<Experiment> GetExperiments()
+        public override IList<ExperimentPortion> GetExperiments()
         {
             var gamesCount = 50;
 
-            var experiments = new List<Experiment>();
+            var experiments = new List<ExperimentPortion>();
 
             for (int gameNumber = 0; gameNumber < gamesCount; gameNumber++)
             {
@@ -52,7 +52,7 @@ namespace SimpleGameSolver
                         { "stepIncreaseCoefficient", "2" }
                     };
 
-                    experiments.Add(new Experiment(Name, game, parameters));
+                    experiments.Add(new ExperimentPortion(Name, game, parameters));
                 }
             }
 

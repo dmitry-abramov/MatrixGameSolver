@@ -1,49 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace SimpleGameSolver
 {
-    public class Experiment
+    // todo : it should be interface
+    public abstract class Experiment
     {
-        public string Name { get; private set; }
+        public abstract string Name { get; }
 
-        public BimatrixGame Game { get; private set; }
-        
-        public Situation StartSituation { get; private set; }
+        public abstract string Description { get; }
 
-        public IDictionary<string, string> Parameters { get; private set; }
-        
-        public Experiment(string name, BimatrixGame game, Situation startSituation, IDictionary<string, string> parameters)
+        public abstract IList<ExperimentPortion> GetExperiments();
+
+        // todo : remove
+        public override string ToString()
         {
-            Name = name;
-            Game = game;
-            StartSituation = startSituation;
-            Parameters = parameters;
-        }
-
-        public Experiment(string name, BimatrixGame game, Situation startSituation)
-            : this(name, game, startSituation, new Dictionary<string, string>())
-        { 
-        }
-
-        public Experiment(string name, BimatrixGame game)
-            : this(
-            name,
-            game, 
-            new Situation(game.FirstPlayerMatrix.RowCount, game.FirstPlayerMatrix.ColumnCount),
-            new Dictionary<string, string>())
-        {
-        }
-
-        public Experiment(string name,BimatrixGame game, IDictionary<string, string> parameters)
-            : this(
-            name,
-            game, 
-            new Situation(game.FirstPlayerMatrix.RowCount, game.FirstPlayerMatrix.ColumnCount),
-            parameters)
-        {
+            return Name;
         }
     }
 }

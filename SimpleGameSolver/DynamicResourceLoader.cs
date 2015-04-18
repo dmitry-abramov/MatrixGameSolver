@@ -29,20 +29,20 @@ namespace SimpleGameSolver
             return methods;
         }
 
-        public static IList<ExperimentSourceBase> GetExperimentSources()
+        public static IList<Experiment> GetExperimentSources()
         {
-            var sources = new List<ExperimentSourceBase>();
+            var sources = new List<Experiment>();
 
             string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
             foreach (string dll in GetFiles(path, "*.exe|*.dll", SearchOption.AllDirectories))
             {
                 var assembly = Assembly.LoadFile(dll);
-                var sourceTypes = assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(ExperimentSourceBase)) && !t.IsAbstract);
+                var sourceTypes = assembly.GetTypes().Where(t => t.IsSubclassOf(typeof(Experiment)) && !t.IsAbstract);
 
                 foreach (var sourceType in sourceTypes)
                 {
-                    sources.Add((ExperimentSourceBase)Activator.CreateInstance(sourceType));
+                    sources.Add((Experiment)Activator.CreateInstance(sourceType));
                 }
             }
 

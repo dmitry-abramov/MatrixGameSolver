@@ -64,13 +64,13 @@
     <Compile Include="DoctrinesGameExperimentSource.cs" />
     <Compile Include="DoctrinesGameLongCycleExperimentSource.cs" />
     <Compile Include="ExcelHelper.cs" />
-    <Compile Include="Experiment.cs" />
+    <Compile Include="ExperimentPortion.cs" />
     <Compile Include="Experimentator.cs" />
     <Compile Include="DynamicResourceLoader.cs" />
-    <Compile Include="ExperimentSummary.cs" />
+    <Compile Include="ExperimentPortionSummary.cs" />
     <Compile Include="FirstPlayerOneBRBorderRotationAndIncreaseStepExperimentSource.cs" />
     <Compile Include="IEnumerableExtensions.cs" />
-    <Compile Include="ExperimentSourceBase.cs" />
+    <Compile Include="Experiment.cs" />
     <Compile Include="IncreaseStepAccurancy2x2.cs" />
     <Compile Include="IncreaseStepAccurancy3x3.cs" />
     <Compile Include="MainForm.cs">

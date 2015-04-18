@@ -6,9 +6,9 @@ using MathNet.Numerics.LinearAlgebra;
 
 namespace SimpleGameSolver
 {
-    public class ExperimentSummary
+    public class ExperimentPortionSummary
     {
-        public Experiment Experiment { get; private set; }
+        public ExperimentPortion Experiment { get; private set; }
 
         public Situation Result { get; private set; }
 
@@ -84,7 +84,7 @@ namespace SimpleGameSolver
             }
         }
 
-        public ExperimentSummary(Experiment experiment, Situation result)
+        public ExperimentPortionSummary(ExperimentPortion experiment, Situation result)
         {
             Experiment = experiment;
             Result = result;

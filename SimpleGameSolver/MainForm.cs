@@ -195,7 +195,7 @@ namespace SimpleGameSolver
 
         private void ExecuteExperiment_Click(object sender, EventArgs e)
         {
-            var experimentSource = (ExperimentSourceBase)experimentList.SelectedItem;
+            var experimentSource = (Experiment)experimentList.SelectedItem;
             var method = (BrownMethodBase)methodList.SelectedItem;
 
             var experimentator = new Experimentator(experimentSource, method, experimentProgressBar);

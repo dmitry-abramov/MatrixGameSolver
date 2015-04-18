@@ -6,7 +6,7 @@ using MathNet.Numerics.LinearAlgebra;
 
 namespace SimpleGameSolver
 {
-    public class FirstPlayerOneBRBorderRotationAndIncreaseStepExperimentSource : ExperimentSourceBase
+    public class FirstPlayerOneBRBorderRotationAndIncreaseStepExperimentSource : Experiment
     {
         public override string Name
         {
@@ -18,9 +18,9 @@ namespace SimpleGameSolver
             get { return "One BR border rotation and increase step"; }
         }
 
-        public override IList<Experiment> GetExperiments()
+        public override IList<ExperimentPortion> GetExperiments()
         {
-            var experiments = new List<Experiment>();
+            var experiments = new List<ExperimentPortion>();
 
             for (double c = -0.45; c <= 0.5; c += 0.05)
             {
@@ -33,7 +33,7 @@ namespace SimpleGameSolver
                             {"c", c.ToString()},
                             {"stepIncreaseCoefficient", stepIncreaseCoefficient.ToString() }
                         };
-                    var experiment = new Experiment(Name, GetGame(c), parameters);
+                    var experiment = new ExperimentPortion(Name, GetGame(c), parameters);
                     experiments.Add(experiment);
                 }
             }

@@ -6,7 +6,7 @@ using MathNet.Numerics.LinearAlgebra;
 
 namespace SimpleGameSolver
 {
-    public class StepIncreaseCoefficientExperimentSource : ExperimentSourceBase
+    public class StepIncreaseCoefficientExperimentSource : Experiment
     {
         public override string Name
         {
@@ -18,7 +18,7 @@ namespace SimpleGameSolver
             get { return "Step increase with coefficient"; }
         }
 
-        public override IList<Experiment> GetExperiments()
+        public override IList<ExperimentPortion> GetExperiments()
         {
             var fpPayoffs = new double[3, 3]
             {
@@ -33,7 +33,7 @@ namespace SimpleGameSolver
                 { 0,  1,  0}
             };
 
-            var experiments = new List<Experiment>();
+            var experiments = new List<ExperimentPortion>();
 
             for (int i = 0; i < 3; i++)
             {
@@ -61,7 +61,7 @@ namespace SimpleGameSolver
 
                         var startSituation = new Situation(fpStrategy, spStrategy);
 
-                        experiments.Add(new Experiment(Name, game, startSituation, parameters));
+                        experiments.Add(new ExperimentPortion(Name, game, startSituation, parameters));
                     }
                 }
             }

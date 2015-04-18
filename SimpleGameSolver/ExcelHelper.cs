@@ -10,7 +10,7 @@ namespace SimpleGameSolver
 {
     public static class ExcelHelper
     {
-        public static void SaveToFile(FileInfo file, Experiment experiment, BrownMethodBase method, MethodResult result)
+        public static void SaveToFile(FileInfo file, ExperimentPortion experiment, BrownMethodBase method, MethodResult result)
         {
             using (var package = new ExcelPackage(file))
             {
@@ -108,7 +108,7 @@ namespace SimpleGameSolver
             }
         }
 
-        public static void SaveToFile(FileInfo file, ExperimentSourceBase experimentSource, BrownMethodBase method, IList<ExperimentSummary> summaries)
+        public static void SaveToFile(FileInfo file, Experiment experimentSource, BrownMethodBase method, IList<ExperimentPortionSummary> summaries)
         {
             using (var package = new ExcelPackage(file))
             {

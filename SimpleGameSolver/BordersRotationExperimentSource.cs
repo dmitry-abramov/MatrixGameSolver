@@ -3,7 +3,7 @@ using MathNet.Numerics.LinearAlgebra;
 
 namespace SimpleGameSolver
 {
-    public class BordersRotationExperimentSource : ExperimentSourceBase
+    public class BordersRotationExperimentSource : Experiment
     {
         public override string Name
         {
@@ -15,9 +15,9 @@ namespace SimpleGameSolver
             get { return "In this experiment we rotate borders of BR areas of both players"; }
         }
 
-        public override IList<Experiment> GetExperiments()
+        public override IList<ExperimentPortion> GetExperiments()
         {
-            var experiments = new List<Experiment>();
+            var experiments = new List<ExperimentPortion>();
 
             for (double lambda = 0; lambda <= 1; lambda += 0.01)
             {
@@ -26,7 +26,7 @@ namespace SimpleGameSolver
                         {"iterationsCount", "500"},
                         {"lambda", lambda.ToString()}
                     };
-                var experiment = new Experiment(Name, GetGame(lambda), parameters);
+                var experiment = new ExperimentPortion(Name, GetGame(lambda), parameters);
                 experiments.Add(experiment);
             }
 
