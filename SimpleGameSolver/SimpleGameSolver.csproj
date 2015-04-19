@@ -64,6 +64,12 @@
     <Compile Include="DoctrinesGameExperimentSource.cs" />
     <Compile Include="DoctrinesGameLongCycleExperimentSource.cs" />
     <Compile Include="ExcelSummarySaver.cs" />
+    <Compile Include="ExperimentExecutionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExperimentExecutionForm.Designer.cs">
+      <DependentUpon>ExperimentExecutionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Experiments\EmptyExperiment.cs" />
     <Compile Include="Experiments\UiConfigurator.cs">
       <SubType>UserControl</SubType>
@@ -93,6 +99,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Situation.cs" />
     <Compile Include="StepIncreaseCoefficientExperimentSource.cs" />
+    <EmbeddedResource Include="ExperimentExecutionForm.resx">
+      <DependentUpon>ExperimentExecutionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Experiments\UiConfigurator.resx">
       <DependentUpon>UiConfigurator.cs</DependentUpon>
     </EmbeddedResource>

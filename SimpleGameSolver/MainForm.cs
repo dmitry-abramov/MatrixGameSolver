@@ -30,12 +30,7 @@ namespace SimpleGameSolver
             methodList.Items.AddRange(DynamicResourceLoader.GetBrownMethodImplementations().ToArray());
             methodList.DisplayMember = "Name";
             methodList.ValueMember = "Name";
-            methodList.SelectedIndex = 0;
-                        
-            experimentList.Items.AddRange(DynamicResourceLoader.GetExperiments().ToArray());
-            experimentList.DisplayMember = "Name";
-            experimentList.ValueMember = "Name";
-            experimentList.SelectedIndex = 0;
+            methodList.SelectedIndex = 0;            
         }
 
         private void FirstPlayerStrategesCount_ValueChanged(object sender, EventArgs e)
@@ -196,12 +191,7 @@ namespace SimpleGameSolver
 
         private void ExecuteExperimentButtonClick(object sender, EventArgs e)
         {
-            var experiment = (Experiment)experimentList.SelectedItem;
-            var method = (BrownMethodBase)methodList.SelectedItem;
-
-            var experimentator = new Experimentator(experiment, method, experimentProgressBar);
-
-            experimentator.MakeExperiment();
+            new ExperimentExecutionForm().ShowDialog(this);
         }
     }
 }
