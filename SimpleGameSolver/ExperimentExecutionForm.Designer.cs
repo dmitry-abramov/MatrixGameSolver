@@ -50,6 +50,8 @@
             // 
             // experimentProgressBar
             // 
+            this.experimentProgressBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.experimentProgressBar.Location = new System.Drawing.Point(12, 297);
             this.experimentProgressBar.Name = "experimentProgressBar";
             this.experimentProgressBar.Size = new System.Drawing.Size(417, 30);
@@ -57,6 +59,7 @@
             // 
             // ExecuteExperimentBtn
             // 
+            this.ExecuteExperimentBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ExecuteExperimentBtn.Location = new System.Drawing.Point(435, 299);
             this.ExecuteExperimentBtn.Name = "ExecuteExperimentBtn";
             this.ExecuteExperimentBtn.Size = new System.Drawing.Size(76, 29);
@@ -67,6 +70,7 @@
             // 
             // StopExecutionBtn
             // 
+            this.StopExecutionBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.StopExecutionBtn.Location = new System.Drawing.Point(517, 298);
             this.StopExecutionBtn.Name = "StopExecutionBtn";
             this.StopExecutionBtn.Size = new System.Drawing.Size(76, 29);
@@ -85,11 +89,13 @@
             // 
             // methodList
             // 
+            this.methodList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.methodList.DisplayMember = "0";
             this.methodList.FormattingEnabled = true;
             this.methodList.Location = new System.Drawing.Point(133, 33);
             this.methodList.Name = "methodList";
-            this.methodList.Size = new System.Drawing.Size(228, 21);
+            this.methodList.Size = new System.Drawing.Size(460, 21);
             this.methodList.TabIndex = 32;
             // 
             // label11
@@ -103,13 +109,15 @@
             // 
             // experimentList
             // 
+            this.experimentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.experimentList.DisplayMember = "0";
             this.experimentList.FormattingEnabled = true;
             this.experimentList.Location = new System.Drawing.Point(133, 6);
             this.experimentList.Name = "experimentList";
-            this.experimentList.Size = new System.Drawing.Size(228, 21);
+            this.experimentList.Size = new System.Drawing.Size(460, 21);
             this.experimentList.TabIndex = 35;
-            this.experimentList.SelectedIndexChanged += new System.EventHandler(this.ExperimentListSelectedIndexChanged);            
+            this.experimentList.SelectedIndexChanged += new System.EventHandler(this.ExperimentListSelectedIndexChanged);
             // 
             // ExperimentExecutionForm
             // 

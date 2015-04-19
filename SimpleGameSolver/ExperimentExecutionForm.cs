@@ -29,8 +29,8 @@ namespace SimpleGameSolver
 
         private void ExecuteExperimentBtnClick(object sender, EventArgs e)
         {
-            var experiment = (Experiment)experimentList.SelectedItem;
-            var method = (BrownMethodBase)methodList.SelectedItem;
+            var method = GetSelectedMethod();
+            var experiment = GetConfiguredExperiment();
 
             var experimentator = new Experimentator(experiment, method, experimentProgressBar);
 
@@ -43,6 +43,17 @@ namespace SimpleGameSolver
 
             UiConfiguratorContainer.Controls.Clear();
             UiConfiguratorContainer.Controls.Add(experiment.GetUiConfigurator());
+        }
+
+        private BrownMethodBase GetSelectedMethod()
+        {
+            return (BrownMethodBase)methodList.SelectedItem;
+        }
+
+        private Experiment GetConfiguredExperiment()
+        {
+            var configurator = (UiConfigurator)UiConfiguratorContainer.Controls[0];
+            return configurator.ConfiguredExperiment;
         }
     }
 }
