@@ -64,14 +64,21 @@
     <Compile Include="DoctrinesGameExperimentSource.cs" />
     <Compile Include="DoctrinesGameLongCycleExperimentSource.cs" />
     <Compile Include="ExcelSummarySaver.cs" />
-    <Compile Include="Experiment\ExperimentPortion.cs" />
+    <Compile Include="Experiments\EmptyExperiment.cs" />
+    <Compile Include="Experiments\UiConfigurator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Experiments\UiConfigurator.Designer.cs">
+      <DependentUpon>UiConfigurator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Experiments\ExperimentPortion.cs" />
     <Compile Include="Experimentator.cs" />
     <Compile Include="DynamicResourceLoader.cs" />
-    <Compile Include="Experiment\ExperimentPortionSummary.cs" />
-    <Compile Include="Experiment\ExperimentSummary.cs" />
+    <Compile Include="Experiments\ExperimentPortionSummary.cs" />
+    <Compile Include="Experiments\ExperimentSummary.cs" />
     <Compile Include="FirstPlayerOneBRBorderRotationAndIncreaseStepExperimentSource.cs" />
     <Compile Include="IEnumerableExtensions.cs" />
-    <Compile Include="Experiment\Experiment.cs" />
+    <Compile Include="Experiments\Experiment.cs" />
     <Compile Include="IncreaseStepAccurancy2x2.cs" />
     <Compile Include="IncreaseStepAccurancy3x3.cs" />
     <Compile Include="ISummarySaver.cs" />
@@ -86,6 +93,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Situation.cs" />
     <Compile Include="StepIncreaseCoefficientExperimentSource.cs" />
+    <EmbeddedResource Include="Experiments\UiConfigurator.resx">
+      <DependentUpon>UiConfigurator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>

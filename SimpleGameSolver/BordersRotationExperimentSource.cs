@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using MathNet.Numerics.LinearAlgebra;
 
+using SimpleGameSolver.Experiments;
+
 namespace SimpleGameSolver
 {
     public class BordersRotationExperimentSource : Experiment

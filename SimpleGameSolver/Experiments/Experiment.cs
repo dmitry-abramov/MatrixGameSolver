@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 
-namespace SimpleGameSolver
-{
-    // todo : it should be interface
+namespace SimpleGameSolver.Experiments
+{    
     public abstract class Experiment
     {
         public abstract string Name { get; }
@@ -10,6 +9,11 @@ namespace SimpleGameSolver
         public abstract string Description { get; }
 
         public abstract IList<ExperimentPortion> GetExperimentPortion();
+
+        public virtual UiConfigurator GetUiConfigurator()
+        {
+            return new UiConfigurator(this);
+        }
 
         // todo : remove
         public override string ToString()

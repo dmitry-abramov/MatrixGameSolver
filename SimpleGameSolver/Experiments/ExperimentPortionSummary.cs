@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using MathNet.Numerics.LinearAlgebra;
 
-namespace SimpleGameSolver
+namespace SimpleGameSolver.Experiments
 {
     public class ExperimentPortionSummary
     {
