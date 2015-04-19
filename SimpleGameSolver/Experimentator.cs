@@ -38,7 +38,7 @@ namespace SimpleGameSolver
 
         public void MakeExperiment()
         {
-            var summaries = new List<ExperimentPortionSummary>();
+            var summary = new ExperimentSummary(Experiment.Name, Experiment.Description, SolveMethod.Name);
             var experimentPortions = Experiment.GetExperimentPortion();
 
             var folderName = string.Format("experiment_{0}_{1}", experimentPortions[0].Name, DateTime.UtcNow.ToString("yyyy_MM_dd_hh_mm_ss_fff"));
@@ -56,16 +56,16 @@ namespace SimpleGameSolver
                 var experimentPortion = experimentPortions[i];
                 var experimentPortionResult = SolveMethod.Solve(experimentPortion.Game, experimentPortion.StartSituation, experimentPortion.Parameters);
 
-                summaries.Add(new ExperimentPortionSummary(experimentPortion, experimentPortionResult.Result));
+                summary.Add(new ExperimentPortionSummary(experimentPortion, experimentPortionResult.Result));
 
                 var fileName = string.Format("{0}\\{1}_experiment_{2}.xlsx", folderName, experimentPortion.Name, i.ToString());
                 var file = new FileInfo(fileName);
-                SummarySaver.SaveToFile(file, experimentPortion, SolveMethod, experimentPortionResult);
+                SummarySaver.SaveToFile(file, experimentPortion, experimentPortionResult);
             }
 
             var summaryFileName = string.Format("{0}\\summary_{1}_{2}.xlsx", folderName, experimentPortions[0].Name, DateTime.UtcNow.ToString("yyyy_MM_dd_hh_mm_ss_fff"));
             var summaryFile = new FileInfo(summaryFileName);
-            SummarySaver.SaveToFile(summaryFile, Experiment, SolveMethod, summaries);
+            SummarySaver.SaveToFile(summaryFile, Experiment, summary);
         }
     }
 }

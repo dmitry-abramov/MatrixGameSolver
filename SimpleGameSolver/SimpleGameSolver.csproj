@@ -68,6 +68,7 @@
     <Compile Include="Experimentator.cs" />
     <Compile Include="DynamicResourceLoader.cs" />
     <Compile Include="ExperimentPortionSummary.cs" />
+    <Compile Include="ExperimentSummary.cs" />
     <Compile Include="FirstPlayerOneBRBorderRotationAndIncreaseStepExperimentSource.cs" />
     <Compile Include="IEnumerableExtensions.cs" />
     <Compile Include="Experiment.cs" />

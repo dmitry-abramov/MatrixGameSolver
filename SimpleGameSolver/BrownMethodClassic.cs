@@ -19,7 +19,7 @@ namespace SimpleGameSolver
             Int32.TryParse(parameters["iterationsCount"], out iterationsCount);
 
             // set start position
-            var result = new MethodResult();
+            var result = new MethodResult(Name);
 
             result.MethodTrace.Add(startSituation);
                 

@@ -8,8 +8,8 @@ namespace SimpleGameSolver
 {
     interface ISummarySaver
     {
-        void SaveToFile(FileInfo file, ExperimentPortion experimentPortion, BrownMethodBase method, MethodResult result);
+        void SaveToFile(FileInfo file, ExperimentPortion experimentPortion, MethodResult result);
 
-        void SaveToFile(FileInfo file, Experiment experiment, BrownMethodBase method, IList<ExperimentPortionSummary> summaries);
+        void SaveToFile(FileInfo file, ExperimentSummary summary);
     }
 }

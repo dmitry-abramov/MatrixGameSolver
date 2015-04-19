@@ -7,6 +7,12 @@ namespace SimpleGameSolver
 {
     public class MethodResult
     {
+        public string MethodName
+        {
+            get;
+            private set;
+        }
+
         public IList<Situation> MethodTrace
         {
             get;
@@ -21,9 +27,16 @@ namespace SimpleGameSolver
             }
         }
 
-        public MethodResult()
+        public MethodResult(string methodName)
         {
+            MethodName = methodName;
             MethodTrace = new List<Situation>();
+        }
+
+        public MethodResult(string methodName, IList<Situation> methodTrace)
+        {
+            MethodName = methodName;
+            MethodTrace = methodTrace;
         }
     }
 }

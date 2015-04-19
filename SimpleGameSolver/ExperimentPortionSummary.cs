@@ -84,9 +84,9 @@ namespace SimpleGameSolver
             }
         }
 
-        public ExperimentPortionSummary(ExperimentPortion experiment, Situation result)
+        public ExperimentPortionSummary(ExperimentPortion experimentPortion, Situation result)
         {
-            ExperimentPortion = experiment;
+            ExperimentPortion = experimentPortion;
             Result = result;
         }
 

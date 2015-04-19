@@ -28,7 +28,7 @@ namespace SimpleGameSolver
             ulong spStep = 1;
 
             // set start position
-            var result = new MethodResult();
+            var result = new MethodResult(Name);
 
             result.MethodTrace.Add(startSituation);
 
