@@ -71,6 +71,12 @@
       <DependentUpon>ExperimentExecutionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Experiments\EmptyExperiment.cs" />
+    <Compile Include="Experiments\EmptyUiConfigurator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Experiments\EmptyUiConfigurator.Designer.cs">
+      <DependentUpon>EmptyUiConfigurator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Experiments\UiConfigurator.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -87,6 +93,12 @@
     <Compile Include="Experiments\Experiment.cs" />
     <Compile Include="IncreaseStepAccurancy2x2.cs" />
     <Compile Include="IncreaseStepAccurancy3x3.cs" />
+    <Compile Include="IncreaseStepAccurancy3x3UiConfigurator.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="IncreaseStepAccurancy3x3UiConfigurator.Designer.cs">
+      <DependentUpon>IncreaseStepAccurancy3x3UiConfigurator.cs</DependentUpon>
+    </Compile>
     <Compile Include="ISummarySaver.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -102,8 +114,14 @@
     <EmbeddedResource Include="ExperimentExecutionForm.resx">
       <DependentUpon>ExperimentExecutionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Experiments\EmptyUiConfigurator.resx">
+      <DependentUpon>EmptyUiConfigurator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Experiments\UiConfigurator.resx">
       <DependentUpon>UiConfigurator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IncreaseStepAccurancy3x3UiConfigurator.resx">
+      <DependentUpon>IncreaseStepAccurancy3x3UiConfigurator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

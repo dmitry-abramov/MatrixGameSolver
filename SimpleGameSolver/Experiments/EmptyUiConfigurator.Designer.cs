@@ -1,6 +1,6 @@
 ﻿namespace SimpleGameSolver.Experiments
 {
-    partial class UiConfigurator
+    partial class EmptyUiConfigurator
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,20 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.NoConfigurationFieldsLbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // UiConfigurator
+            // NoConfigurationFieldsLbl
+            // 
+            this.NoConfigurationFieldsLbl.AutoSize = true;
+            this.NoConfigurationFieldsLbl.Location = new System.Drawing.Point(3, 0);
+            this.NoConfigurationFieldsLbl.Name = "NoConfigurationFieldsLbl";
+            this.NoConfigurationFieldsLbl.Size = new System.Drawing.Size(218, 13);
+            this.NoConfigurationFieldsLbl.TabIndex = 1;
+            this.NoConfigurationFieldsLbl.Text = "This experiment hasn\'t fields for configuration";
+            // 
+            // EmptyUiConfigurator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Name = "UiConfigurator";
-            this.Size = new System.Drawing.Size(240, 97);
+            this.Controls.Add(this.NoConfigurationFieldsLbl);
+            this.Name = "EmptyUiConfigurator";
+            this.Size = new System.Drawing.Size(224, 13);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Label NoConfigurationFieldsLbl;
     }
 }

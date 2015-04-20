@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace SimpleGameSolver.Experiments
 {
     public partial class UiConfigurator : UserControl
     {
         private Experiment experiment;
+
+        public UiConfigurator()
+            : this(new EmptyExperiment())
+        {
+        }
 
         public UiConfigurator(Experiment experiment)
         {

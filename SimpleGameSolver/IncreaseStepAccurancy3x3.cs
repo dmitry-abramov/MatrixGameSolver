@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Globalization;
 using MathNet.Numerics.LinearAlgebra;
 using SimpleGameSolver.Experiments;
 
@@ -10,17 +9,32 @@ namespace SimpleGameSolver
     public class IncreaseStepAccurancy3x3 : Experiment
     {
         private Random rnd;
+        private double stepIncreaseCoefficient;
 
         private IList<int> stepsCount = new List<int> { 10, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1125, 1250, 1375, 1500 };
 
         public IncreaseStepAccurancy3x3()
         {
             rnd = new Random();
+            stepIncreaseCoefficient = 2;
         }
 
         public IncreaseStepAccurancy3x3(int seed)
         {
             rnd = new Random(seed);
+            stepIncreaseCoefficient = 2;
+        }
+
+        public IncreaseStepAccurancy3x3(double stepIncreaseCoefficient)
+        {
+            rnd = new Random();
+            this.stepIncreaseCoefficient = stepIncreaseCoefficient;
+        }
+
+        public IncreaseStepAccurancy3x3(int seed, double stepIncreaseCoefficient)
+        {
+            rnd = new Random(seed);
+            this.stepIncreaseCoefficient = stepIncreaseCoefficient;
         }
 
         public override string Name
@@ -33,13 +47,18 @@ namespace SimpleGameSolver
             get { return "Increase step accurancy 3x3"; }
         }
 
+        public override UiConfigurator GetUiConfigurator()
+        {
+            return new IncreaseStepAccurancy3x3UiConfigurator();
+        }
+
         public override IList<ExperimentPortion> GetExperimentPortion()
         {
             var gamesCount = 50;
 
             var experiments = new List<ExperimentPortion>();
 
-            for (int gameNumber = 0; gameNumber < gamesCount; gameNumber++)
+            for (var gameNumber = 0; gameNumber < gamesCount; gameNumber++)
             {
                 var game = GetRandomGame();
 
@@ -49,12 +68,12 @@ namespace SimpleGameSolver
                     {
                         { "first player matrix", game.FirstPlayerMatrix.ToString() },
                         { "second player matrix", game.SecondPlayerMatrix.ToString() },
-                        { "iterationsCount", steps.ToString() },
-                        { "stepIncreaseCoefficient", "2" }
+                        { "iterationsCount", steps.ToString(CultureInfo.InvariantCulture) },
+                        { "stepIncreaseCoefficient", stepIncreaseCoefficient.ToString(CultureInfo.InvariantCulture) }
                     };
 
-                    var firstPlayerStartStrategy = new ulong[3]{ 1, 0, 0 };
-                    var secondPlayerStartStrategy = new ulong[3]{ 0, 0, 1 };
+                    var firstPlayerStartStrategy = new ulong[] { 1, 0, 0 };
+                    var secondPlayerStartStrategy = new ulong[] { 0, 0, 1 };
                     var startSituation = new Situation(firstPlayerStartStrategy, secondPlayerStartStrategy);
 
                     experiments.Add(new ExperimentPortion(Name, game, startSituation, parameters));
@@ -82,9 +101,9 @@ namespace SimpleGameSolver
             firstPlayerMatrix[1, 2] = rnd.Next(1, 10);
             firstPlayerMatrix[2, 1] = -firstPlayerMatrix[1, 2];
 
-            for (int i = 0; i < 3; i++)
+            for (var i = 0; i < 3; i++)
             {
-                for (int j = 0; j < 3; j++)
+                for (var j = 0; j < 3; j++)
                 {
                     secondPlayerMatrix[i, j] = -firstPlayerMatrix[i, j];
                 }

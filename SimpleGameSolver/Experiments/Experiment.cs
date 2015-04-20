@@ -12,7 +12,7 @@ namespace SimpleGameSolver.Experiments
 
         public virtual UiConfigurator GetUiConfigurator()
         {
-            return new UiConfigurator(this);
+            return new EmptyUiConfigurator(this);
         }
 
         // todo : remove
