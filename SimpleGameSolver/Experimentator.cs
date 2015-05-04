@@ -42,6 +42,11 @@ namespace SimpleGameSolver
             var summary = new ExperimentSummary(Experiment.Name, Experiment.Description, SolveMethod.Name);
             var experimentPortions = Experiment.GetExperimentPortion();
 
+            if (experimentPortions.Count == 0)
+            {
+                return;
+            }
+
             var folderName = string.Format("experiment_{0}_{1}", experimentPortions[0].Name, DateTime.UtcNow.ToString("yyyy_MM_dd_hh_mm_ss_fff"));
             var folder = new DirectoryInfo(folderName);
             folder.Create();

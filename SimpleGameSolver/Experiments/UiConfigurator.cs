@@ -4,8 +4,6 @@ namespace SimpleGameSolver.Experiments
 {
     public partial class UiConfigurator : UserControl
     {
-        private Experiment experiment;
-
         public UiConfigurator()
             : this(new EmptyExperiment())
         {
@@ -13,13 +11,14 @@ namespace SimpleGameSolver.Experiments
 
         public UiConfigurator(Experiment experiment)
         {
-            this.experiment = experiment;
+            this.ConfiguredExperiment = experiment;
             InitializeComponent();
         }
-        
+
         public virtual Experiment ConfiguredExperiment
         {
-            get { return experiment; }
+            get;
+            protected set;
         }
 
         public virtual bool IsConfigurationValid
