@@ -57,7 +57,7 @@ namespace SimpleGameSolver
             for (int i = 0; i < experimentPortions.Count(); i++)
             {
                 Progress = i / experimentPortions.Count();
-                ProgressBar.Value = i;
+                ProgressBar.Value = i + 1;
 
                 var experimentPortion = experimentPortions[i];
                 var experimentPortionResult = SolveMethod.Solve(experimentPortion.Game, experimentPortion.StartSituation, experimentPortion.Parameters);
