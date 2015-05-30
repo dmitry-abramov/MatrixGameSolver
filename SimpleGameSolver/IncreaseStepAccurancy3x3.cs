@@ -10,6 +10,7 @@ namespace SimpleGameSolver
     {
         private Random rnd;
         private double stepIncreaseCoefficient;
+        private int seed;
 
         private IList<int> stepsCount = new List<int> { 10, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1125, 1250, 1375, 1500 };
 
@@ -21,6 +22,7 @@ namespace SimpleGameSolver
 
         public IncreaseStepAccurancy3x3(int seed)
         {
+            this.seed = seed;
             rnd = new Random(seed);
             stepIncreaseCoefficient = 2;
         }
@@ -69,11 +71,12 @@ namespace SimpleGameSolver
                         { "first player matrix", game.FirstPlayerMatrix.ToString() },
                         { "second player matrix", game.SecondPlayerMatrix.ToString() },
                         { "iterationsCount", steps.ToString(CultureInfo.InvariantCulture) },
-                        { "stepIncreaseCoefficient", stepIncreaseCoefficient.ToString(CultureInfo.InvariantCulture) }
+                        { "stepIncreaseCoefficient", stepIncreaseCoefficient.ToString(CultureInfo.InvariantCulture) },
+                        { "seed", seed.ToString() }
                     };
 
                     var firstPlayerStartStrategy = new ulong[] { 1, 0, 0 };
-                    var secondPlayerStartStrategy = new ulong[] { 0, 0, 1 };
+                    var secondPlayerStartStrategy = new ulong[] { 1, 0, 0 };
                     var startSituation = new Situation(firstPlayerStartStrategy, secondPlayerStartStrategy);
 
                     experiments.Add(new ExperimentPortion(Name, game, startSituation, parameters));

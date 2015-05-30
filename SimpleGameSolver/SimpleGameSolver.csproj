@@ -109,6 +109,7 @@
     <Compile Include="BrownMethod\MethodResult.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShapleyGame.cs" />
     <Compile Include="Situation.cs" />
     <Compile Include="StepIncreaseCoefficientExperimentSource.cs" />
     <EmbeddedResource Include="ExperimentExecutionForm.resx">

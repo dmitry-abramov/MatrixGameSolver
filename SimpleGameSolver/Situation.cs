@@ -54,9 +54,18 @@ namespace SimpleGameSolver
             SecondPlayerStrategy = secondPlayerStrategy;
         }
 
+        public override string ToString()
+        {
+            return string.Format("({0}) ({1})", 
+                string.Join(",", FirstPlayerStrategy),
+                string.Join(",", SecondPlayerStrategy));
+        }
+
         private bool IsValid(ulong[] strategy)
         {
             return !(strategy.Any(e => e < 0) || strategy.Sum(e => (decimal)e) == 0);
         }
+
+        
     }
 }
