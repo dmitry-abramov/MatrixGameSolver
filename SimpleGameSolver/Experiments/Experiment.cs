@@ -14,11 +14,5 @@ namespace SimpleGameSolver.Experiments
         {
             return new EmptyUiConfigurator(this);
         }
-
-        // todo : remove
-        public override string ToString()
-        {
-            return Name;
-        }
     }
 }
