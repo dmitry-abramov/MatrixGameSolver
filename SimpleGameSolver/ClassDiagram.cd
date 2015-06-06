@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SimpleGameSolver.BrownMethodBase">
+    <Position X="3.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQKAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>BrownMethod\BrownMethodBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleGameSolver.BrownMethodClassic" Collapsed="true">
+    <Position X="0.75" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BrownMethod\BrownMethodClassic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleGameSolver.BrownMethodExp" Collapsed="true">
+    <Position X="2.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BrownMethodExp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleGameSolver.BrownMethodExp2" Collapsed="true">
+    <Position X="4.5" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BrownMethodExp2.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleGameSolver.BrownMethodSupExp" Collapsed="true">
+    <Position X="6.5" Y="6.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BrownMethodSupExp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleGameSolver.Experiments.UiConfigurator">
+    <Position X="9.5" Y="5.5" Width="2.25" />
+    <InheritanceLine Type="System.Windows.Forms.UserControl" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="10.625" Y="4.941" />
+        <Point X="10.625" Y="5.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAACAAAAAAAACAAAACBAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Experiments\UiConfigurator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Windows.Forms.UserControl" Collapsed="true">
+    <Position X="10" Y="4.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="SimpleGameSolver.Experiments.EmptyUiConfigurator" Collapsed="true">
+    <Position X="7.25" Y="9.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAQACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Experiments\EmptyUiConfigurator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleGameSolver.IncreaseStepAccurancy3x3UiConfigurator" Collapsed="true">
+    <Position X="9.25" Y="9.25" Width="3" />
+    <InheritanceLine Type="SimpleGameSolver.Experiments.UiConfigurator" FixedToPoint="true">
+      <Path>
+        <Point X="10.625" Y="8.405" />
+        <Point X="10.625" Y="9.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAgCoEgBAAAACAAAACBAAAQAAAADAQAQAAAAA=</HashCode>
+      <FileName>IncreaseStepAccurancy3x3UiConfigurator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleGameSolver.ShapleyClassUiConfigurator" Collapsed="true">
+    <Position X="12.5" Y="9.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAgCoEgBAAAACAAAACBAAAQAAAADAQAQAAAAA=</HashCode>
+      <FileName>ShapleyClassUiConfigurator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleGameSolver.Experimentator">
+    <Position X="4" Y="0.5" Width="2.25" />
+    <AssociationLine Name="Experiment" Type="SimpleGameSolver.Experiments.Experiment" FixedToPoint="true">
+      <Path>
+        <Point X="5.125" Y="0.5" />
+        <Point X="5.125" Y="0.125" />
+        <Point X="8.125" Y="0.125" />
+        <Point X="8.125" Y="0.5" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAgAAAACAAAAEAAAAAAAAAAAAAAAQAAAIAAAAACAAAA=</HashCode>
+      <FileName>Experimentator.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SummarySaver" />
+      <Property Name="SolveMethod" />
+      <Property Name="Experiment" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SimpleGameSolver.Situation">
+    <Position X="0.75" Y="8" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEAAgAAAAAEAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Situation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleGameSolver.BimatrixGame">
+    <Position X="3" Y="8" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>BimatrixGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleGameSolver.Experiments.Experiment">
+    <Position X="7.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAgCAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Experiments\Experiment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleGameSolver.BordersRotationExperiment" Collapsed="true">
+    <Position X="0.75" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAIAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BordersRotationExperiment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleGameSolver.DoctrinesGameExperiment" Collapsed="true">
+    <Position X="3.25" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DoctrinesGameExperiment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleGameSolver.ExponentialStepIncreaseExperiment" Collapsed="true">
+    <Position X="5.5" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAIAgAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExponentialStepIncreaseExperiment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleGameSolver.IncreaseStepAccurancy3x3Experiment" Collapsed="true">
+    <Position X="8.5" Y="3" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAMAAAAAYAgSAAAAAAAAAQAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>IncreaseStepAccurancy3x3Experiment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleGameSolver.ShapleyClassExperiment" Collapsed="true">
+    <Position X="11.5" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAMCAAAAYAgSAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ShapleyClassExperiment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimpleGameSolver.ShapleyGameExperiment" Collapsed="true">
+    <Position X="13.75" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAgAAAAAAAIAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ShapleyGameExperiment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="SimpleGameSolver.ISummarySaver">
+    <Position X="1.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ISummarySaver.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
