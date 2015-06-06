@@ -91,7 +91,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 509);
+            this.label7.Location = new System.Drawing.Point(12, 525);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(220, 13);
             this.label7.TabIndex = 27;
@@ -102,10 +102,10 @@
             this.SecondPlayerStartPosition.AllowUserToAddRows = false;
             this.SecondPlayerStartPosition.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.SecondPlayerStartPosition.ColumnHeadersVisible = false;
-            this.SecondPlayerStartPosition.Location = new System.Drawing.Point(14, 531);
+            this.SecondPlayerStartPosition.Location = new System.Drawing.Point(14, 547);
             this.SecondPlayerStartPosition.Name = "SecondPlayerStartPosition";
             this.SecondPlayerStartPosition.RowHeadersVisible = false;
-            this.SecondPlayerStartPosition.Size = new System.Drawing.Size(342, 30);
+            this.SecondPlayerStartPosition.Size = new System.Drawing.Size(342, 46);
             this.SecondPlayerStartPosition.TabIndex = 26;
             // 
             // label6
@@ -125,7 +125,7 @@
             this.FirstPlayerStartPosition.Location = new System.Drawing.Point(16, 476);
             this.FirstPlayerStartPosition.Name = "FirstPlayerStartPosition";
             this.FirstPlayerStartPosition.RowHeadersVisible = false;
-            this.FirstPlayerStartPosition.Size = new System.Drawing.Size(342, 30);
+            this.FirstPlayerStartPosition.Size = new System.Drawing.Size(342, 46);
             this.FirstPlayerStartPosition.TabIndex = 24;
             // 
             // label5
@@ -172,11 +172,6 @@
             // SecondPlayerStrategesCount
             // 
             this.SecondPlayerStrategesCount.Location = new System.Drawing.Point(254, 39);
-            this.SecondPlayerStrategesCount.Maximum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
             this.SecondPlayerStrategesCount.Minimum = new decimal(new int[] {
             2,
             0,
@@ -204,11 +199,6 @@
             // FirstPlayerStrategesCount
             // 
             this.FirstPlayerStrategesCount.Location = new System.Drawing.Point(254, 7);
-            this.FirstPlayerStrategesCount.Maximum = new decimal(new int[] {
-            3,
-            0,
-            0,
-            0});
             this.FirstPlayerStrategesCount.Minimum = new decimal(new int[] {
             2,
             0,
@@ -430,7 +420,7 @@
             // 
             // SolveButton
             // 
-            this.SolveButton.Location = new System.Drawing.Point(234, 605);
+            this.SolveButton.Location = new System.Drawing.Point(234, 625);
             this.SolveButton.Name = "SolveButton";
             this.SolveButton.Size = new System.Drawing.Size(122, 24);
             this.SolveButton.TabIndex = 29;
@@ -442,7 +432,7 @@
             // 
             this.methodList.DisplayMember = "0";
             this.methodList.FormattingEnabled = true;
-            this.methodList.Location = new System.Drawing.Point(128, 578);
+            this.methodList.Location = new System.Drawing.Point(128, 598);
             this.methodList.Name = "methodList";
             this.methodList.Size = new System.Drawing.Size(228, 21);
             this.methodList.TabIndex = 30;
@@ -450,7 +440,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(11, 581);
+            this.label10.Location = new System.Drawing.Point(11, 601);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(111, 13);
             this.label10.TabIndex = 31;
