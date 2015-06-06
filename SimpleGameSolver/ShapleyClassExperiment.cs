@@ -87,33 +87,48 @@ namespace SimpleGameSolver
             var firstPlayerMatrix = new double[3, 3];
             var secondPlayerMatrix = new double[3, 3];
 
-            firstPlayerMatrix[0, 1] = rnd.NextDouble();
-            firstPlayerMatrix[2, 0] = firstPlayerMatrix[0, 1];
-            firstPlayerMatrix[1, 2] = rnd.NextDouble();
+            var parameters = GetParameters();
 
-            firstPlayerMatrix[1, 0] = rnd.NextDouble();
-            firstPlayerMatrix[2, 1] = firstPlayerMatrix[1, 0];
-            firstPlayerMatrix[0, 2] = firstPlayerMatrix[1, 2] + rnd.NextDouble();
+            firstPlayerMatrix[0, 0] = parameters[2];
+            firstPlayerMatrix[1, 1] = parameters[2];
+            firstPlayerMatrix[2, 2] = parameters[2];
 
-            firstPlayerMatrix[0, 0] = firstPlayerMatrix[0, 1] + rnd.NextDouble();
-            firstPlayerMatrix[1, 1] = firstPlayerMatrix[1, 0] + rnd.NextDouble();
-            firstPlayerMatrix[2, 2] = firstPlayerMatrix[0, 2] + rnd.NextDouble();
+            firstPlayerMatrix[0, 1] = parameters[0];
+            firstPlayerMatrix[1, 2] = parameters[0];
+            firstPlayerMatrix[2, 0] = parameters[0];
 
-            secondPlayerMatrix[0, 1] = rnd.NextDouble();
-            secondPlayerMatrix[1, 2] = rnd.NextDouble();
-            secondPlayerMatrix[2, 0] = rnd.NextDouble();
+            firstPlayerMatrix[0, 2] = parameters[1];
+            firstPlayerMatrix[1, 0] = parameters[1];
+            firstPlayerMatrix[2, 1] = parameters[1];
 
-            secondPlayerMatrix[0, 0] = secondPlayerMatrix[0, 1] + rnd.NextDouble();
-            secondPlayerMatrix[1, 1] = secondPlayerMatrix[1, 2] + rnd.NextDouble();
-            secondPlayerMatrix[2, 2] = secondPlayerMatrix[2, 0] + rnd.NextDouble();
+            parameters = GetParameters();
 
-            secondPlayerMatrix[0, 2] = secondPlayerMatrix[0, 0] + rnd.NextDouble();
-            secondPlayerMatrix[1, 0] = secondPlayerMatrix[1, 1] + rnd.NextDouble();
-            secondPlayerMatrix[2, 1] = secondPlayerMatrix[2, 2] + rnd.NextDouble();
+            secondPlayerMatrix[0, 0] = parameters[1];
+            secondPlayerMatrix[1, 1] = parameters[1];
+            secondPlayerMatrix[2, 2] = parameters[1];
+
+            secondPlayerMatrix[0, 1] = parameters[0];
+            secondPlayerMatrix[1, 2] = parameters[0];
+            secondPlayerMatrix[2, 0] = parameters[0];
+
+            secondPlayerMatrix[0, 2] = parameters[2];
+            secondPlayerMatrix[1, 0] = parameters[2];
+            secondPlayerMatrix[2, 1] = parameters[2];
             
             return new BimatrixGame(
                 Matrix<double>.Build.DenseOfArray(firstPlayerMatrix),
                 Matrix<double>.Build.DenseOfArray(secondPlayerMatrix));
+        }
+
+        private double[] GetParameters()
+        {
+            var parameters = new double[3];
+
+            parameters[0] = rnd.NextDouble();
+            parameters[1] = (1 - parameters[0]) * rnd.NextDouble();
+            parameters[2] = 1 - parameters[0] - parameters[1];
+
+            return parameters.OrderBy(d => d).ToArray();
         }
     }
 }
