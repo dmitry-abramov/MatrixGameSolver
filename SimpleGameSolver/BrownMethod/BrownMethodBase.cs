@@ -12,7 +12,7 @@ namespace SimpleGameSolver
 
         public abstract MethodResult Solve(BimatrixGame game, Situation startSituation, IDictionary<string, string> parameters);
 
-        protected int Choice1(Matrix<double> A, ulong[] otherPlayerStartegy, int last)
+        protected int GetFirstPlayerChoice(Matrix<double> A, ulong[] otherPlayerStartegy, int last)
         {
             int result;
             List<double> tmp = new List<double>();//список выйгрышей при разном выборе стратегии
@@ -30,7 +30,7 @@ namespace SimpleGameSolver
             return result;
         }
 
-        protected int Choice2(Matrix<double> A, ulong[] otherPlayerStartegy, int last)
+        protected int GetSecondPlayerChoice(Matrix<double> A, ulong[] otherPlayerStartegy, int last)
         {
             int result;
             List<double> tmp = new List<double>();//список выйгрышей при разном выборе стратегии

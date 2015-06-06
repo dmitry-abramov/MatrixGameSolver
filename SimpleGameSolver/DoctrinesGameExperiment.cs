@@ -7,16 +7,16 @@ using SimpleGameSolver.Experiments;
 
 namespace SimpleGameSolver
 {
-    public class DoctrinesGameLongCycleExperimentSource : Experiment
+    public class DoctrinesGameExperiment : Experiment
     {
         public override string Name
         {
-            get { return "Doctrines game long cycle"; }
+            get { return "Doctrines game experiment"; }
         }
 
         public override string Description
         {
-            get { return "Doctrines game long cycle"; }
+            get { return "Doctrines game experiment"; }
         }
 
         public override IList<ExperimentPortion> GetExperimentPortion()
@@ -46,25 +46,30 @@ namespace SimpleGameSolver
 
             var experiments = new List<ExperimentPortion>();
 
-            var game = new BimatrixGame(
-                Matrix<double>.Build.DenseOfArray(fpPayoffs),
-                Matrix<double>.Build.DenseOfArray(spPayoffs));
-
-            var parameters = new Dictionary<string, string>()
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
                 {
-                    { "iterationsCount", "5000" }
-                };
+                    var game = new BimatrixGame(
+                        Matrix<double>.Build.DenseOfArray(fpPayoffs), 
+                        Matrix<double>.Build.DenseOfArray(spPayoffs));
 
-            var fpStrategy = new ulong[8];
-            var spStrategy = new ulong[8];
+                    var parameters = new Dictionary<string, string>()
+                    {
+                        { "iterationsCount", "200" }
+                    };
 
-            fpStrategy[7] = 1;
-            spStrategy[6] = 1;
+                    var fpStrategy = new ulong[8];
+                    var spStrategy = new ulong[8];
 
-            var startSituation = new Situation(fpStrategy, spStrategy);
+                    fpStrategy[i] = 1;
+                    spStrategy[j] = 1;
 
-            experiments.Add(new ExperimentPortion(Name, game, startSituation, parameters));
+                    var startSituation = new Situation(fpStrategy, spStrategy);
 
+                    experiments.Add(new ExperimentPortion(Name, game, startSituation, parameters));
+                }
+            }
 
             return experiments;
         }

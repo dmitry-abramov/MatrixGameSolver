@@ -6,7 +6,7 @@ using SimpleGameSolver.Experiments;
 
 namespace SimpleGameSolver
 {
-    public class IncreaseStepAccurancy3x3 : Experiment
+    public class IncreaseStepAccurancy3x3Experiment : Experiment
     {
         private Random rnd;
         private double stepIncreaseCoefficient;
@@ -14,26 +14,26 @@ namespace SimpleGameSolver
 
         private IList<int> stepsCount = new List<int> { 10, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1125, 1250, 1375, 1500 };
 
-        public IncreaseStepAccurancy3x3()
+        public IncreaseStepAccurancy3x3Experiment()
         {
             rnd = new Random();
             stepIncreaseCoefficient = 2;
         }
 
-        public IncreaseStepAccurancy3x3(int seed)
+        public IncreaseStepAccurancy3x3Experiment(int seed)
         {
             this.seed = seed;
             rnd = new Random(seed);
             stepIncreaseCoefficient = 2;
         }
 
-        public IncreaseStepAccurancy3x3(double stepIncreaseCoefficient)
+        public IncreaseStepAccurancy3x3Experiment(double stepIncreaseCoefficient)
         {
             rnd = new Random();
             this.stepIncreaseCoefficient = stepIncreaseCoefficient;
         }
 
-        public IncreaseStepAccurancy3x3(int seed, double stepIncreaseCoefficient)
+        public IncreaseStepAccurancy3x3Experiment(int seed, double stepIncreaseCoefficient)
         {
             rnd = new Random(seed);
             this.seed = seed;

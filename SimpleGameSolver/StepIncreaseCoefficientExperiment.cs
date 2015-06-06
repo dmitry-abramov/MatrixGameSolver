@@ -7,7 +7,7 @@ using SimpleGameSolver.Experiments;
 
 namespace SimpleGameSolver
 {
-    public class StepIncreaseCoefficientExperimentSource : Experiment
+    public class StepIncreaseCoefficientExperiment : Experiment
     {
         public override string Name
         {

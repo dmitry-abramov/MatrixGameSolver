@@ -7,18 +7,18 @@ using SimpleGameSolver.Experiments;
 
 namespace SimpleGameSolver
 {
-    public class IncreaseStepAccurancy2x2 : Experiment
+    public class IncreaseStepAccurancy2x2Experiment : Experiment
     {
         private readonly Random rnd;
 
         private IList<int> stepsCount = new List<int> { 10, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 600, 700, 800, 900, 1000, 1125, 1250, 1375, 1500 };
 
-        public IncreaseStepAccurancy2x2()
+        public IncreaseStepAccurancy2x2Experiment()
         {
             rnd = new Random();
         }
 
-        public IncreaseStepAccurancy2x2(int seed)
+        public IncreaseStepAccurancy2x2Experiment(int seed)
         {
             rnd = new Random(seed);
         }

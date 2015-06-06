@@ -7,7 +7,7 @@ using SimpleGameSolver.Experiments;
 
 namespace SimpleGameSolver
 {
-    public class FirstPlayerOneBRBorderRotationAndIncreaseStepExperimentSource : Experiment
+    public class FirstPlayerOneBRBorderRotationAndIncreaseStepExperiment : Experiment
     {
         public override string Name
         {

@@ -23,18 +23,18 @@ namespace SimpleGameSolver
         {
             if (useDefaultSeed.Checked && useDefaultStepIncreaseCoefficient.Checked)
             {
-                return new IncreaseStepAccurancy3x3();
+                return new IncreaseStepAccurancy3x3Experiment();
             }
             if (useDefaultSeed.Checked)
             {
-                return new IncreaseStepAccurancy3x3(GetUserStepIncreaseCoefficient());
+                return new IncreaseStepAccurancy3x3Experiment(GetUserStepIncreaseCoefficient());
             }
             if (useDefaultStepIncreaseCoefficient.Checked)
             {
-                return new IncreaseStepAccurancy3x3(GetUserSeed());
+                return new IncreaseStepAccurancy3x3Experiment(GetUserSeed());
             }
 
-            return new IncreaseStepAccurancy3x3(
+            return new IncreaseStepAccurancy3x3Experiment(
                 GetUserSeed(),
                 GetUserStepIncreaseCoefficient());
         }

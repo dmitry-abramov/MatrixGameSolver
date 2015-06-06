@@ -8,7 +8,7 @@ using System.Text;
 
 namespace SimpleGameSolver
 {
-    public class ShapleyGame : Experiment
+    public class ShapleyGameExperiment : Experiment
     {
         public override string Name
         {

@@ -33,8 +33,8 @@ namespace SimpleGameSolver
             result.MethodTrace.Add(startSituation);
 
             // first iteration
-            int fpc = Choice1(game.FirstPlayerMatrix, result.Result.SecondPlayerStrategy, 0);
-            int spc = Choice2(game.SecondPlayerMatrix, result.Result.FirstPlayerStrategy, 0);
+            int fpc = GetFirstPlayerChoice(game.FirstPlayerMatrix, result.Result.SecondPlayerStrategy, 0);
+            int spc = GetSecondPlayerChoice(game.SecondPlayerMatrix, result.Result.FirstPlayerStrategy, 0);
 
             List<ulong> fpNewStrategy = new List<ulong>(result.Result.FirstPlayerStrategy);
             fpNewStrategy[fpc]++;
@@ -47,8 +47,8 @@ namespace SimpleGameSolver
             // iterations from second
             for (int i = 1; i < iterationsCount; i++)
             {
-                int fpcNew = Choice1(game.FirstPlayerMatrix, result.Result.SecondPlayerStrategy, fpc);
-                int spcNew = Choice2(game.SecondPlayerMatrix, result.Result.FirstPlayerStrategy, spc);
+                int fpcNew = GetFirstPlayerChoice(game.FirstPlayerMatrix, result.Result.SecondPlayerStrategy, fpc);
+                int spcNew = GetSecondPlayerChoice(game.SecondPlayerMatrix, result.Result.FirstPlayerStrategy, spc);
 
                 fpStep = (ulong)(Math.Round(fpStep * stepIncreaseCoefficient));
                 if (spc != spcNew) fpStep = 1;

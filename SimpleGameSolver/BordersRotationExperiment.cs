@@ -5,7 +5,7 @@ using SimpleGameSolver.Experiments;
 
 namespace SimpleGameSolver
 {
-    public class BordersRotationExperimentSource : Experiment
+    public class BordersRotationExperiment : Experiment
     {
         public override string Name
         {
