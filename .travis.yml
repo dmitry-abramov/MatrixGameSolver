@@ -1,2 +1,4 @@
 language: csharp
 solution: MatrixGameSolver.sln
+notifications:
+  email: false
