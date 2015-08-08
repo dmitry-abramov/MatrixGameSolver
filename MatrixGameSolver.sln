@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\Unit
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B7615DEB-70F5-409D-A5B3-AC273BCE9F3A}"
 	ProjectSection(SolutionItems) = preProject
+		.travis.yml = .travis.yml
 		Local.testsettings = Local.testsettings
 		MatrixGameSolver.vsmdi = MatrixGameSolver.vsmdi
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
@@ -96,8 +97,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(Performance) = preSolution
-		HasPerformanceSessions = true
 	EndGlobalSection
 EndGlobal
