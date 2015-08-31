@@ -1,18 +1,15 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using GameTheory;
+using NUnit.Framework;
 using GameTheory.Strategies;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class StrategyBaseTests
     {
-        [TestMethod]
+        [Test]
         public void TestIntStrategy()
         {
             var strategy = new StrategyBase<int>(10);
@@ -20,7 +17,7 @@ namespace UnitTests
             Assert.AreEqual(10, strategy.Strategy);
         }
 
-        [TestMethod]
+        [Test]
         public void TestIntStrategyWithDefaultValueAndDescription()
         {
             var strategy = new StrategyBase<int>();
@@ -29,7 +26,7 @@ namespace UnitTests
             Assert.AreEqual("This is default strategy for type 'Int32'", strategy.Description);
         }
 
-        [TestMethod]
+        [Test]
         public void TestDefaultDescriptionForIntStrategy()
         {
             var strategy = new StrategyBase<int>(5);
@@ -37,7 +34,7 @@ namespace UnitTests
             Assert.AreEqual("This is strategy with type 'Int32'", strategy.Description);
         }
 
-        [TestMethod]
+        [Test]
         public void TestDefaultValueForIntStrategy()
         {
             var strategy = new StrategyBase<int>("It is test description");
@@ -46,21 +43,21 @@ namespace UnitTests
             Assert.AreEqual(0, strategy.Strategy);
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestNullConstructorParameter()
         {
             var strategy = new StrategyBase<int>(null);
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestNullBothConstructorParameter()
         {
             var strategy = new StrategyBase<object>(null, null);
         }
 
-        [TestMethod]
+        [Test]
         public void CastIStrategyToIStrategyListInt()
         {
             IStrategy strategy = new StrategyBase<List<int>>(new List<int> { 10, 20 });
@@ -68,12 +65,12 @@ namespace UnitTests
             var strategyListInt = strategy.Cast<List<int>>();
             var expected = new List<int> { 10, 20 };
 
-            Assert.IsInstanceOfType(strategyListInt, typeof(IStrategy<List<int>>));
-            Assert.IsInstanceOfType(strategyListInt.Strategy, typeof(List<int>));
+            Assert.IsInstanceOf(typeof(IStrategy<List<int>>), strategyListInt);
+            Assert.IsInstanceOf(typeof(List<int>), strategyListInt.Strategy);
             Assert.IsTrue(expected.SequenceEqual(strategyListInt.Strategy));                      
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void CastIStrategyToIStrategyInt()
         {
@@ -82,7 +79,7 @@ namespace UnitTests
             var strategyInt = strategy.Cast<int>();
         }
 
-        [TestMethod]
+        [Test]
         public void EqualStrategiesWithValluedType()
         {
             StrategyBase<int> strategy1 = new StrategyBase<int>(1);
@@ -92,7 +89,7 @@ namespace UnitTests
             Assert.AreEqual(strategy1.GetHashCode(), strategy2.GetHashCode());
         }
 
-        [TestMethod]
+        [Test]
         public void EqualStrategiesWithReferencedType()
         {
             StrategyBase<List<int>> strategy1 = new StrategyBase<List<int>>(new List<int> { 1, 2 });

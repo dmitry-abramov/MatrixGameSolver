@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GameTheoryUtils;
 using System.Drawing;
+using NUnit.Framework;
+using GameTheoryUtils;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class BaricentricConverter2DTest
     {
-        [TestMethod]
+        [Test]
+        [Ignore]
         public void DefaultBasis()
         {
             var converter = new BaricentricConverter2D();
@@ -21,14 +19,14 @@ namespace UnitTests
             Assert.AreEqual(new PointF(1, 0), converter.ThirdVertex);
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void BasisPointsFromSameLine()
         {
             new BaricentricConverter2D(new PointF(0, 0), new PointF((float)0.5, 1), new PointF(1, 2));
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void SetWrongBasisOnVerticalLine()
         {
@@ -37,7 +35,7 @@ namespace UnitTests
             converter.ThirdVertex = new PointF(0, 3);
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof(ArgumentException))]
         public void SetWrongBasis()
         {

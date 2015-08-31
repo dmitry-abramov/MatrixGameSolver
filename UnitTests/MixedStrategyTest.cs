@@ -1,18 +1,14 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using GameTheory;
+using NUnit.Framework;
 using GameTheory.Strategies;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class MixedStrategyTest
     {
-        [TestMethod]
+        [Test]
         public void CreateMixedStrategy()
         {
             var strategy = new MixedStrategy();
@@ -20,7 +16,7 @@ namespace UnitTests
             Assert.AreEqual(1, strategy.Strategy.Sum());
         }
 
-        [TestMethod]
+        [Test]
         public void CreateMixedStrategyFromUnnormilized()
         {
             var unnormalizedMixedStrategy = new UnnormalizedMixedStrategy(new List<int> { 1, 2, 3 });

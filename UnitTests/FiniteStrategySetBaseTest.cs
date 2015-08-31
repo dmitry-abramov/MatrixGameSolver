@@ -1,25 +1,22 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
-using GameTheory;
 using GameTheory.Strategies;
 using GameTheory.StrategiesSet;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class FiniteStrategySetBaseTest
     {
-        [TestMethod]
+        [Test]
         public void CreateNewStrategySet()
         {
             var strategySet = new FiniteStrategySetBase<double>();
         }
 
-        [TestMethod]
+        [Test]
         [ExpectedException(typeof(InvalidOperationException))]
         public void GetRandomStrategyFromEmptySet()
         {
@@ -27,7 +24,7 @@ namespace UnitTests
             var randomStrategy = strategySet.GetRandomStrategy();
         }
 
-        [TestMethod]
+        [Test]
         public void GetRandomStrategy()
         {
             var strategySet = new FiniteStrategySetBase<double>();
@@ -42,7 +39,7 @@ namespace UnitTests
             Assert.IsTrue(strategySet.Contains(randomStrategy));
         }
 
-        [TestMethod]
+        [Test]
         public void AddExitingValuedElement()
         {
             var strategySet = new FiniteStrategySetBase<double>();
@@ -58,7 +55,7 @@ namespace UnitTests
             Assert.AreEqual(5, strategySet.Count);
         }
 
-        [TestMethod]
+        [Test]
         [Ignore]
         public void AddExitingReferencedElement()
         {
@@ -76,7 +73,7 @@ namespace UnitTests
             Assert.AreEqual(5, strategySet.Count);
         }
 
-        [TestMethod]
+        [Test]
         public void CreateFromList()
         {
             var list = new List<IStrategy<int>> 

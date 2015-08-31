@@ -7,12 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTheory", "GameTheory\Ga
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{C1058077-97FA-4DA4-B0F2-C9485B1303F4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B7615DEB-70F5-409D-A5B3-AC273BCE9F3A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{B7615DEB-70F5-409D-A5B3-AC273BCE9F3A}"
 	ProjectSection(SolutionItems) = preProject
 		.travis.yml = .travis.yml
-		Local.testsettings = Local.testsettings
-		MatrixGameSolver.vsmdi = MatrixGameSolver.vsmdi
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleGameSolver", "SimpleGameSolver\SimpleGameSolver.csproj", "{A1B16EB5-2DBC-4B2F-898F-A1601BC5AEA1}"
@@ -20,11 +18,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTheoryUI", "GameTheoryUI\GameTheoryUI.csproj", "{9E342522-B33F-4472-8CDF-4CE0C33ACD79}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTheoryUtils", "GameTheoryUtils\GameTheoryUtils.csproj", "{94296731-7A2A-40B8-9830-6F24CFADB191}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{D93E3217-C058-4645-9EBA-8849AA3F6BA6}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\packages.config = .nuget\packages.config
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution

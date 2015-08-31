@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 
 using GameTheory;
 using GameTheory.Strategies;
 
 namespace UnitTests
 {
-    [TestClass]
+    [TestFixture]
     public class BiMatrixGameTest
     {
-        [TestMethod]
+        [Test]
+        [Ignore]
         public void CreateNewBiMatrixGame()
         {
             double[,] payoffFunction = new double[3, 3];
@@ -23,7 +20,8 @@ namespace UnitTests
             Assert.IsTrue(game.SecondPlayerStrategies.Contains(new StrategyBase<int>(2)));
         }
 
-        [TestMethod]
+        [Test]
+        [Ignore]
         public void CreateGameAndGetPayoff()
         {
             double[,] payoffFunction = new double[3, 3];
