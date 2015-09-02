@@ -9,7 +9,6 @@ namespace UnitTests
     public class BaricentricConverter2DTest
     {
         [Test]
-        [Ignore]
         public void DefaultBasis()
         {
             var converter = new BaricentricConverter2D();

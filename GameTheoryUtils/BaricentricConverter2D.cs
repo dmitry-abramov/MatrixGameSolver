@@ -77,9 +77,9 @@ namespace GameTheoryUtils
                 throw new ArgumentException("Basis points should not be os the same line");
             }
 
-            FirstVertex = first;
-            SecondVertex = second;
-            ThirdVertex = third;
+            firstVertex = first;
+            secondVertex = second;
+            thirdVertex = third;
         }
 
         private bool IsOnSameLine(PointF first, PointF second, PointF third)
@@ -87,7 +87,7 @@ namespace GameTheoryUtils
             var k1 = (second.Y - first.Y) / (second.X - first.X);
             var k2 = (third.Y - first.Y) / (third.X - first.X);
 
-            if (double.IsNaN(k1) && double.IsNaN(k2))
+            if (double.IsNaN(k1) && double.IsNaN(k2) || double.IsInfinity(k1) && double.IsInfinity(k2))
             {
                 return true;
             }
